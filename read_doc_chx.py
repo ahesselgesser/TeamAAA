@@ -1,11 +1,13 @@
 import zipfile
 from lxml import etree
 
+### https://virantha.com/2013/08/16/reading-and-writing-microsoft-word-docx-files-with-python/ ###
 def get_word_xml(docx_filename):
     with open(docx_filename) as f:
         zip = zipfile.ZipFile(f)
         xml_content = zip.read('word/document.xml')
     return xml_content
+### https://virantha.com/2013/08/16/reading-and-writing-microsoft-word-docx-files-with-python/ ###
 
 # def _check_element_is(self, element, type_char):
 def _check_element_is(element, type_char):
