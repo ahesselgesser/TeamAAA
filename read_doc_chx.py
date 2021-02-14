@@ -21,6 +21,8 @@ print(etree.tostring(xml_tree))
 # The CheckBox is &#9744;
 # The CheckedBox is &#9746;
 
+
+### https://github.com/python-openxml/python-docx/issues/224 ###
 def isChecked(checkbox):
     val = False
     for child in checkbox:
@@ -37,3 +39,4 @@ def checkboxValuesInElement(el):
             retVal[i] = isChecked(child)
             i += 1
     return retVal
+### https://github.com/python-openxml/python-docx/issues/224 ###
