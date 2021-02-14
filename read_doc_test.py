@@ -7,6 +7,8 @@ for para in all_paras:
     print(para.text)
     print("-------")
 
+
+### https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
 data = []
 
 table = doc.tables[0]
@@ -26,3 +28,4 @@ for i, row in enumerate(table.rows):
     data.append(row_data)
 
 print(data)
+###    https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
