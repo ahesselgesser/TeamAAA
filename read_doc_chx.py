@@ -1,5 +1,6 @@
 import zipfile
 from lxml import etree
+import re
 
 ### https://virantha.com/2013/08/16/reading-and-writing-microsoft-word-docx-files-with-python/ ###
 def get_word_xml(docx_filename):
@@ -16,11 +17,22 @@ def _check_element_is(element, type_char):
 
 xml_tree = etree.parse('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/chxTest/word/document.xml')
 
-print(etree.tostring(xml_tree))
+xml_string = etree.tostring(xml_tree)
 
+reg = ("&#9744",xml_string)
+
+#print(xml_tree)
+print(xml_string)
+
+if (reg):
+    print("We found a checked box!")
+else:
+    print("Our regex didn't work. :(")
+
+# 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
 # The CheckBox is &#9744;
 # The CheckedBox is &#9746;
-
+# Unicode character code
 
 ### https://github.com/python-openxml/python-docx/issues/224 ###
 def isChecked(checkbox):
