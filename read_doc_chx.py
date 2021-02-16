@@ -27,7 +27,7 @@ reg = re.search('([A-Za-z ]+)</w:t></w:r><w:sdt>.*?<w:t>&#9746;</w:t>', xml_stri
 
 if (reg):
     print("We found a checked box!")
-    print(reg.group(0))
+    print(reg.group(1))
 else:
     print("My regex didn't work. :(")
 
