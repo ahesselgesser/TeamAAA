@@ -19,16 +19,17 @@ xml_tree = etree.parse('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/
 
 xml_string = etree.tostring(xml_tree).decode()
 
-#reg = re.search('a', 'apple')
+reg = re.search('.*<w:t>(.*)<w:t>.*<w:t>&#9744', xml_string)
+
 #print(type(xml_string))
 #print(xml_tree)
 #print(xml_string)
 
-#if (reg):
-    #print("We found a checked box!")
-    #print(reg.group(0))
-#else:
-    #print("Our regex didn't work. :(")
+if (reg):
+    print("We found a checked box!")
+    print(reg.group(0))
+else:
+    print("My regex didn't work. :(")
 
 # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
 # The CheckBox is &#9744;
