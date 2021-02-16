@@ -19,7 +19,7 @@ xml_tree = etree.parse('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/
 
 xml_string = etree.tostring(xml_tree).decode()
 
-reg = re.search('([A-Za-z ]+)</w:t></w:r><w:sdt>.*?<w:t>(?:\S)</w:t>', xml_string)
+reg = re.search('([A-Za-z ]+)</w:t></w:r><w:sdt>.*?<w:t>&#9746;</w:t>', xml_string)
 
 #print(type(xml_string))
 #print(xml_tree)
