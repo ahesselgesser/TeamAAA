@@ -1,9 +1,6 @@
 import zipfile
 from lxml import etree
 import re
-from benedict import benedict 
-import itertools
-
 
 xml_tree = etree.parse('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/grad_chxBox_test/word/document.xml')
 
@@ -27,18 +24,16 @@ reg = re.findall('(?:<w:t>|<w:t xml:space="preserve">).*?</w:t>', xml_string)
 
 if (reg):
     print("We found a checked box!")
-    print(reg[0] + " " + reg[1])
 else:
     print("My regex didn't work. :(")
 
-list_cycle = itertools.cycle(reg)
-next(list_cycle)
+prev_match = ""
 
+print("Here are the matches for checked box results!")
 for match in reg:
-    next_match = next(list_cycle)
-    if (next_match == "<w:t>&#9746;</w:t>"):
-        print(match + " " + next_match)
-        print("Winner winner, CHICKEN DINNER!")
+    if (prev_match == "<w:t>&#9746;</w:t>"):
+        print(prev_match + " " + match)
+    prev_match = match
 
 # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
 # https://github.com/ahesselgesser/TeamAAA
