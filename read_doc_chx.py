@@ -2,10 +2,10 @@ import zipfile
 from lxml import etree
 import re
 from benedict import benedict 
+import itertools
 
 
-
-xml_tree = etree.parse('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/chxTest/word/document.xml')
+xml_tree = etree.parse('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/grad_chxBox_test/word/document.xml')
 
 xml_string = etree.tostring(xml_tree).decode()
 
@@ -14,7 +14,9 @@ xml_string = etree.tostring(xml_tree).decode()
 #print(xml_dict.search('w:t', in_keys='true', exact='true'))
 
 #reg = re.findall('([A-Za-z ]+)</w:t></w:r><w:sdt>(?:.*?)<w:t>&#9746;</w:t>', xml_string)
-reg = re.findall('([A-Za-z ]+)</w:t></w:r><w:sdt>(?:.*?)<w:t>&#9746;</w:t>', xml_string)
+
+# Using this regex, we find all <w:t> tags, not sure if it works with the altered w:t tags though.
+reg = re.findall('(?:<w:t>|<w:t xml:space="preserve">).*?</w:t>', xml_string)
 
 ### Commenting out so that I can focus on the results of the Regular Expression
 #print(type(xml_string))
@@ -25,11 +27,21 @@ reg = re.findall('([A-Za-z ]+)</w:t></w:r><w:sdt>(?:.*?)<w:t>&#9746;</w:t>', xml
 
 if (reg):
     print("We found a checked box!")
-    print(reg)
+    print(reg[0] + " " + reg[1])
 else:
     print("My regex didn't work. :(")
 
+list_cycle = itertools.cycle(reg)
+next(list_cycle)
+
+for match in reg:
+    next_match = next(list_cycle)
+    if (next_match == "<w:t>&#9746;</w:t>"):
+        print(match + " " + next_match)
+        print("Winner winner, CHICKEN DINNER!")
+
 # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
+# https://github.com/ahesselgesser/TeamAAA
 # The CheckBox is &#9744;
 # The CheckedBox is &#9746;
 # Unicode character code
