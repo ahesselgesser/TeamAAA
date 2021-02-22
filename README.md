@@ -6,7 +6,7 @@
 We will be creating a web application that users can upload Student Learning Outcome reports in pdf or word formats to. The website will process the documents and convert them into a format consistent with the database created for SLOs during a previous capstone project. The website will also perform data analysis on the data uploaded, and natural language analysis.
 
 ## Milestone 1 
-For malestone 1, we simply set up the environment of developing and realized a function of file uploading. The File uploading function could allow users to upload files to the server as the first step.
+For milestone 1, we simply set up the environment of developing and realized a function of file uploading. The File uploading function could allow users to upload files to the server as the first step.
 
 ## How to use the Application
 
@@ -42,4 +42,4 @@ The application will be available at **127.0.0.1:8000**.
 
 ## Release Notes
 
-What we doing in this milestone is to create a application that realized a function of uploading files byusing Django framework. We are Our current progress is in line with our expectations. Our next step is to wokring on parser script and database.
+What we are doing in this milestone is to creating an application that allows users to upload files by using the Django framework. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework.
