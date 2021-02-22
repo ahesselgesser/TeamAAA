@@ -42,4 +42,4 @@ The application will be available at **127.0.0.1:8000**.
 
 ## Release Notes
 
-What we are doing in this milestone is to creating an application that allows users to upload files by using the Django framework. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework.
+What we are doing in this milestone is creating an application that allows users to upload files by using the Django framework. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework.
