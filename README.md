@@ -3,7 +3,7 @@
 "**Zijun Mei**" and "**Trent Wisecup**" and "**Alex Hesselgesser**"<br />
 
 ## Abstract
-We will be creating a web site or standalone application that users can upload Student Learning Outcome reports in pdf or word formats to. The website will process the documents and convert them into a format consistent with the database created for SLOs during a previous capstone project. The website will also perform data analysis on the data uploaded, and natural language analysis.
+We will be creating a web application that users can upload Student Learning Outcome reports in pdf or word formats to. The website will process the documents and convert them into a format consistent with the database created for SLOs during a previous capstone project. The website will also perform data analysis on the data uploaded, and natural language analysis.
 
 ## Milestone 1 
 For malestone 1, we simply set up the environment of developing and realized a function of file uploading. The File uploading function could allow users to upload files to the server as the first step.
