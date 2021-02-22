@@ -40,6 +40,7 @@ python manage.py runserver
 ```
 The application will be available at **127.0.0.1:8000**.
 
+Here is the video instruction of the milestone1: https://use.vg/JkjmjV
 ## Release Notes
 
 What we are doing in this milestone is creating an application that allows users to upload files by using the Django framework. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework.
