@@ -7,6 +7,7 @@ class SLO:
         self.domain = ""
         self.type = ""
         self.pointProgramAdministered = ""
+        self.descriptionPointProgramAdministered = ""
         self.populationMeasured = ""
         self.descriptionPopulationMeasured = ""
         self.frequencyDataCollected = ""
