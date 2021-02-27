@@ -14,10 +14,11 @@ class SLO:
         self.desciptionFrequencyDataCollected = ""
         self.proficiencyThreshold = ""
         self.proficiencyTarget = ""
+        #Need to add support for multiple measures
         self.dataCollectionDates = ""
         self.numberOfStudentsAssessed = ""
         self.percentageOfStudentsMetThreshold = ""
-        self.proficiency = ""
+        self.proficiency = "" #I can't figure out what this one was for based off of my brainstorming doc
         self.quality = ""
         self.decisionsAndActions = ""
     

@@ -50,18 +50,18 @@ class AssesssmentReport:
         x = 0
         for slo in self.SLOs:
             x += 1
-            print("SLO: " + x + " " + slo.taxonomy + " \n")
+            print("SLO: " + x + " | " + slo.dataCollectionDates + " | " + slo.numberOfStudentsAssessed + " | " + slo. + percentageOfStudentsMetThreshold " \n")
         #SLO Status Table
         x = 0
         for slo in self.SLOs:
             x += 1
-            print("SLO: " + x + " " + slo.taxonomy + " \n")
+            print("SLO: " + x + " " + slo.quality + " \n")
         print("Communication Result:" + self.resultCommunication + "\n")
         #Decisions and Actions of Each
         x = 0
         for slo in self.SLOs:
             x += 1
-            print("SLO: " + x + " " + slo.taxonomy + " \n")
+            print("SLO: " + x + " " + slo.decisionsAndActions + " \n")
 
 
     def importToDB(self):
