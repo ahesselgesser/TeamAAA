@@ -2,6 +2,16 @@ import docx
 from docx.oxml.ns import qn
 import re
 
+def regex_inc(regex_list, regex_counter, match_list):
+    regex = re.findall(regex_list[regex_counter], para.text)
+    if (regex):
+        #print(regex[0])
+        match_list.append(regex[0])
+        if (regex_counter < len(regex_list) - 1):
+            regex_counter += 1
+    return (regex_counter, match_list)
+
+
 ## Change this file location to the location of the file you are parsing
 doc = docx.Document("C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/undergrad2018-regular.docx")
 
@@ -13,17 +23,17 @@ doc = docx.Document("C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSC
 ## Date Range of Reported Data, Person Preparing the Report, SLOs (maybe in an array, or tuple, or something)
 ## Bloom's Taxonomy (checkboxes)
 
+### Creating lists to hold all the different regex's and matches, then iterate through them.
 regex_counter = 0
-
-regex_tuple = ('College:\s*(.*)\s*Department/School:', )
+regex_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)']
+match_list = []
 
 all_paras = doc.paragraphs
 for para in all_paras:
-    regex = re.findall(regex_tuple[regex_counter], para.text)
-    if (regex):
-        print(regex[0])
+    (regex_counter, match_list) = regex_inc(regex_list, regex_counter, match_list)
+    (regex_counter, match_list) = regex_inc(regex_list, regex_counter, match_list)
 
-    #print(para.text)
+print(match_list)
 
 
 """
