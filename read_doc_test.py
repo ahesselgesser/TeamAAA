@@ -13,13 +13,15 @@ doc = docx.Document("C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSC
 ## Date Range of Reported Data, Person Preparing the Report, SLOs (maybe in an array, or tuple, or something)
 ## Bloom's Taxonomy (checkboxes)
 
+regex_counter = 0
 
+regex_tuple = ('College:\s*(.*)\s*Department/School:', )
 
 all_paras = doc.paragraphs
 for para in all_paras:
-    college_regex = re.findall('College:\s*(.*)\s*Department/School:', para.text)
-    if (college_regex):
-        print(college_regex[0])
+    regex = re.findall(regex_tuple[regex_counter], para.text)
+    if (regex):
+        print(regex[0])
 
     #print(para.text)
 
