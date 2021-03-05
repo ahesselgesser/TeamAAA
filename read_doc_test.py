@@ -3,11 +3,11 @@ from docx.oxml.ns import qn
 import re
 
 def regex_inc(regex_list, regex_counter, match_list):
-    regex = re.findall(regex_list[regex_counter], para.text)
-    if (regex):
-        #print(regex[0])
-        match_list.append(regex[0])
-        if (regex_counter < len(regex_list) - 1):
+    if(regex_counter < len(regex_list)):
+        regex = re.findall(regex_list[regex_counter], para.text)
+        if (regex):
+            match_list.append(regex[0])
+            #if (regex_counter < len(regex_list) - 1):
             regex_counter += 1
     return (regex_counter, match_list)
 
@@ -25,7 +25,8 @@ doc = docx.Document("C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSC
 
 ### Creating lists to hold all the different regex's and matches, then iterate through them.
 regex_counter = 0
-regex_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Data:\s*(.*)']
+ug18_regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Data:\s*(.*)',
+'Person Preparing the Report:\s(.*)']   
 
 ### Match 1 is Colleges
 ### Match 2 is Department/School
@@ -34,9 +35,10 @@ match_list = []
 
 all_paras = doc.paragraphs
 for para in all_paras:
-    (regex_counter, match_list) = regex_inc(regex_list, regex_counter, match_list)
-    (regex_counter, match_list) = regex_inc(regex_list, regex_counter, match_list)
-
+    (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
+    (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
+    if (regex_counter >= 7):
+        print(para.text)
 print(match_list)
 
 
