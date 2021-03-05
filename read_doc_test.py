@@ -25,7 +25,11 @@ doc = docx.Document("C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSC
 
 ### Creating lists to hold all the different regex's and matches, then iterate through them.
 regex_counter = 0
-regex_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)']
+regex_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Data:\s*(.*)']
+
+### Match 1 is Colleges
+### Match 2 is Department/School
+### 
 match_list = []
 
 all_paras = doc.paragraphs
