@@ -39,8 +39,10 @@ else:
 prev_match = ""
 
 print("Here are the matches for checked box results!")
-for match in reg:
-    if (prev_match == "<w:t>&#9746;</w:t>" and match != '<w:t xml:space="preserve"> </w:t>'):
+for index, match in enumerate(reg):
+    if (prev_match == "<w:t>&#9746;</w:t>" ):
+        if (match == '<w:t xml:space="preserve"> </w:t>'):
+            match = reg[index+1]
         print(prev_match + " " + match)
     prev_match = match
 
