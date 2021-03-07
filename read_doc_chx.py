@@ -4,6 +4,15 @@ import zipfile
 from lxml import etree
 import re
 
+blooms_taxonomy_list = ['Knowledge', 'Comprehension', 'Application', 'Analysis', 'Synthesis', 'Evaluation']
+slo_count = 0
+
+## https://medium.com/@jorlugaqui/how-to-strip-html-tags-from-a-string-in-python-7cb81a2bbf44
+def remove_tags(text):
+    """Remove < > tags from a string"""
+    clean = re.compile('<.*?>')
+    return re.sub(clean, '', text)
+
 # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
 # https://github.com/ahesselgesser/TeamAAA
 
@@ -43,7 +52,7 @@ for index, match in enumerate(reg):
     if (prev_match == "<w:t>&#9746;</w:t>" ):
         if (match == '<w:t xml:space="preserve"> </w:t>'):
             match = reg[index+1]
-        print(prev_match + " " + match)
+        print(remove_tags(match))
     prev_match = match
 
 # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
