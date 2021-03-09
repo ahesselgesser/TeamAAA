@@ -65,6 +65,7 @@ data = []
 ## Resuls communicated within program Table
 ## Decisions & Actions Table
 ### END
+slo_list = []
 
 table = doc.tables[0]
 for i, row in enumerate(table.rows):
@@ -83,6 +84,8 @@ for i, row in enumerate(table.rows):
     row_data = dict(zip(keys, text))
     data.append(row_data)
 
-print(data)
+for i in range (0, slo_count):
+    slo_list.append(data[i]['Student Learning Outcomes'])
+print(slo_list)
 #print(data[0]['Student Learning Outcomes'])
 ###    https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
