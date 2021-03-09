@@ -75,7 +75,7 @@ for i, row in enumerate(table.rows):
     if i == 0:
         keys = tuple(text)
         continue
-    elif i == slo_count - 1:
+    elif i == 2 * (slo_count - 1):
         break
 
     # Construct a dictionary for this row, mapping
