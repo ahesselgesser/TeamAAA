@@ -34,26 +34,44 @@ ug18_regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/Sc
 match_list = []
 
 all_paras = doc.paragraphs
+
 for para in all_paras:
     (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
     (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
+    """
     if (regex_counter >= 7):
         print(para.text)
+    """
 print(match_list)
 
-
-"""
 ### https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
 data = []
 
-table = doc.tables[0]
+### UG 2018 Regular Tables
+## SLO Table
+# Checkboxes
+## SLO communication to stakeholders
+## Assessment Methods
+# Separate table for EACH SLO
+# Will have to devise a method to determine when these tables end and the next category begins
+# Checkboxes in these tables
+## Data Collection And Analysis Table
+# Two tables
+# 
+## Resuls communicated within program Table
+## Decisions & Actions Table
+### END
+
+table = doc.tables[1]
 for i, row in enumerate(table.rows):
     text = (cell.text for cell in row.cells)
-    #print(row.cells)
     
     # Establish the mapping based on the first row
     # headers; these will become the keys of our dictionary
-    if i == 0:
+    if i == 0 and table != doc.tables[1]:
+        keys = tuple(text)
+        continue
+    elif i == 4:
         keys = tuple(text)
         continue
 
@@ -63,5 +81,5 @@ for i, row in enumerate(table.rows):
     data.append(row_data)
 
 print(data)
+#print(data[0]['Student Learning Outcomes'])
 ###    https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
-"""
