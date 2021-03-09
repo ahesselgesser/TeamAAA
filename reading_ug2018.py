@@ -1,6 +1,7 @@
 import docx
 from docx.oxml.ns import qn
 import re
+import read_doc_chx
 
 def regex_inc(regex_list, regex_counter, match_list):
     if(regex_counter < len(regex_list)):
@@ -12,8 +13,11 @@ def regex_inc(regex_list, regex_counter, match_list):
     return (regex_counter, match_list)
 
 
+(chkbox_element_list, slo_count) = read_doc_chx.find_checkbox_elements()
+print(slo_count)
+
 ## Change this file location to the location of the file you are parsing
-doc = docx.Document("C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/undergrad2018-regular.docx")
+doc = docx.Document("C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/undergrad2018-regularv2.docx")
 
 # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
 # https://github.com/ahesselgesser/TeamAAA
@@ -62,18 +66,17 @@ data = []
 ## Decisions & Actions Table
 ### END
 
-table = doc.tables[1]
+table = doc.tables[0]
 for i, row in enumerate(table.rows):
     text = (cell.text for cell in row.cells)
     
     # Establish the mapping based on the first row
     # headers; these will become the keys of our dictionary
-    if i == 0 and table != doc.tables[1]:
+    if i == 0:
         keys = tuple(text)
         continue
-    elif i == 4:
-        keys = tuple(text)
-        continue
+    elif i == slo_count - 1:
+        break
 
     # Construct a dictionary for this row, mapping
     # keys to values for this row
