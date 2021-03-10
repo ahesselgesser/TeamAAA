@@ -46,7 +46,7 @@ for para in all_paras:
     if (regex_counter >= 7):
         print(para.text)
     """
-print(match_list)
+#print(match_list)
 
 ### https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
 data = []
@@ -88,27 +88,46 @@ for i, row in enumerate(table.rows):
     data.append(row_data)
 
 ## Append the SLOs to the SLO list
-for i in range (0, slo_count):
-    slo_list.append(data[i]['Student Learning Outcomes'])
+for slo in range (0, slo_count):
+    slo_list.append(data[slo]['Student Learning Outcomes'])
 
 data.clear()
 
-print(slo_list)
-
+#print(slo_list)
+iterator = 0
+max = 10
 table = doc.tables[1]
-for i, row in enumerate(table.rows):
+prev_text = ""
+### Original loop from link below
+### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
+for row in table.rows:
+    if iterator <= max:
+        for cell in row.cells:
+            text = cell.text
+            if (prev_text == text):
+                continue
+            if iterator <= 2:
+                data.append(("Row" + str(iterator), text))
+            if iterator > 2:
+                data.append(text)
+            if iterator <= max:
+                iterator += 1
+            prev_text = text
+print(data)
+"""
+for j, row in enumerate(table.rows):
     text = (cell.text for cell in row.cells)
     # Establish the mapping based on the first row
     # headers; these will become the keys of our dictionary
-    """
-    if i == 0:
+    if j == 0:
+        data.append(("Row1",text))
         continue
-    else:
-        keys = tuple(text)
-        continue
-    """
+    elif j == 1:
+        data.append(("Row2",text))
+        continue 
     # Construct a dictionary for this row, mapping
     # keys to values for this row
     row_data = dict(zip(keys, text))
     data.append(row_data)
 print(data)
+"""
