@@ -114,20 +114,3 @@ for row in table.rows:
                 iterator += 1
             prev_text = text
 print(data)
-"""
-for j, row in enumerate(table.rows):
-    text = (cell.text for cell in row.cells)
-    # Establish the mapping based on the first row
-    # headers; these will become the keys of our dictionary
-    if j == 0:
-        data.append(("Row1",text))
-        continue
-    elif j == 1:
-        data.append(("Row2",text))
-        continue 
-    # Construct a dictionary for this row, mapping
-    # keys to values for this row
-    row_data = dict(zip(keys, text))
-    data.append(row_data)
-print(data)
-"""
