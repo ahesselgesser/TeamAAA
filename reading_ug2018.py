@@ -94,23 +94,17 @@ for slo in range (0, slo_count):
 data.clear()
 
 #print(slo_list)
-iterator = 0
+col_iter = 0
+row_iter = 0
 max = 10
 table = doc.tables[1]
 prev_text = ""
 ### Original loop from link below
 ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
 for row in table.rows:
-    if iterator <= max:
-        for cell in row.cells:
-            text = cell.text
-            if (prev_text == text):
-                continue
-            if iterator <= 2:
-                data.append(("Row" + str(iterator), text))
-            if iterator > 2:
-                data.append(text)
-            if iterator <= max:
-                iterator += 1
-            prev_text = text
+    if row_iter <= 2:
+        data.append({"Row" + str(row_iter): row.cells[0].text})
+    if row_iter > 2:
+        data.append({row.cells[0].text: row.cells[1].text})
+    row_iter += 1
 print(data)
