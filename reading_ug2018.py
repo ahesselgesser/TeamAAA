@@ -107,4 +107,6 @@ for row in table.rows:
     if row_iter > 2:
         data.append({row.cells[0].text: row.cells[1].text})
     row_iter += 1
+    if row_iter >= max:
+        break
 print(data)
