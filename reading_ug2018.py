@@ -46,7 +46,7 @@ for para in all_paras:
     if (regex_counter >= 7):
         print(para.text)
     """
-#print(match_list)
+print(match_list)
 
 ### https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
 data = []
@@ -93,20 +93,23 @@ for slo in range (0, slo_count):
 
 data.clear()
 
-#print(slo_list)
-col_iter = 0
+print(slo_list)
+
+first_col = 0
+sec_col = 1
 row_iter = 0
-max = 10
+one_cols = 2
+max_rows = 10
 table = doc.tables[1]
 prev_text = ""
 ### Original loop from link below
 ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
 for row in table.rows:
-    if row_iter <= 2:
-        data.append({"Row" + str(row_iter): row.cells[0].text})
-    if row_iter > 2:
-        data.append({row.cells[0].text: row.cells[1].text})
+    if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
+        data.append({"Row" + str(row_iter): row.cells[first_col].text})
+    if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
+        data.append({row.cells[0].text: row.cells[sec_col].text})
     row_iter += 1
-    if row_iter >= max:
-        break
+    if row_iter > max_rows:
+        row_iter = 0
 print(data)
