@@ -47,7 +47,7 @@ Next is the "reading_ug2018.py" file:
   We loop through that table capturing the information within, and do the same thing for the table below.
 And that is the extent of our parser right now.
 
-Here is the video instruction of the milestone1: 
+Here is the video instruction of the milestone2: https://use.vg/L1bZmy
 Release Notes
 
 What we are doing in this milestone is creating an parser script that we can integrate into our Django framework.
