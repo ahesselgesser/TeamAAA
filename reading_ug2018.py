@@ -42,13 +42,10 @@ all_paras = doc.paragraphs
 for para in all_paras:
     (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
     (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
-    """
     if (regex_counter >= 7):
         print(para.text)
-    """
 print(match_list)
 
-### https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
 data = []
 
 ### UG 2018 Regular Tables
@@ -86,7 +83,6 @@ for i, row in enumerate(table.rows):
     # keys to values for this row
     row_data = dict(zip(keys, text))
     data.append(row_data)
-
 ## Append the SLOs to the SLO list
 for slo in range (0, slo_count):
     slo_list.append(data[slo]['Student Learning Outcomes'])
@@ -112,4 +108,28 @@ for row in table.rows:
     row_iter += 1
     if row_iter > max_rows:
         row_iter = 0
-print(data)
+
+row_iter = 0
+table = doc.tables[2]
+prev_text = ""
+### Original loop from link below
+### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
+for row in table.rows:
+    if row.cells[first_col].text == "SLO " + str(slo_count + 1) + ": ":
+        break
+    if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
+        data.append({"Row" + str(row_iter): row.cells[first_col].text})
+    if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
+        data.append({row.cells[0].text: row.cells[sec_col].text})
+    row_iter += 1
+    if row_iter > max_rows:
+        row_iter = 0
+
+table = doc.tables[3]
+for row in table.rows:
+    if "SLO " + str(slo_count + 1) in row.cells[first_col].text:
+        break
+    print(row.cells[first_col].text)
+    print(row.cells[sec_col].text)
+
+#print(data)
