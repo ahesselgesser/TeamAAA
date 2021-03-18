@@ -18,12 +18,12 @@ You need to use the parse_script branch
 
 Before running, you need to install several tools.
 
-pip install os
-pip install shutil
-pip install zipfile
-pip install lxml
-pip install re
-pip install docx
+pip install os<br/>
+pip install shutil<br/>
+pip install zipfile<br/>
+pip install lxml<br/>
+pip install re<br/>
+pip install docx<br/>
 
 For "read_doc_chx.py":
   On line 17: You need to change the source_dir to the directory you are running the Python file from
