@@ -141,5 +141,15 @@ for row in table.rows:
         continue
     data_coll_list.extend(extend_values)
 
-print(data_coll_list)
-#print(data)
+#print(data_coll_list)
+
+table = doc.tables[5]
+dec_act = []
+for row in table.rows:
+    slo_num = row.cells[first_col].text
+    slo_act = row.cells[sec_col].text
+    if slo_act == "\n\n\n\n" or slo_act == "":
+        continue
+    dec_act.extend([(slo_num, slo_act)])
+
+print(dec_act)
