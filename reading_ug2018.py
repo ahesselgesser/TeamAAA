@@ -42,8 +42,8 @@ all_paras = doc.paragraphs
 for para in all_paras:
     (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
     (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
-    if (regex_counter >= 7):
-        print(para.text)
+    #if (regex_counter >= 7):
+        #print(para.text)
 print(match_list)
 
 data = []
@@ -93,6 +93,8 @@ print(slo_list)
 
 first_col = 0
 sec_col = 1
+third_col = 2
+fourth_col = 3
 row_iter = 0
 one_cols = 2
 max_rows = 10
@@ -125,11 +127,19 @@ for row in table.rows:
     if row_iter > max_rows:
         row_iter = 0
 
+data_coll_list = []
 table = doc.tables[3]
 for row in table.rows:
     if "SLO " + str(slo_count + 1) in row.cells[first_col].text:
         break
-    print(row.cells[first_col].text)
-    print(row.cells[sec_col].text)
+    slo_measure = row.cells[first_col].text
+    data_coll_range = row.cells[sec_col].text
+    num_students = row.cells[third_col].text
+    percent_students = row.cells[fourth_col].text
+    extend_values = [(slo_measure, data_coll_range, num_students, percent_students)]
+    if data_coll_range == "" and num_students == "" and percent_students == "":
+        continue
+    data_coll_list.extend(extend_values)
 
+print(data_coll_list)
 #print(data)
