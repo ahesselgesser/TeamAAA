@@ -48,7 +48,7 @@ print(match_list)
 
 data = []
 
-### UG 2018 Regular Tables
+### UG 2019 Regular Tables
 ## SLO Table
 # Checkboxes
 ## SLO communication to stakeholders
@@ -127,8 +127,12 @@ for row in table.rows:
     if row_iter > max_rows:
         row_iter = 0
 
+print("\nData:")
+print(data)
+
+#### DATA COLLECTION AND ANALYSIS
 data_coll_list = []
-table = doc.tables[3]
+table = doc.tables[4]
 for row in table.rows:
     if "SLO " + str(slo_count + 1) in row.cells[first_col].text:
         break
@@ -141,9 +145,11 @@ for row in table.rows:
         continue
     data_coll_list.extend(extend_values)
 
-#print(data_coll_list)
+print("\nData collection list:")
+print(data_coll_list)
 
-table = doc.tables[5]
+#### DECISIONS AND ACTIONS
+table = doc.tables[6]
 dec_act = []
 for row in table.rows:
     slo_num = row.cells[first_col].text

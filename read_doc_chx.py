@@ -15,10 +15,10 @@ def copy_and_unzip():
     # https://github.com/ahesselgesser/TeamAAA
 
     source_dir = "C:\\Users\\twins\\Desktop\\UNO classes\\Spring 2021 Semester\\CSCI 4970 - Capstone\\Python tests"  # input("Enter the source location of the file: example C:/Users/bob/\n")
-    source_fn =  "undergrad2018-regularv2.docx" #input("Enter the name of the file to copy\n")
+    source_fn =  "undergrad2019-regular.docx" #input("Enter the name of the file to copy\n")
 
     #destination_dir = input("Enter the destination and name of the file: example C:/Users/bob/word_2.docx\n")
-    destination_fn =  "undergrad2018-regularv2.zip" # input("Enter the name of the copied file\n")
+    destination_fn =  "undergrad2019-regular.zip" # input("Enter the name of the copied file\n")
 
     # copyfile(source, destination)
     copyfile(source_dir + "\\" + source_fn, source_dir + "\\" + destination_fn)
@@ -29,6 +29,8 @@ def copy_and_unzip():
 
     with zipfile.ZipFile(source_dir + "/" + destination_fn, 'r') as zip_ref:
         zip_ref.extractall(source_dir + "/" + zip_dir)
+
+
 
 def find_checkbox_elements():
     ### UNCOMMENT THIS IN PRODUCTION
