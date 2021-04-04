@@ -50,11 +50,11 @@ From here the steps are the same for both:
 Run the following PSQL commands in order:
 ```
 CREATE DATABASE aaadb;
-CREATE USER teamAAA WITH ENCRYPTED PASSWORD 'aaapass';
-ALTER ROLE teamAAA SET client_encoding TO 'utf8';
-ALTER ROLE teamAAA SET default_transaction_isolation TO 'read committed';
-ALTER ROLE teamAAA SET timezone TO 'UTC';
-GRANT ALL PRIVILEGES ON DATABASE aaadb TO teamAAA;
+CREATE USER teamaaa WITH ENCRYPTED PASSWORD 'aaapass';
+ALTER ROLE teamaaa SET client_encoding TO 'utf8';
+ALTER ROLE teamaaa SET default_transaction_isolation TO 'read committed';
+ALTER ROLE teamaaa SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE aaadb TO teamaaa;
 ```
 You can now exit the SQL prompt with ```\q```
 

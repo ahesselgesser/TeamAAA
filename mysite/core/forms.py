@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Report
+from .models.basic_models import Report
 
 
 

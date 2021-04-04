@@ -4,7 +4,7 @@ from django.core.files.storage import FileSystemStorage
 from django.urls import reverse_lazy
 
 from .forms import ReportForm
-from .models import Report
+from .models.basic_models import Report
 from .forms import FileFieldForm
 from django.http import HttpResponse
 import os
@@ -50,6 +50,11 @@ def delete_report(request, pk):
         report = Report.objects.get(pk=pk)
         report.delete()
     return redirect('report_list')
+
+class SearchResultsView(ListView):
+    model = Report
+    template_name = 'class_report_list.html'
+    context_object_name = 'reports'
 
 
 class ReportListView(ListView):
