@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView, CreateView
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 from .forms import ReportForm
 from .models.basic_models import Report
@@ -51,10 +52,27 @@ def delete_report(request, pk):
         report.delete()
     return redirect('report_list')
 
-class SearchResultsView(ListView):
-    model = Report
-    template_name = 'class_report_list.html'
-    context_object_name = 'reports'
+def search(request):
+    if request.method == 'GET':
+        query= request.GET.get('q')
+
+        submitbutton= request.GET.get('submit')
+
+        if query is not None:
+            lookups= Q(title__icontains=query) | Q(content__icontains=query)
+
+            reports = Report.objects.all()
+
+            context={'results': reports,
+                     'submitbutton': submitbutton}
+
+            return render(request, 'search.html', context)
+
+        else:
+            return render(request, 'search.html')
+
+    else:
+        return render(request, 'search.html')
 
 
 class ReportListView(ListView):
