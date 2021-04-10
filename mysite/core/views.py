@@ -37,6 +37,8 @@ def upload_report(request):
     if request.method == 'POST':
         form = ReportForm(request.POST, request.FILES)
         if form.is_valid():
+            dbform = Report.objects.create(year="1980", author="Test", degreeProgram="Test",accredited=False,date_range_of_reported_data="1908-1981",section1Comment="",section2Comment="",section3Comment="",section4Comment="",submitted=True,returned=True,numberOfSLOs=0,title="test",uploader="test",)
+            dbform.save()
             form.save()
             return redirect('report_list')
     else:
@@ -59,8 +61,6 @@ def search(request):
         submitbutton= request.GET.get('submit')
 
         if query is not None:
-            lookups= Q(title__icontains=query) | Q(content__icontains=query)
-
             reports = Report.objects.all()
 
             context={'results': reports,
