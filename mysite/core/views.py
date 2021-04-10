@@ -61,7 +61,7 @@ def search(request):
         submitbutton= request.GET.get('submit')
 
         if query is not None:
-            reports = Report.objects.all()
+            reports = Report.objects.filter(title__contains=query)
 
             context={'results': reports,
                      'submitbutton': submitbutton}
