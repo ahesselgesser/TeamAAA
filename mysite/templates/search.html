@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Search Page</h1>
+
+<br />
+<form action="{% url 'search' %}" method="GET" value="{{request.GET.q}}">
+  Search <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search Reports" />
+  <input type="submit" name="submit" value="Search" />
+</form>
+
+
+{% if submitbutton == 'Search' and request.GET.q != '' %}
+{% if results %}
+<h1>Results for <b>{{ request.GET.q }}</b></h1>
+<br /><br />
+<table>
+{% for result in results %}
+<tr>
+<td>{{result.title}}</td>
+<td>{{result.uploader}}</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+No search results for this query
+{% endif %}
+{% endif %}
+{% endblock %}
