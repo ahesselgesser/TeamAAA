@@ -158,4 +158,4 @@ for row in table.rows:
         continue
     data_coll_list.extend(extend_values)
 
-print(dec_act)
+print(data_coll_list)
