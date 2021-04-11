@@ -143,19 +143,15 @@ print(data)
 
 print(chkbox_element_list)
 
-#### DATA COLLECTION AND ANALYSIS
+#### Decisions and Actions
 data_coll_list = []
 table = doc.tables[3]
 for row in table.rows:
     if "SLO " + str(slo_count + 1) in row.cells[first_col].text:
         break
-    slo_measure = row.cells[first_col].text
-    data_coll_range = row.cells[sec_col].text
-    num_students = row.cells[third_col].text
-    percent_students = row.cells[fourth_col].text
-    extend_values = [(slo_measure, data_coll_range, num_students, percent_students)]
-    if data_coll_range == "" and num_students == "" and percent_students == "":
-        continue
+    slo_num = row.cells[first_col].text
+    dec_and_act = row.cells[sec_col].text
+    extend_values = [(slo_num, dec_and_act)]
     data_coll_list.extend(extend_values)
 
 print(data_coll_list)
