@@ -60,8 +60,8 @@ def find_checkbox_elements():
     #print("Here are the matches for checked box results!")
     for index, match in enumerate(reg):
         if (match == ''):
-            match[index] += 1
-        if (prev_match == "<w:t>&#9746;</w:t>" or prev_match == "<w:t xml:space=\"preserve\">&#9746;</w:t>"):
+            match = match[index + 1]
+        if (prev_match == "<w:t>&#9746;</w:t>"):
             match = remove_tags(match).strip()
             #print(match)
             chkbox_element_list.append(match)
