@@ -73,6 +73,13 @@ def search(request):
     else:
         return render(request, 'search.html')
 
+def view_report(request):
+    if request.method == 'GET':
+        reportId= request.GET.get('id')
+        results = Report.objects.filter(id=reportId)
+        context={'results': results}
+        return render(request, 'report.hml', context)
+    return render(request, 'report.hml')
 
 class ReportListView(ListView):
     model = Report

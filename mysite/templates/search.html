@@ -18,20 +18,19 @@
 </form>
 
 
-{% if submitbutton == 'Search' and request.GET.q != '' %}
-{% if results %}
-<h1>Results for <b>{{ request.GET.q }}</b></h1>
-<br /><br />
-<table>
-{% for result in results %}
-<tr>
-<td>{{result.title}}</td>
-<td>{{result.uploader}}</td>
-</tr>
-{% endfor %}
-</table>
-{% else %}
-No search results for this query
-{% endif %}
+{% if submitbutton == 'Search' and request.GET.titleText != '' %}
+  {% if results %}
+    <br /><br />
+    <table>
+    {% for result in results %}
+      <tr>
+      <td>{{result.title}}</td>
+      <td>{{result.uploader}}</td>
+      </tr>
+    {% endfor %}
+    </table>
+  {% else %}
+    No search results for this query
+  {% endif %}
 {% endif %}
 {% endblock %}
