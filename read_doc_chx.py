@@ -10,15 +10,15 @@ def remove_tags(text):
     clean = '<.*?>\s*'
     return re.sub(clean, '', text)
 
-def copy_and_unzip():
+def copy_and_unzip(source_fn):
     # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
     # https://github.com/ahesselgesser/TeamAAA
 
     source_dir = "C:\\Users\\twins\\Desktop\\UNO classes\\Spring 2021 Semester\\CSCI 4970 - Capstone\\Python tests"  # input("Enter the source location of the file: example C:/Users/bob/\n")
-    source_fn =  "undergrad2019-regular.docx" #input("Enter the name of the file to copy\n")
+    #source_fn =  "undergrad2019-regular.docx" #input("Enter the name of the file to copy\n")
 
     #destination_dir = input("Enter the destination and name of the file: example C:/Users/bob/word_2.docx\n")
-    destination_fn =  "undergrad2019-regular.zip" # input("Enter the name of the copied file\n")
+    destination_fn =  "undergrad2019-accredited.zip" # input("Enter the name of the copied file\n")
 
     # copyfile(source, destination)
     copyfile(source_dir + "\\" + source_fn, source_dir + "\\" + destination_fn)
@@ -59,8 +59,10 @@ def find_checkbox_elements():
 
     #print("Here are the matches for checked box results!")
     for index, match in enumerate(reg):
-        if (prev_match == "<w:t>&#9746;</w:t>" ):
-            match = remove_tags(match)
+        if (match == ''):
+            match[index] += 1
+        if (prev_match == "<w:t>&#9746;</w:t>" or prev_match == "<w:t xml:space=\"preserve\">&#9746;</w:t>"):
+            match = remove_tags(match).strip()
             #print(match)
             chkbox_element_list.append(match)
             if (match in blooms_taxonomy_list):
