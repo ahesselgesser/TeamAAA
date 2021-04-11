@@ -37,7 +37,7 @@ def upload_report(request):
     if request.method == 'POST':
         form = ReportForm(request.POST, request.FILES)
         if form.is_valid():
-            dbform = Report.objects.create(year="1980", author="Test", degreeProgram="Test",accredited=False,date_range_of_reported_data="1908-1981",section1Comment="",section2Comment="",section3Comment="",section4Comment="",submitted=True,returned=True,numberOfSLOs=0,title="test",uploader="test",)
+            dbform = Report.objects.create(year="1980", author="John Johnny", degreeProgram="Test2",accredited=False,date_range_of_reported_data="1908-1981",section1Comment="",section2Comment="",section3Comment="",section4Comment="",submitted=True,returned=True,numberOfSLOs=0,title="TestTitle2",uploader="placeholder",)
             dbform.save()
             form.save()
             return redirect('report_list')
@@ -56,20 +56,19 @@ def delete_report(request, pk):
 
 def search(request):
     if request.method == 'GET':
-        query= request.GET.get('q')
+        titleText= request.GET.get('titleText')
+        degreeprogram = request.GET.get('degreeProgram')
 
         submitbutton= request.GET.get('submit')
+        results = Report.objects.all()
+        if (titleText != None):
+            results = results.filter(title__contains=titleText)
+        if (degreeprogram != None):
+            results = results.filter(degreeProgram=degreeprogram)
+        context={'results': results,
+                    'submitbutton': submitbutton}
 
-        if query is not None:
-            reports = Report.objects.filter(title__contains=query)
-
-            context={'results': reports,
-                     'submitbutton': submitbutton}
-
-            return render(request, 'search.html', context)
-
-        else:
-            return render(request, 'search.html')
+        return render(request, 'search.html', context)
 
     else:
         return render(request, 'search.html')

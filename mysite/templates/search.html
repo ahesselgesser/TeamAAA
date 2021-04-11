@@ -5,8 +5,14 @@
 <h1>Search Page</h1>
 
 <br />
-<form action="{% url 'search' %}" method="GET" value="{{request.GET.q}}">
-  Search <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search Reports" />
+<form action="{% url 'search' %}" method="GET" value="{{request.GET.titleText}}">
+  Search <input type="text" name="titleText" value="{{request.GET.titleText}}" placeholder="Search Reports" />
+  Degree Program 
+  <select name="degreeProgram" id ="degreeProgram">
+    <option value = "Test">Test</option>
+    <option value = "Test2">Test2</option>
+    <option value = "Science">Science</option>
+  </select>
   <input type="submit" name="submit" value="Search" />
 </form>
 
