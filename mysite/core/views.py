@@ -63,7 +63,7 @@ def search(request):
         results = Report.objects.all()
         if (titleText != None):
             results = results.filter(title__contains=titleText)
-        if (degreeprogram != None):
+        if ((degreeprogram != None) & (degreeprogram != "None")):
             results = results.filter(degreeProgram=degreeprogram)
         context={'results': results,
                     'submitbutton': submitbutton}
