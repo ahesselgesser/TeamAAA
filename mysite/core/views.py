@@ -5,7 +5,11 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 
 from .forms import ReportForm
+from .choices import BLOOMS_CHOICES
 from .models.basic_models import Report
+from .models.slo_models import SLOInReport
+from .models.slo_models import GradGoal
+from .models.slo_models import SLO
 from .forms import FileFieldForm
 from django.http import HttpResponse
 import os
@@ -37,7 +41,22 @@ def upload_report(request):
     if request.method == 'POST':
         form = ReportForm(request.POST, request.FILES)
         if form.is_valid():
-            dbform = Report.objects.create(year="1980", author="John Johnny", degreeProgram="Test2",accredited=False,date_range_of_reported_data="1908-1981",section1Comment="",section2Comment="",section3Comment="",section4Comment="",submitted=True,returned=True,numberOfSLOs=0,title="TestTitle2",uploader="placeholder",)
+            dbform = Report.objects.create(year="2019", author="Arts and Sciences", degreeProgram="Mathematcis",accredited=False,date_range_of_reported_data="F2018",section1Comment="",section2Comment="",section3Comment="",section4Comment="",submitted=True,returned=True,numberOfSLOs=0,title="Undergrad2018-regular",uploader="Alex",)
+            GradGoal1 = GradGoal.objects.create(text="SampleGradGoal",active=True)
+            GradGoal1.save()
+            SLO1 = SLO.objects.create(blooms=dict(BLOOMS_CHOICES).get('CO'), numberOfUses=1)
+            SLOReport1 = SLOInReport.objects.create(date="1980-01-01",goalText="Students will be  be able to make and write correct,clear and concise arguments",slo=SLO1,changedFromPrior=False,report=dbform,number=1,numberOfAssess=1)
+            SLO1.save()
+            SLOReport1.save()
+            SLO2 = SLO.objects.create(blooms=BLOOMS_CHOICES[3], numberOfUses=1)
+            SLOReport2 = SLOInReport.objects.create(date="1980-01-01",goalText="Be able to communicate mathematics effectively in oral form.",slo=SLO2,changedFromPrior=False,report=dbform,number=1,numberOfAssess=1)
+            SLO2.save()
+            SLOReport2.save()
+            SLO3 = SLO.objects.create(blooms=BLOOMS_CHOICES[2], numberOfUses=1)
+            SLOReport3 = SLOInReport.objects.create(date="1980-01-01",goalText="Demonstrate substantive  comprehension of the major ideas in the core areas of their fields of study.",slo=SLO3,changedFromPrior=False,report=dbform,number=1,numberOfAssess=1)
+            SLO3.save()
+            SLOReport3.save()
+
             dbform.save()
             form.save()
             return redirect('report_list')
@@ -57,12 +76,15 @@ def delete_report(request, pk):
 def search(request):
     if request.method == 'GET':
         titleText= request.GET.get('titleText')
+        authorText= request.GET.get('authorText')
         degreeprogram = request.GET.get('degreeProgram')
 
         submitbutton= request.GET.get('submit')
         results = Report.objects.all()
-        if (titleText != None):
+        if ((titleText != None) and (authorText != '')):
             results = results.filter(title__contains=titleText)
+        if ((authorText != None) and (authorText != '')):
+            results = results.filter(author=titleText)
         if ((degreeprogram != None) & (degreeprogram != "None")):
             results = results.filter(degreeProgram=degreeprogram)
         context={'results': results,
@@ -77,9 +99,11 @@ def view_report(request):
     if request.method == 'GET':
         reportId= request.GET.get('id')
         results = Report.objects.filter(id=reportId)
-        context={'results': results}
-        return render(request, 'report.hml', context)
-    return render(request, 'report.hml')
+        temp = SLOInReport.objects.filter(report=reportId)
+        slos = temp.select_related('slo')
+        context={'results': results, 'slos': slos}
+        return render(request, 'report.html', context)
+    return render(request, 'report.html')
 
 class ReportListView(ListView):
     model = Report

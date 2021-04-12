@@ -6,7 +6,8 @@
 
 <br />
 <form action="{% url 'search' %}" method="GET" value="{{request.GET.titleText}}">
-  Search <input type="text" name="titleText" value="{{request.GET.titleText}}" placeholder="Search Reports" />
+  Search By Title <input type="text" name="titleText" value="{{request.GET.titleText}}" placeholder="Search Reports by Title" />
+  Search By Title <input type="text" name="authorText" value="{{request.GET.authorText}}" placeholder="Search Reports by Author" />
   Degree Program 
   <select name="degreeProgram" id ="degreeProgram">
     <option value = "None" default>None</option>
@@ -24,7 +25,7 @@
     <table>
     {% for result in results %}
       <tr>
-      <td>{{result.title}}</td>
+      <td><a href="{% url 'report' %}?id={{result.id}}">{{result.title}}</a></td>
       <td>{{result.uploader}}</td>
       </tr>
     {% endfor %}
