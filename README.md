@@ -81,4 +81,6 @@ What we are doing in this milestone is creating an application that allows users
 
 ## Release Notes for Milestone 4
 
+What we are doing in this milestone is allowing the user to view the uploaded data on the web page so they can analyze the data. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework and to begin adding natural language analysis of the SLOs.
+
 
