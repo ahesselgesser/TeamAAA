@@ -42,7 +42,8 @@ Now that you're in PostgreSQL the steps are the same for both linux and Windows.
 
 On Linux:
 ```sudo apt-get install postgresql postgresql-contrib
-sudo apt-get install libpq-dev python3-dev```
+sudo apt-get install libpq-dev python3-dev
+```
 
 open PosgreSQL with:
 ```sudo -u postgres psql```
