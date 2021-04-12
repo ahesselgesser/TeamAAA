@@ -43,19 +43,21 @@ Now that you're in PostgreSQL the steps are the same for both linux and Windows.
 On Linux:
 ```sudo apt-get install postgresql postgresql-contrib
 sudo apt-get install libpq-dev python3-dev```
+
 open PosgreSQL with:
 ```sudo -u postgres psql```
 
 From here the steps are the same for both:
 Run the following PSQL commands in order:
-```
-CREATE DATABASE aaadb;
+
+```CREATE DATABASE aaadb;
 CREATE USER teamaaa WITH ENCRYPTED PASSWORD 'aaapass';
 ALTER ROLE teamaaa SET client_encoding TO 'utf8';
 ALTER ROLE teamaaa SET default_transaction_isolation TO 'read committed';
 ALTER ROLE teamaaa SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE aaadb TO teamaaa;
 ```
+
 You can now exit the SQL prompt with ```\q```
 
 Apply the migrations:
@@ -72,6 +74,10 @@ python manage.py runserver
 The application will be available at **127.0.0.1:8000**.
 
 Here is the video instruction of the milestone1: https://use.vg/JkjmjV
-## Release Notes
+## Release Notes for Milestone 3
 
 What we are doing in this milestone is creating an application that allows users to upload files by using the Django framework. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework.
+
+## Release Notes for Milestone 4
+
+

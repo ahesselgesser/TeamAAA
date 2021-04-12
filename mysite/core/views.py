@@ -81,10 +81,10 @@ def search(request):
 
         submitbutton= request.GET.get('submit')
         results = Report.objects.all()
-        if ((titleText != None) and (authorText != '')):
+        if ((titleText != None) and (titleText != '')):
             results = results.filter(title__contains=titleText)
         if ((authorText != None) and (authorText != '')):
-            results = results.filter(author=titleText)
+            results = results.filter(author__contains=titleText)
         if ((degreeprogram != None) & (degreeprogram != "None")):
             results = results.filter(degreeProgram=degreeprogram)
         context={'results': results,
