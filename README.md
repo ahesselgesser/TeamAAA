@@ -58,7 +58,7 @@ ALTER ROLE teamaaa SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE aaadb TO teamaaa;
 ```
 
-You can now exit the SQL prompt with ```\q```
+You can now exit the SQL prompt with \q
 
 Apply the migrations:
 
