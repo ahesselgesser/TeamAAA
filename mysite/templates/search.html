@@ -6,32 +6,31 @@
 
 <br />
 <form action="{% url 'search' %}" method="GET" value="{{request.GET.titleText}}">
-  Search By Title <input type="text" name="titleText" value="{{request.GET.titleText}}" placeholder="Search Reports by Title" />
-  Search By Title <input type="text" name="authorText" value="{{request.GET.authorText}}" placeholder="Search Reports by Author" />
+  Search By Title <input type="text" name="titleText" value="{{request.GET.titleText}}" placeholder="Search Reports by Title" /><br>
+  Search By Author <input type="text" name="authorText" value="{{request.GET.authorText}}" placeholder="Search Reports by Author" /><br>
   Degree Program 
   <select name="degreeProgram" id ="degreeProgram">
     <option value = "None" default>None</option>
-    <option value = "Test">Test</option>
     <option value = "Test2">Test2</option>
     <option value = "Science">Science</option>
+    <option value = "Mathematics">Mathematics</option>
   </select>
   <input type="submit" name="submit" value="Search" />
 </form>
 
 
-{% if submitbutton == 'Search' and request.GET.titleText != '' %}
   {% if results %}
     <br /><br />
-    <table>
+    <table class ="table mb-0">
+      <tbody>
     {% for result in results %}
       <tr>
       <td><a href="{% url 'report' %}?id={{result.id}}">{{result.title}}</a></td>
       <td>{{result.uploader}}</td>
       </tr>
     {% endfor %}
-    </table>
+    </tbody></table>
   {% else %}
     No search results for this query
   {% endif %}
-{% endif %}
 {% endblock %}

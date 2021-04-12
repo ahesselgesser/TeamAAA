@@ -77,22 +77,28 @@ def search(request):
     if request.method == 'GET':
         titleText= request.GET.get('titleText')
         authorText= request.GET.get('authorText')
-        degreeprogram = request.GET.get('degreeProgram')
+        degreeProgram = request.GET.get('degreeProgram')
 
-        submitbutton= request.GET.get('submit')
         results = Report.objects.all()
-        if ((titleText != None) and (titleText != '')):
+        results.filter()
+        if (titleText):
             results = results.filter(title__contains=titleText)
-        if ((authorText != None) and (authorText != '')):
-            results = results.filter(author__contains=titleText)
-        if ((degreeprogram != None) & (degreeprogram != "None")):
-            results = results.filter(degreeProgram=degreeprogram)
-        context={'results': results,
-                    'submitbutton': submitbutton}
+
+        if (authorText):
+            results = results.filter(author__contains=authorText)
+
+        if (degreeProgram and (degreeProgram != None)):
+            results = results.filter(degreeProgram=degreeProgram)
+
+        results = Report.objects.all()
+        print(results)
+        context={'results': results}
 
         return render(request, 'search.html', context)
 
     else:
+        results = Report.objects.all()
+        context={'results': results}
         return render(request, 'search.html')
 
 def view_report(request):
