@@ -87,11 +87,9 @@ def search(request):
         if (authorText):
             results = results.filter(author__contains=authorText)
 
-        if (degreeProgram and (degreeProgram != None)):
+        if (degreeProgram and (degreeProgram != "None")):
             results = results.filter(degreeProgram=degreeProgram)
 
-        results = Report.objects.all()
-        print(results)
         context={'results': results}
 
         return render(request, 'search.html', context)
