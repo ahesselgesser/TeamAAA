@@ -10,15 +10,9 @@ def remove_tags(text):
     clean = '<.*?>\s*'
     return re.sub(clean, '', text)
 
-def copy_and_unzip(source_dir, source_fn):
-    # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
-    # https://github.com/ahesselgesser/TeamAAA
-
-    #source_dir = "C:\\Users\\twins\\Desktop\\UNO classes\\Spring 2021 Semester\\CSCI 4970 - Capstone\\Python tests"  # input("Enter the source location of the file: example C:/Users/bob/\n")
-    #source_fn =  "undergrad2019-regular.docx" #input("Enter the name of the file to copy\n")
-
+def copy_and_unzip(source_dir, source_fn, destination_fn):
     #destination_dir = input("Enter the destination and name of the file: example C:/Users/bob/word_2.docx\n")
-    destination_fn =  "undergrad2019-accredited.zip" # input("Enter the name of the copied file\n")
+    #destination_fn =  "undergrad2019-accredited.zip" # input("Enter the name of the copied file\n")
 
     # copyfile(source, destination)
     copyfile(source_dir + "\\" + source_fn, source_dir + "\\" + destination_fn)
