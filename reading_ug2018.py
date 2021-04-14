@@ -12,12 +12,21 @@ def regex_inc(regex_list, regex_counter, match_list):
             regex_counter += 1
     return (regex_counter, match_list)
 
+file_dir = "C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/"
+file_name = "undergrad2018-regularv2.docx"
+unzip_name = "undergrad2018-regularv2.zip"
+zip_dir = "undergrad2018-regularv2/"
 
-(chkbox_element_list, slo_count) = read_doc_chx.find_checkbox_elements()
+read_doc_chx.copy_and_unzip(file_dir, file_name, unzip_name, zip_dir)
+
+xml_string = "word/document.xml"
+xml_path = file_dir + zip_dir + xml_string
+
+(chkbox_element_list, slo_count) = read_doc_chx.find_checkbox_elements(xml_path)
 print(slo_count)
 
 ## Change this file location to the location of the file you are parsing
-doc = docx.Document("C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/undergrad2018-regularv2.docx")
+doc = docx.Document(file_dir + file_name)
 
 # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
 # https://github.com/ahesselgesser/TeamAAA
