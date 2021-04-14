@@ -12,15 +12,21 @@ def regex_inc(regex_list, regex_counter, match_list):
             regex_counter += 1
     return (regex_counter, match_list)
 
-accredited_file_dir = "C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/"
-accredited_file_name = "undergrad2019-accredited.docx"
+file_dir = "C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/"
+file_name = "undergrad2019-accredited.docx"
+unzip_name = "undergrad2019-accredited.zip"
+zip_dir = "undergrad2019-accredited/"
 
-#read_doc_chx.copy_and_unzip(accredited_file_name)
-(chkbox_element_list, slo_count) = read_doc_chx.find_checkbox_elements()
+xml_string = "word/document.xml"
+xml_path = file_dir + zip_dir + xml_string
+
+read_doc_chx.copy_and_unzip(file_dir, file_name, unzip_name, zip_dir)
+(chkbox_element_list, slo_count) = read_doc_chx.find_checkbox_elements(xml_path)
 print(slo_count)
 
+
 ## Change this file location to the location of the file you are parsing
-doc = docx.Document(accredited_file_dir + accredited_file_name)
+doc = docx.Document(file_dir + file_name)
 
 # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
 # https://github.com/ahesselgesser/TeamAAA
@@ -35,9 +41,6 @@ regex_counter = 0
 ug18_regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Person', 
 'Person Preparing the Report:\s(.*)', 'Last Accreditation Review:\s(.*)\s*Accreditation', 'Accreditation Body:\s(.*)\s*']   
 
-### Match 1 is Colleges
-### Match 2 is Department/School
-### 
 match_list = []
 
 all_paras = doc.paragraphs
