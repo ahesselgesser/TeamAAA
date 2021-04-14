@@ -10,7 +10,7 @@ def remove_tags(text):
     clean = '<.*?>\s*'
     return re.sub(clean, '', text)
 
-def copy_and_unzip(source_dir, source_fn, destination_fn):
+def copy_and_unzip(source_dir, source_fn, destination_fn, zip_dir):
     #destination_dir = input("Enter the destination and name of the file: example C:/Users/bob/word_2.docx\n")
     #destination_fn =  "undergrad2019-accredited.zip" # input("Enter the name of the copied file\n")
 
@@ -19,14 +19,10 @@ def copy_and_unzip(source_dir, source_fn, destination_fn):
 
     print(source_dir + "/" + destination_fn)
 
-    zip_dir = "grad_chxBox_test" #input("Enter name of directory to unzip file\n")
-
     with zipfile.ZipFile(source_dir + "/" + destination_fn, 'r') as zip_ref:
         zip_ref.extractall(source_dir + "/" + zip_dir)
 
-
-
-def find_checkbox_elements():
+def find_checkbox_elements(xml_path):
     ### UNCOMMENT THIS IN PRODUCTION
     #copy_and_unzip()
     blooms_taxonomy_list = ['Knowledge', 'Comprehension', 'Application', 'Analysis', 'Synthesis', 'Evaluation']
@@ -35,7 +31,7 @@ def find_checkbox_elements():
     chkbox_element_list = []
 
     ### This path is relative, and it needs to be an XML document.
-    xml_tree = etree.parse('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/grad_chxBox_test/word/document.xml')
+    xml_tree = etree.parse(xml_path)
 
     xml_string = etree.tostring(xml_tree).decode()
 
@@ -70,4 +66,4 @@ def find_checkbox_elements():
     # The CheckedBox is &#9746;
     # Unicode character code
 
-find_checkbox_elements()
+#find_checkbox_elements(xml_path)
