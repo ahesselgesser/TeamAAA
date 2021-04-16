@@ -100,10 +100,8 @@ data.clear()
 
 print(slo_list)
 
-first_col = 0
-sec_col = 1
-third_col = 2
-fourth_col = 3
+column = (0, 0, 1, 2, 3)
+
 row_iter = 0
 one_cols = 2
 max_rows = 10
@@ -113,9 +111,9 @@ prev_text = ""
 ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
 for row in table.rows:
     if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
-        data.append({"Row" + str(row_iter): row.cells[first_col].text})
+        data.append({"Row" + str(row_iter): row.cells[column[1]].text})
     if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
-        data.append({row.cells[0].text: row.cells[sec_col].text})
+        data.append({row.cells[0].text: row.cells[column[2]].text})
     row_iter += 1
     if row_iter > max_rows:
         row_iter = 0
