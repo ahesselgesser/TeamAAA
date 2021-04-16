@@ -41,9 +41,6 @@ regex_counter = 0
 ug18_regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Data:\s*(.*)',
 'Person Preparing the Report:\s(.*)']   
 
-### Match 1 is Colleges
-### Match 2 is Department/School
-### 
 match_list = []
 
 all_paras = doc.paragraphs
@@ -51,26 +48,10 @@ all_paras = doc.paragraphs
 for para in all_paras:
     (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
     (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
-    #if (regex_counter >= 7):
-        #print(para.text)
 print(match_list)
 
 data = []
 
-### UG 2018 Regular Tables
-## SLO Table
-# Checkboxes
-## SLO communication to stakeholders
-## Assessment Methods
-# Separate table for EACH SLO
-# Will have to devise a method to determine when these tables end and the next category begins
-# Checkboxes in these tables
-## Data Collection And Analysis Table
-# Two tables
-# 
-## Resuls communicated within program Table
-## Decisions & Actions Table
-### END
 slo_list = []
 
 ### Original code from https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
@@ -124,12 +105,12 @@ prev_text = ""
 ### Original loop from link below
 ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
 for row in table.rows:
-    if row.cells[first_col].text == "SLO " + str(slo_count + 1) + ": ":
+    if row.cells[column[1]].text == "SLO " + str(slo_count + 1) + ": ":
         break
     if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
-        data.append({"Row" + str(row_iter): row.cells[first_col].text})
+        data.append({"Row" + str(row_iter): row.cells[column[1]].text})
     if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
-        data.append({row.cells[0].text: row.cells[sec_col].text})
+        data.append({row.cells[0].text: row.cells[column[2]].text})
     row_iter += 1
     if row_iter > max_rows:
         row_iter = 0
@@ -137,12 +118,12 @@ for row in table.rows:
 data_coll_list = []
 table = doc.tables[3]
 for row in table.rows:
-    if "SLO " + str(slo_count + 1) in row.cells[first_col].text:
+    if "SLO " + str(slo_count + 1) in row.cells[column[1]].text:
         break
-    slo_measure = row.cells[first_col].text
-    data_coll_range = row.cells[sec_col].text
-    num_students = row.cells[third_col].text
-    percent_students = row.cells[fourth_col].text
+    slo_measure = row.cells[column[1]].text
+    data_coll_range = row.cells[column[2]].text
+    num_students = row.cells[column[3]].text
+    percent_students = row.cells[column[4]].text
     extend_values = [(slo_measure, data_coll_range, num_students, percent_students)]
     if data_coll_range == "" and num_students == "" and percent_students == "":
         continue
@@ -153,8 +134,8 @@ for row in table.rows:
 table = doc.tables[5]
 dec_act = []
 for row in table.rows:
-    slo_num = row.cells[first_col].text
-    slo_act = row.cells[sec_col].text
+    slo_num = row.cells[column[1]].text
+    slo_act = row.cells[column[2]].text
     if slo_act == "\n\n\n\n" or slo_act == "":
         continue
     dec_act.extend([(slo_num, slo_act)])
