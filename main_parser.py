@@ -35,15 +35,10 @@ while (incorrect_choice):
     break
 
 unzip_name = file_name[:-5] + ".zip"
-print(unzip_name)
-exit()
-
+zip_dir = file_name[:-5] + "/"
 file_dir = "C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/"
-#file_name = "undergrad2019-regular.docx"
-unzip_name = "undergrad2019-regular.zip"
-zip_dir = "undergrad2019-regular/"
 
-if (file_name == "undergrad2018-regular.docx" or file_name == "undergrad2019-regular.docx"):
+if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
     regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Data:\s*(.*)',
         'Person Preparing the Report:\s(.*)']
 elif (file_name == "undergrad2019-accredited.docx"):
@@ -108,10 +103,7 @@ data.clear()
 
 print(slo_list)
 
-first_col = 0
-sec_col = 1
-third_col = 2
-fourth_col = 3
+column = (0, 0, 1, 2, 3)
 row_iter = 0
 one_cols = 2
 max_rows = 10
@@ -122,9 +114,9 @@ prev_text = ""
 ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
 for row in table.rows:
     if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
-        data.append({"Row" + str(row_iter): row.cells[first_col].text})
+        data.append({"Row" + str(row_iter): row.cells[column[1]].text})
     if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
-        data.append({row.cells[0].text: row.cells[sec_col].text})
+        data.append({row.cells[0].text: row.cells[column[2]].text})
     row_iter += 1
     if row_iter > max_rows:
         row_iter = 0
@@ -135,12 +127,12 @@ prev_text = ""
 ### Original loop from link below
 ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
 for row in table.rows:
-    if row.cells[first_col].text == "SLO " + str(slo_count + 1) + ": ":
+    if row.cells[column[1]].text == "SLO " + str(slo_count + 1) + ": ":
         break
     if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
-        data.append({"Row" + str(row_iter): row.cells[first_col].text})
+        data.append({"Row" + str(row_iter): row.cells[column[1]].text})
     if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
-        data.append({row.cells[0].text: row.cells[sec_col].text})
+        data.append({row.cells[0].text: row.cells[column[2]].text})
     row_iter += 1
     if row_iter > max_rows:
         row_iter = 0
