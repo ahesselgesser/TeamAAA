@@ -8,14 +8,47 @@ def regex_inc(regex_list, regex_counter, match_list):
         regex = re.findall(regex_list[regex_counter], para.text)
         if (regex):
             match_list.append(regex[0])
-            #if (regex_counter < len(regex_list) - 1):
             regex_counter += 1
     return (regex_counter, match_list)
 
+print("Choose a file_name:")
+print("1: undergrad2018-regular.docx")
+print("2: undergrad2019-regular.docx")
+print("3: undergrad2019-accredited.docx")
+print("4: grad-accredited.docx")
+
+file_choice = input()
+incorrect_choice = True
+
+while (incorrect_choice):
+    if (file_choice == "1"):
+        file_name = "undergrad2018-regularv2.docx"
+    elif (file_choice == "2"):
+        file_name = "undergrad2019-regular.docx"
+    elif (file_choice == "3"):
+        file_name = "undergrad2019-accredited.docx"
+    elif (file_choice == "4"):
+        file_name = "grad-accredited.docx"
+    else:
+        file_choice = input("Incorrect choice, try again: ")
+        continue
+    break
+
+unzip_name = file_name[:-5] + ".zip"
+print(unzip_name)
+exit()
+
 file_dir = "C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 - Capstone/Python tests/"
-file_name = "undergrad2019-regular.docx"
+#file_name = "undergrad2019-regular.docx"
 unzip_name = "undergrad2019-regular.zip"
 zip_dir = "undergrad2019-regular/"
+
+if (file_name == "undergrad2018-regular.docx" or file_name == "undergrad2019-regular.docx"):
+    regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Data:\s*(.*)',
+        'Person Preparing the Report:\s(.*)']
+elif (file_name == "undergrad2019-accredited.docx"):
+    regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Person', 
+        'Person Preparing the Report:\s(.*)', 'Last Accreditation Review:\s(.*)\s*Accreditation', 'Accreditation Body:\s(.*)\s*']   
 
 read_doc_chx.copy_and_unzip(file_dir, file_name, unzip_name, zip_dir)
 
@@ -28,46 +61,24 @@ print(slo_count)
 ## Change this file location to the location of the file you are parsing
 doc = docx.Document(file_dir + file_name)
 
-# 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
-# https://github.com/ahesselgesser/TeamAAA
-
-#### Variables to capture
-## College, Department/School ?, Program, Degree Level, Academic Year of Report,
-## Date Range of Reported Data, Person Preparing the Report, SLOs (maybe in an array, or tuple, or something)
-## Bloom's Taxonomy (checkboxes)
-
 ### Creating lists to hold all the different regex's and matches, then iterate through them.
 regex_counter = 0
-ug18_regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Data:\s*(.*)',
-'Person Preparing the Report:\s(.*)']   
+ 
 
+### Match 1 is Colleges
+### Match 2 is Department/School
+### 
 match_list = []
 
 all_paras = doc.paragraphs
 
 for para in all_paras:
-    (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
-    (regex_counter, match_list) = regex_inc(ug18_regex_header_list, regex_counter, match_list)
-    #if (regex_counter >= 7):
-        #print(para.text)
+    (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list)
+    (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list)
 print(match_list)
 
 data = []
 
-### UG 2019 Regular Tables
-## SLO Table
-# Checkboxes
-## SLO communication to stakeholders
-## Assessment Methods
-# Separate table for EACH SLO
-# Will have to devise a method to determine when these tables end and the next category begins
-# Checkboxes in these tables
-## Data Collection And Analysis Table
-# Two tables
-# 
-## Resuls communicated within program Table
-## Decisions & Actions Table
-### END
 slo_list = []
 
 ### Original code from https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
@@ -106,6 +117,7 @@ one_cols = 2
 max_rows = 10
 table = doc.tables[1]
 prev_text = ""
+
 ### Original loop from link below
 ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
 for row in table.rows:
