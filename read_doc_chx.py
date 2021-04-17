@@ -13,8 +13,6 @@ def remove_tags(text):
 def copy_and_unzip(source_dir, source_fn, destination_fn, zip_dir):
     copyfile(source_dir + "\\" + source_fn, source_dir + "\\" + destination_fn)
 
-    #print(source_dir + "/" + destination_fn)
-
     with zipfile.ZipFile(source_dir + "/" + destination_fn, 'r') as zip_ref:
         zip_ref.extractall(source_dir + "/" + zip_dir)
 
@@ -34,18 +32,15 @@ def find_checkbox_elements(xml_path):
 
     prev_match = ""
 
-    #print("Here are the matches for checked box results!")
     for index, match in enumerate(reg):
         if (match == '<w:t xml:space="preserve"> </w:t>'):
             match = reg[index + 1]
         if (prev_match == "<w:t>&#9746;</w:t>" or prev_match == "<w:t xml:space=\"preserve\">&#9746;</w:t>"):
             match = remove_tags(match).strip()
-            #print(match)
             chkbox_element_list.append(match)
             if (match in blooms_taxonomy_list):
                 slo_count += 1
         prev_match = match
-    #print("SLO Count = " + str(slo_count))
     return (chkbox_element_list, slo_count)
     # 'C:\Users\twins\Desktop\UNO classes\Spring 2021 Semester\CSCI 4970 - Capstone\Python tests'
     # https://github.com/ahesselgesser/TeamAAA
