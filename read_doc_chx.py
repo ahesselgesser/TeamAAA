@@ -11,20 +11,14 @@ def remove_tags(text):
     return re.sub(clean, '', text)
 
 def copy_and_unzip(source_dir, source_fn, destination_fn, zip_dir):
-    #destination_dir = input("Enter the destination and name of the file: example C:/Users/bob/word_2.docx\n")
-    #destination_fn =  "undergrad2019-accredited.zip" # input("Enter the name of the copied file\n")
-
-    # copyfile(source, destination)
     copyfile(source_dir + "\\" + source_fn, source_dir + "\\" + destination_fn)
 
-    print(source_dir + "/" + destination_fn)
+    #print(source_dir + "/" + destination_fn)
 
     with zipfile.ZipFile(source_dir + "/" + destination_fn, 'r') as zip_ref:
         zip_ref.extractall(source_dir + "/" + zip_dir)
 
 def find_checkbox_elements(xml_path):
-    ### UNCOMMENT THIS IN PRODUCTION
-    #copy_and_unzip()
     blooms_taxonomy_list = ['Knowledge', 'Comprehension', 'Application', 'Analysis', 'Synthesis', 'Evaluation']
     slo_count = 0
 
@@ -37,13 +31,6 @@ def find_checkbox_elements(xml_path):
 
     # Using this regex, we find all <w:t> tags, not sure if it works with the altered w:t tags though.
     reg = re.findall('(?:<w:t>|<w:t xml:space="preserve">).*?</w:t>', xml_string)
-
-    """ For testing purposes
-    if (reg):
-        print("We found a checked box!")
-    else:
-        print("My regex didn't work. :(")
-    """
 
     prev_match = ""
 
