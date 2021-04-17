@@ -33,8 +33,10 @@ def find_checkbox_elements(xml_path):
     prev_match = ""
 
     for index, match in enumerate(reg):
-        if (match == '<w:t xml:space="preserve"> </w:t>'):
-            match = reg[index + 1]
+        empty_counter = 1
+        while (match == '<w:t xml:space="preserve"> </w:t>'):
+            match = reg[index + empty_counter]
+            empty_counter += 1
         if (prev_match == "<w:t>&#9746;</w:t>" or prev_match == "<w:t xml:space=\"preserve\">&#9746;</w:t>"):
             match = remove_tags(match).strip()
             chkbox_element_list.append(match)
