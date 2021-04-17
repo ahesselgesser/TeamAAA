@@ -102,7 +102,7 @@ if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-r
         table_access_list = (0, 1, 2, 3, 5)
     if (file_name == "undergrad2019-regular.docx"):
         table_access_list = (0, 1, 2, 4, 6)
-elif (file_name == "undergrad2019-accredited.docx" or file_name == "grad-accredited.docx"):
+else:
     regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Person', 
         'Person Preparing the Report:\s(.*)', 'Last Accreditation Review:\s(.*)\s*Accreditation', 'Accreditation Body:\s(.*)\s*']   
     table_access_list = (0, 1, 2, 3)
@@ -113,6 +113,7 @@ xml_string = "word/document.xml"
 xml_path = file_dir + zip_dir + xml_string
 
 (chkbox_element_list, slo_count) = read_doc_chx.find_checkbox_elements(xml_path)
+print(chkbox_element_list)
 print(slo_count)
 
 ## Change this file location to the location of the file you are parsing
