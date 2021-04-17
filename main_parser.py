@@ -165,14 +165,14 @@ column = (0, 0, 1, 2, 3)
 row_iter = 0
 one_cols = 2
 max_rows = 10
-table = doc.tables[table_access_list[2]]
+table = doc.tables[table_access_list[1]]
 prev_text = ""
 data = table_two_access(file_name, column, table, row_iter, data)
 
 
 row_iter = 0
 prev_text = ""
-table = doc.tables[table_access_list[3]]
+table = doc.tables[table_access_list[2]]
 data = table_three_access(column, table, row_iter, data)
 
 print("\nData:")
@@ -180,7 +180,7 @@ print(data)
 
 #### DATA COLLECTION AND ANALYSIS
 data_coll_list = []
-table = doc.tables[table_access_list[4]]
+table = doc.tables[table_access_list[3]]
 data_coll_list = table_four_access(file_name, column, table, row_iter, data_coll_list)
 
 print("\nData collection list:")
@@ -188,7 +188,7 @@ print(data_coll_list)
 
 #### DECISIONS AND ACTIONS
 if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
-    table = doc.tables[table_access_list[5]]
+    table = doc.tables[table_access_list[4]]
     dec_act = []
     for row in table.rows:
         slo_num = row.cells[column[1]].text
