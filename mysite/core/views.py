@@ -14,7 +14,7 @@ from .forms import FileFieldForm
 from django.http import HttpResponse
 import os
 import datetime
-from mysite.core.paser import main_parser
+from .core.paser import main_parser
 #from pip._internal.cli import main_parser
 
 class Home(TemplateView):
