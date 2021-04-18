@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Search Page</h1>
+
+<br />
+<form action="{% url 'search' %}" method="GET" value="{{request.GET.titleText}}">
+  Search By Title <input type="text" name="titleText" value="{{request.GET.titleText}}" placeholder="Search Reports by Title" /><br>
+  Search By Author <input type="text" name="authorText" value="{{request.GET.authorText}}" placeholder="Search Reports by Author" /><br>
+  Degree Program 
+  <select name="degreeProgram" id ="degreeProgram">
+    <option value = "None" default>None</option>
+    <option value = "Test2">Test2</option>
+    <option value = "Science">Science</option>
+    <option value = "Mathematics">Mathematics</option>
+  </select>
+  <input type="submit" name="submit" value="Search" />
+</form>
+
+
+  {% if results %}
+    <br /><br />
+    <table class ="table mb-0">
+      <tbody>
+    {% for result in results %}
+      <tr>
+      <td><a href="{% url 'report' %}?id={{result.id}}">{{result.title}}</a></td>
+      <td>{{result.uploader}}</td>
+      </tr>
+    {% endfor %}
+    </tbody></table>
+  {% else %}
+    No search results for this query
+  {% endif %}
+{% endblock %}
