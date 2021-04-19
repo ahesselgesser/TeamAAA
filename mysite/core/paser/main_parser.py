@@ -2,6 +2,7 @@ import docx
 from docx.oxml.ns import qn
 import re
 from mysite.core.paser import read_doc_chx
+import psycopg2
 
 def regex_inc(regex_list, regex_counter, match_list, para):
     if(regex_counter < len(regex_list)):
