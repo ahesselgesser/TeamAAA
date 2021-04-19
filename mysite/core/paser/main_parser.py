@@ -124,6 +124,7 @@ def run():
     (chkbox_element_list, slo_count, list_of_lists) = read_doc_chx.find_checkbox_elements(xml_path)
     print("Checkbox elements here: printing at Line 125")
     print("============================================================================================")
+    
     for item in list_of_lists:
         print(item)
     print("============================================================================================\n")
