@@ -15,9 +15,9 @@ def table_two_access(file_name, column, table, row_iter, data, one_cols, max_row
     if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
         for row in table.rows:
             if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
-                data.append({"Row" + str(row_iter): row.cells[column[1]].text})
+                data.append(row.cells[column[1]].text)
             if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
-                data.append({row.cells[0].text: row.cells[column[2]].text})
+                data.append((row.cells[0].text, row.cells[column[2]].text))
             row_iter += 1
             if row_iter > max_rows:
                 row_iter = 0
@@ -26,19 +26,19 @@ def table_two_access(file_name, column, table, row_iter, data, one_cols, max_row
             if (row_iter == 0):
                 row_iter += 1
                 continue
-            data.append(("SLO " + row.cells[column[1]].text, row.cells[column[2]].text, row.cells[column[3]].text, row.cells[column[4]].text))
+            data.append(("\n\n" + "SLO " + row.cells[column[1]].text, row.cells[column[2]].text, row.cells[column[3]].text, row.cells[column[4]].text))
     return data
 
 def table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count):
     ### Original loop from link below
     ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
     for row in table.rows:
-        if row.cells[column[1]].text == "SLO " + str(slo_count + 1) + ": ":
+        if row.cells[column[0]].text == "SLO 1":
             break
         if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
-            data.append({"Row" + str(row_iter): row.cells[column[1]].text})
+            data.append(row.cells[column[1]].text)
         if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
-            data.append({row.cells[0].text: row.cells[column[2]].text})
+            data.append((row.cells[0].text, row.cells[column[2]].text))
         row_iter += 1
         if row_iter > max_rows:
             row_iter = 0
@@ -59,13 +59,13 @@ def table_four_access(file_name, column, table, row_iter, data_coll_list, slo_co
             data_coll_list.extend(extend_values)
     else:
         for row in table.rows:
-            if "SLO " + str(slo_count + 1) in row.cells[column[1]].text:
-                break
             slo_num = row.cells[column[1]].text
             dec_and_act = row.cells[column[2]].text
             extend_values = [(slo_num, dec_and_act)]
             data_coll_list.extend(extend_values)
+            row_iter += 1
     return data_coll_list
+
 def run():
     print("Choose a file_name:")
     print("1: undergrad2018-regular.docx")
@@ -79,12 +79,16 @@ def run():
     while (incorrect_choice):
         if (file_choice == "1"):
             file_name = "undergrad2018-regularv2.docx"
+            accredited = False
         elif (file_choice == "2"):
             file_name = "undergrad2019-regular.docx"
+            accredited = False
         elif (file_choice == "3"):
             file_name = "undergrad2019-accredited.docx"
+            accredited = True
         elif (file_choice == "4"):
             file_name = "grad-accredited.docx"
+            accredited = True
         else:
             file_choice = input("Incorrect choice, try again: ")
             continue
@@ -96,8 +100,9 @@ def run():
     table_access_list = ()
 
     if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
-        regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Data:\s*(.*)',
+        regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Date:\s*(.*)',
             'Person Preparing the Report:\s(.*)']
+        report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report: ', 'Date: ', 'Person Preparing the Report: ']
         if (file_name == "undergrad2018-regularv2.docx"):
             table_access_list = (0, 1, 2, 3, 5)
         if (file_name == "undergrad2019-regular.docx"):
@@ -105,6 +110,7 @@ def run():
     else:
         regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Person', 
             'Person Preparing the Report:\s(.*)', 'Last Accreditation Review:\s(.*)\s*Accreditation', 'Accreditation Body:\s(.*)\s*']   
+        report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report', 'Person Preparing the Report: ', 'Last Accreditation Review: ', 'Accreditation Body: ']
         table_access_list = (0, 1, 2, 3)
 
     read_doc_chx.copy_and_unzip(file_dir, file_name, unzip_name, zip_dir)
@@ -112,16 +118,21 @@ def run():
     xml_string = "word/document.xml"
     xml_path = file_dir + zip_dir + xml_string
 
-    (chkbox_element_list, slo_count) = read_doc_chx.find_checkbox_elements(xml_path)
-    print(chkbox_element_list)
-    print(slo_count)
+    #assessment_obj = assessment_models.Assessment()
+
+    (chkbox_element_list, slo_count, list_of_lists) = read_doc_chx.find_checkbox_elements(xml_path)
+    print("Checkbox elements here: printing at Line 125")
+    print("============================================================================================")
+    for item in list_of_lists:
+        print(item)
+    print("============================================================================================\n")
 
     ## Change this file location to the location of the file you are parsing
     doc = docx.Document(file_dir + file_name)
 
     ### Creating lists to hold all the different regex's and matches, then iterate through them.
     regex_counter = 0
-
+    
     match_list = []
 
     all_paras = doc.paragraphs
@@ -129,7 +140,12 @@ def run():
     for para in all_paras:
         (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list, para)
         (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list, para)
-    print(match_list)
+
+    print("Report Header info: printing at line 145")
+    print("============================================================================================")
+    for i in range(0, len(match_list)):
+        print(report_header_list[i] + ": " + match_list[i])
+    print("============================================================================================\n")
 
     data = []
 
@@ -160,7 +176,11 @@ def run():
 
     data.clear()
 
-    print(slo_list)
+    print("Report Header info: printing at line 180")
+    print("============================================================================================")
+    for slo in slo_list:
+        print(slo)
+    print("============================================================================================\n")
 
     column = (0, 0, 1, 2, 3)
     row_iter = 0
@@ -174,18 +194,32 @@ def run():
     row_iter = 0
     prev_text = ""
     table = doc.tables[table_access_list[2]]
-    data = table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count)
+    assessment_methods = table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count)
 
-    print("\nData:")
-    print(data)
+    print("Assessment Methods info: printing at line 202")
+    print("============================================================================================")
+    for method_info in assessment_methods:
+        print(method_info)
+    print("============================================================================================\n")
 
     #### DATA COLLECTION AND ANALYSIS
     data_coll_list = []
     table = doc.tables[table_access_list[3]]
     data_coll_list = table_four_access(file_name, column, table, row_iter, data_coll_list, slo_count)
 
-    print("\nData collection list:")
-    print(data_coll_list)
+    skip = 0
+    print("Data Collection & Analysis info: printing at line 212")
+    print("============================================================================================")
+    if (accredited):
+        for data_coll in data_coll_list:
+            print(data_coll[0] + " : " + data_coll[1])
+    else:
+        for data_coll in data_coll_list:
+            if skip == 0:
+                skip = 1
+                continue
+            print(data_coll)
+    print("============================================================================================\n")
 
     #### DECISIONS AND ACTIONS
     if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
@@ -198,4 +232,9 @@ def run():
                 continue
             dec_act.extend([(slo_num, slo_act)])
 
-        print(dec_act)
+        
+        print("Decisions & Actions info: printing at line 225")
+        print("============================================================================================")
+        for info in dec_act:
+            print(info[0] + info[1])
+        print("============================================================================================\n")
