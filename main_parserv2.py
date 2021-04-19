@@ -60,8 +60,6 @@ def table_four_access(file_name, column, table, row_iter, data_coll_list, slo_co
             data_coll_list.extend(extend_values)
     else:
         for row in table.rows:
-            if "SLO " + str(slo_count + 1) in row.cells[column[1]].text:
-                break
             slo_num = row.cells[column[1]].text
             dec_and_act = row.cells[column[2]].text
             extend_values = [(slo_num, dec_and_act)]
@@ -214,7 +212,8 @@ def run():
     print("Data Collection & Analysis info: printing at line 212")
     print("============================================================================================")
     if (accredited):
-        print(data_coll_list[0][0] + " " + data_coll_list[0][1])
+        for data_coll in data_coll_list:
+            print(data_coll[0] + " : " + data_coll[1])
     else:
         for data_coll in data_coll_list:
             if skip == 0:
