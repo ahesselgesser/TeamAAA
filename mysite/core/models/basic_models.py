@@ -42,6 +42,7 @@ class Report(models.Model):
     author = models.CharField(max_length=100, blank=True)
     #degreeProgram = models.ForeignKey('DegreeProgram', on_delete=models.CASCADE, verbose_name="degree program")
     #Editied:
+    
     degreeProgram = models.CharField(max_length=100, blank=True)
     #End of Edits
     accredited = models.BooleanField(default=False)
