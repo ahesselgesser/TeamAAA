@@ -101,7 +101,7 @@ def run():
     table_access_list = ()
 
     if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
-        regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Date:\s*(.*)',
+        regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Date Range of Reported Data:\s*(.*)',
             'Person Preparing the Report:\s(.*)']
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report: ', 'Date: ', 'Person Preparing the Report: ']
         if (file_name == "undergrad2018-regularv2.docx"):
@@ -243,5 +243,6 @@ def run():
         for info in dec_act:
             print(info[0] + info[1])
         print("============================================================================================\n")
-        insertData.insertCheckBox(list_of_lists)
-        insertData.insertReportHeader(match_list)
+       # insertData.insertCheckBox(list_of_lists)
+        print(len(slo_list))
+        insertData.insertReportHeader(match_list, list_of_lists,accredited,len(slo_list))
