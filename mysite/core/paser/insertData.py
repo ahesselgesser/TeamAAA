@@ -35,8 +35,8 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     report1.save()
     #insert SLO table
     slo1 = slo_models.SLO.objects.create(blooms=list_of_lists[0][1])
-    slo2 = slo_models.SLO.objects.create(blooms=list_of_lists[0][1])
-    slo3 = slo_models.SLO.objects.create(blooms=list_of_lists[0][1])
+    slo2 = slo_models.SLO.objects.create(blooms=list_of_lists[0][2])
+    slo3 = slo_models.SLO.objects.create(blooms=list_of_lists[0][3])
     #insert SLO in Report Table
     sloIR1 = slo_models.SLOInReport.objects.create(slo = slo1, report = report1, number = 1)
     sloIR2 = slo_models.SLOInReport.objects.create(slo = slo2, report = report1, number = 2)
@@ -44,10 +44,14 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     #insert decision Actions table
     for info in dec_act:
         if info[0] == "SLO 1":
+            print(info[1])
             decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIR1, text=info[1])
         elif info[0] == "SLO 2":
+            print(info[1])
             decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIR2, text=info[1])
         elif info[0] == "SLO 3":
+            print(info[1])
             decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIR3, text=info[1])
+    #
     print("Records inserted........")
 

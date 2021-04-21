@@ -244,5 +244,5 @@ def run():
             print(info[0] + info[1])
         print("============================================================================================\n")
        # insertData.insertCheckBox(list_of_lists)
-        print(len(slo_list))
-        insertData.insertReportHeader(match_list, list_of_lists,accredited,len(slo_list))
+       # print(len(slo_list))
+        insertData.insertReportHeader(match_list, list_of_lists,accredited,len(slo_list), dec_act)
