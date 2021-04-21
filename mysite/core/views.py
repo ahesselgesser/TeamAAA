@@ -15,6 +15,9 @@ from django.http import HttpResponse
 import os
 import datetime
 
+from mysite.core.paser import main_parser
+#from pip._internal.cli import main_parser
+
 class Home(TemplateView):
     template_name = 'home.html'
 
@@ -27,8 +30,10 @@ def upload(request):
         fs = FileSystemStorage()
         name = fs.save(uploaded_file.name, uploaded_file)
         context['url'] = fs.url(name)
-    return render(request, 'upload.html', context)
 
+        main_parser.run()
+       
+    return render(request, 'upload.html', context)
 
 def report_list(request):
     reports = Report.objects.all()

@@ -19,7 +19,8 @@ class SLOInReport(models.Model):
     """
     A specific version of an SLO which occurs within a report
     """
-    date = models.DateField()
+
+    #date = models.DateField()
     goalText = models.CharField(max_length=1000, verbose_name="goal text")
     slo = models.ForeignKey(SLO, on_delete=models.CASCADE, verbose_name="SLO")    
     changedFromPrior = models.BooleanField(verbose_name="changed from prior version")

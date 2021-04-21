@@ -38,10 +38,12 @@ class Report(models.Model):
     """
     Report model which collects attributes specific to a report and completion status
     """
-    year = models.PositiveIntegerField()
+    year = models.CharField(max_length=100, blank=True)
+    
     author = models.CharField(max_length=100, blank=True)
     #degreeProgram = models.ForeignKey('DegreeProgram', on_delete=models.CASCADE, verbose_name="degree program")
     #Editied:
+    
     degreeProgram = models.CharField(max_length=100, blank=True)
     #End of Edits
     accredited = models.BooleanField(default=False)
