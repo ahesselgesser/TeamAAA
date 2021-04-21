@@ -3,7 +3,7 @@ from docx.oxml.ns import qn
 import re
 from mysite.core.paser import read_doc_chx
 import psycopg2
-
+from mysite.core.paser import insertData
 def regex_inc(regex_list, regex_counter, match_list, para):
     if(regex_counter < len(regex_list)):
         regex = re.findall(regex_list[regex_counter], para.text)
@@ -120,11 +120,13 @@ def run():
     xml_path = file_dir + zip_dir + xml_string
 
     #assessment_obj = assessment_models.Assessment()
-
+    
     (chkbox_element_list, slo_count, list_of_lists) = read_doc_chx.find_checkbox_elements(xml_path)
     print("Checkbox elements here: printing at Line 125")
     print("============================================================================================")
+
     
+
     for item in list_of_lists:
         print(item)
     print("============================================================================================\n")
@@ -145,6 +147,7 @@ def run():
 
     print("Report Header info: printing at line 145")
     print("============================================================================================")
+    
     for i in range(0, len(match_list)):
         print(report_header_list[i] + ": " + match_list[i])
     print("============================================================================================\n")
@@ -240,3 +243,5 @@ def run():
         for info in dec_act:
             print(info[0] + info[1])
         print("============================================================================================\n")
+        insertData.insertCheckBox(list_of_lists)
+        insertData.insertReportHeader(match_list)
