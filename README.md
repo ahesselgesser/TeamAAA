@@ -27,6 +27,7 @@ python -m pip install --upgrade Pillow
 
 pip install pytz
 pip install psycopg2
+pip install python-docx
 ```
 
 Then install postgreSQL:
