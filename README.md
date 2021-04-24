@@ -48,7 +48,8 @@ If you have changed the PostgreSQL superuser name from the default, use that in 
 Now that you're in PostgreSQL the steps are the same for both linux and Windows. Please skip ahead.
 
 On Linux:
-```sudo apt-get install postgresql postgresql-contrib
+```
+sudo apt-get install postgresql postgresql-contrib
 sudo apt-get install libpq-dev python3-dev
 ```
 
@@ -58,7 +59,8 @@ open PosgreSQL with:
 From here the steps are the same for both:
 Run the following PSQL commands in order:
 
-```CREATE DATABASE aaadb;
+```
+CREATE DATABASE aaadb;
 CREATE USER teamaaa WITH ENCRYPTED PASSWORD 'aaapass';
 ALTER ROLE teamaaa SET client_encoding TO 'utf8';
 ALTER ROLE teamaaa SET default_transaction_isolation TO 'read committed';
