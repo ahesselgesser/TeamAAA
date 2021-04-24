@@ -32,12 +32,18 @@ pip install psycopg2
 Then install postgreSQL:
 
 On Windows:
+
 https://www.postgresql.org/download/
+
 During installation it should ask you to set the username and password for the super user. Remember that for later.
+
 Add your PosgreSQL bin folder to the system PATH
-open PosgreSQL with:
-```psql -U superusername```
+
+Open PostgreSQL with:
+```psql -U superusername``` 
+in the command line terminal
 and enter the password you set earlier
+
 Now that you're in PostgreSQL the steps are the same for both linux and Windows. Please skip ahead.
 
 On Linux:
