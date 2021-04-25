@@ -4,6 +4,19 @@ import re
 from mysite.core.paser import read_doc_chx
 import psycopg2
 from mysite.core.paser import insertData
+
+def assessmentMethodProcessor(assessment_methods):
+    output = []
+    temp = []
+    for item in assessment_methods:
+        if (type(item) == str and item.startswith("SLO")):
+            if (len(temp) != 0):
+                output.append(temp)
+                temp = []
+        temp.append(item)
+    output.append(temp)
+    return output
+
 def regex_inc(regex_list, regex_counter, match_list, para):
     if(regex_counter < len(regex_list)):
         regex = re.findall(regex_list[regex_counter], para.text)
@@ -201,6 +214,9 @@ def run(uploaded_filename):
     prev_text = ""
     table = doc.tables[table_access_list[2]]
     assessment_methods = table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count)
+
+    #added in splitting assessment_methods into one list per SLO
+    assessment_methods = assessmentMethodProcessor(assessment_methods)
 
     print("Assessment Methods info: printing at line 211")
     print("============================================================================================")
