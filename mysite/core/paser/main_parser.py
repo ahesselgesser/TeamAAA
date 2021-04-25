@@ -74,6 +74,7 @@ def run(uploaded_filename):
     report_year = 0
 
     filename_regex = "\.*?\((.{1})\w+\)\.*"
+    report_year_regex = 'Academic Year of Report:\s*(2019)\s*Date'
 
     filename_match = re.search(filename_regex, uploaded_filename)
 
@@ -89,11 +90,18 @@ def run(uploaded_filename):
 
     doc = docx.Document(file_dir + uploaded_filename)
 
+    for para in doc.paragraphs:
+        report_year_match = re.search(report_year_regex, para.text)
+        print(report_year_match)
+        if(report_year_match != "None"):
+            report_year = 19
+            break
+
     if("Accredited" in doc.paragraphs[0].text):
         is_accredited = True
-    elif("19" in doc.paragraphs[1].text):
+    elif(report_year == 0 and "19" in doc.paragraphs[1].text):
         report_year = 19
-    else:
+    elif(report_year == 0):
         report_year = 18
 
     read_doc_chx.copy_and_unzip(file_dir, uploaded_filename, unzip_name, zip_dir)
@@ -112,6 +120,9 @@ def run(uploaded_filename):
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report', 'Person Preparing the Report: ', 'Last Accreditation Review: ', 'Accreditation Body: ']
         table_access_list = (0, 1, 2, 3)
 
+    print("REPORT YEAR IS : " + str(report_year))
+    print(table_access_list)
+
     xml_string = "word/document.xml"
     xml_path = file_dir + zip_dir + xml_string
 
@@ -120,8 +131,6 @@ def run(uploaded_filename):
     (chkbox_element_list, slo_count, list_of_lists) = read_doc_chx.find_checkbox_elements(xml_path)
     print("Checkbox elements here: printing at Line 132")
     print("============================================================================================")
-
-    
 
     for item in list_of_lists:
         print(item)
