@@ -5,6 +5,18 @@ from mysite.core.paser import read_doc_chx
 import psycopg2
 from mysite.core.paser import insertData
 
+def assessmentMethodProcessor(assessment_methods):
+    output = []
+    temp = []
+    for item in assessment_methods:
+        if (type(item) == str and item.startswith("SLO")):
+            if (len(temp) != 0):
+                output.append(temp)
+                temp = []
+        temp.append(item)
+    output.append(temp)
+    return output
+
 def regex_inc(regex_list, regex_counter, match_list, para):
     """!  Allows a for loop to loop through a list of regular expressions.
     
@@ -265,6 +277,9 @@ def run(uploaded_filename):
     table = doc.tables[table_access_list[2]]
     assessment_methods = table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count)
 
+    #added in splitting assessment_methods into one list per SLO
+    assessment_methods = assessmentMethodProcessor(assessment_methods)
+
     print("Assessment Methods info: printing at line 211")
     print("============================================================================================")
     for method_info in assessment_methods:
@@ -309,4 +324,4 @@ def run(uploaded_filename):
         print("============================================================================================\n")
        # insertData.insertCheckBox(list_of_lists)
        # print(len(slo_list))
-        insertData.insertReportHeader(match_list, list_of_lists,is_accredited,len(slo_list), dec_act)
+        insertData.insertReportHeader(match_list, list_of_lists,is_accredited,len(slo_list), dec_act, assessment_methods, slo_list, data_coll_list)
