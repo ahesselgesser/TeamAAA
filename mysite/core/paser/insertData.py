@@ -55,25 +55,32 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     assessmentVs = []
     today = datetime.datetime.now()
     date = today.strftime("%Y-%m-%d")
+    assNum = 0
+    statusCount = 1
     for assessmentMeth in assessment_methods:
         if (assessmentMeth[2] != 'Title of the Measure'):
             #TODO Where currently includes extraneous information
             #TODO All True/False flags are placeholders
+            #TODO: Most of Assessment Version is placeholders
             assessment = assessment_models.Assessment.objects.create(title=assessmentMeth[1], domainExamination=False, domainProduct=False, domainPerformance=False, directMeasure=False, numberOfUses=1)
-            assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=sloIRs[0], number=0, changedFromPrior=False, assessment=assessment, date=date, description=assessmentMeth[2], finalTerm=False, where=assessmentMeth[5][1], allStudents=False, sampleDescription="Placholder sample description", frequencyChoice="O", frequency="Placeholder Frequency", threshold="Placeholder Threshold", target=0)
+            assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=sloIRs[assNum], number=0, changedFromPrior=False, assessment=assessment, date=date, description=assessmentMeth[2], finalTerm=False, where=assessmentMeth[5][1], allStudents=False, sampleDescription="Placholder sample description", frequencyChoice="O", frequency="Placeholder Frequency", threshold="Placeholder Threshold", target=0)
+
+            #SLO Status information
+            sloStatus = data_models.SLOStatus(status=list_of_lists[6][statusCount], sloIR=sloIRs[assNum], override=False)
+            statusCount = statusCount + 1
+
             assessmentVs.append(assessmentVersion)
+        assNum = assNum + 1
     #Data Collection Methods
-    #TODO: All fields are currently placeholder
-    dataAdditional = data_models.DataAdditionalInformation.objects.create(report=report, comment="Placeholder Comment")
+    #TODO: I don't know where the information on how results are communicated to stakeholders are because the file I was using doesn't have text there
     dataAdditional = data_models.ResultCommunicate.objects.create(text="Placeholder Communication", report=report)
     assVNum = 1
     for assessmentV in assessmentVs:
         assessmentData = data_models.AssessmentData.objects.create(assessmentVersion = assessmentV,dataRange=data_coll_list[assVNum][1], numberStudents=int(data_coll_list[assVNum][2]), overallProficient=float(data_coll_list[assVNum][3]))
         assessmentAgg = data_models.AssessmentAggregate.objects.create(assessmentVersion=assessmentV, aggregate_proficiency=float(data_coll_list[assVNum][3]), met=False)
         assVNum = assVNum + 1
-    for sloIR in sloIRs:
-        #TODO: Status is placeholder
-        sloStatus = data_models.SLOStatus(status="O", sloIR=sloIR, override=False)
+
+        
 
     #insert decision Actions table
     decActNum = 0
