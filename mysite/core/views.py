@@ -31,7 +31,7 @@ def upload(request):
         name = fs.save(uploaded_file.name, uploaded_file)
         context['url'] = fs.url(name)
 
-        main_parser.run()
+        main_parser.run(uploaded_file.name)
        
     return render(request, 'upload.html', context)
 

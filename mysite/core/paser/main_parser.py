@@ -12,8 +12,8 @@ def regex_inc(regex_list, regex_counter, match_list, para):
             regex_counter += 1
     return (regex_counter, match_list)
 
-def table_two_access(file_name, column, table, row_iter, data, one_cols, max_rows):
-    if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
+def table_two_access(is_undergrad, column, table, row_iter, data, one_cols, max_rows):
+    if (is_undergrad):
         for row in table.rows:
             if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
                 data.append(row.cells[column[1]].text)
@@ -45,8 +45,8 @@ def table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_co
             row_iter = 0
     return data
 
-def table_four_access(file_name, column, table, row_iter, data_coll_list, slo_count):
-    if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
+def table_four_access(is_undergrad, column, table, row_iter, data_coll_list, slo_count):
+    if (is_undergrad):
         for row in table.rows:
             if "SLO " + str(slo_count + 1) in row.cells[column[1]].text:
                 break
@@ -67,46 +67,48 @@ def table_four_access(file_name, column, table, row_iter, data_coll_list, slo_co
             row_iter += 1
     return data_coll_list
 
-def run():
-    print("Choose a file_name:")
-    print("1: undergrad2018-regular.docx")
-    print("2: undergrad2019-regular.docx")
-    print("3: undergrad2019-accredited.docx")
-    print("4: grad-accredited.docx")
+def run(uploaded_filename):
 
-    file_choice = input()
+    is_undergrad = False
+    is_accredited = False
+    report_year = 0
+
+    filename_regex = "\.*?\((.{1})\w+\)\.*"
+
+    filename_match = re.search(filename_regex, uploaded_filename)
+
+    print("Regex HERE:")
+    print(filename_match.group(1).lower() == "b")
+    print("===========================================================")
+
+    if (filename_match.group(1).lower() == "b"):
+        is_undergrad = True
+
     incorrect_choice = True
 
-    while (incorrect_choice):
-        if (file_choice == "1"):
-            file_name = "undergrad2018-regularv2.docx"
-            accredited = False
-        elif (file_choice == "2"):
-            file_name = "undergrad2019-regular.docx"
-            accredited = False
-        elif (file_choice == "3"):
-            file_name = "undergrad2019-accredited.docx"
-            accredited = True
-        elif (file_choice == "4"):
-            file_name = "grad-accredited.docx"
-            accredited = True
-        else:
-            file_choice = input("Incorrect choice, try again: ")
-            continue
-        break
-
-    unzip_name = file_name[:-5] + ".zip"
-    zip_dir = file_name[:-5] + "/"
+    unzip_name = uploaded_filename[:-5] + ".zip"
+    zip_dir = uploaded_filename[:-5] + "/"
     file_dir = "./media/"
     table_access_list = ()
 
-    if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
+    doc = docx.Document(file_dir + uploaded_filename)
+
+    if("Accredited" in doc.paragraphs[0].text):
+        is_accredited = True
+    elif("19" in doc.paragraphs[1].text):
+        report_year = 19
+    else:
+        report_year = 18
+
+    read_doc_chx.copy_and_unzip(file_dir, uploaded_filename, unzip_name, zip_dir)
+
+    if (is_undergrad and not is_accredited ):
         regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Date Range of Reported Data:\s*(.*)',
             'Person Preparing the Report:\s(.*)']
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report: ', 'Date: ', 'Person Preparing the Report: ']
-        if (file_name == "undergrad2018-regularv2.docx"):
+        if (report_year == 18):
             table_access_list = (0, 1, 2, 3, 5)
-        if (file_name == "undergrad2019-regular.docx"):
+        if (report_year == 19):
             table_access_list = (0, 1, 2, 4, 6)
     else:
         regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Person', 
@@ -114,15 +116,13 @@ def run():
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report', 'Person Preparing the Report: ', 'Last Accreditation Review: ', 'Accreditation Body: ']
         table_access_list = (0, 1, 2, 3)
 
-    read_doc_chx.copy_and_unzip(file_dir, file_name, unzip_name, zip_dir)
-
     xml_string = "word/document.xml"
     xml_path = file_dir + zip_dir + xml_string
 
     #assessment_obj = assessment_models.Assessment()
     
     (chkbox_element_list, slo_count, list_of_lists) = read_doc_chx.find_checkbox_elements(xml_path)
-    print("Checkbox elements here: printing at Line 125")
+    print("Checkbox elements here: printing at Line 132")
     print("============================================================================================")
 
     
@@ -132,7 +132,7 @@ def run():
     print("============================================================================================\n")
 
     ## Change this file location to the location of the file you are parsing
-    doc = docx.Document(file_dir + file_name)
+    doc = docx.Document(file_dir + uploaded_filename)
 
     ### Creating lists to hold all the different regex's and matches, then iterate through them.
     regex_counter = 0
@@ -145,7 +145,7 @@ def run():
         (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list, para)
         (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list, para)
 
-    print("Report Header info: printing at line 145")
+    print("Report Header info: printing at line 155")
     print("============================================================================================")
     
     for i in range(0, len(match_list)):
@@ -181,7 +181,7 @@ def run():
 
     data.clear()
 
-    print("Report Header info: printing at line 180")
+    print("SLO List: printing at line 191")
     print("============================================================================================")
     for slo in slo_list:
         print(slo)
@@ -193,7 +193,7 @@ def run():
     max_rows = 10
     table = doc.tables[table_access_list[1]]
     prev_text = ""
-    data = table_two_access(file_name, column, table, row_iter, data, one_cols, max_rows)
+    data = table_two_access(is_undergrad, column, table, row_iter, data, one_cols, max_rows)
 
 
     row_iter = 0
@@ -201,7 +201,7 @@ def run():
     table = doc.tables[table_access_list[2]]
     assessment_methods = table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count)
 
-    print("Assessment Methods info: printing at line 202")
+    print("Assessment Methods info: printing at line 211")
     print("============================================================================================")
     for method_info in assessment_methods:
         print(method_info)
@@ -210,12 +210,12 @@ def run():
     #### DATA COLLECTION AND ANALYSIS
     data_coll_list = []
     table = doc.tables[table_access_list[3]]
-    data_coll_list = table_four_access(file_name, column, table, row_iter, data_coll_list, slo_count)
+    data_coll_list = table_four_access(is_undergrad, column, table, row_iter, data_coll_list, slo_count)
 
     skip = 0
-    print("Data Collection & Analysis info: printing at line 212")
+    print("Data Collection & Analysis info: printing at line 223")
     print("============================================================================================")
-    if (accredited):
+    if (is_accredited):
         for data_coll in data_coll_list:
             print(data_coll[0] + " : " + data_coll[1])
     else:
@@ -227,7 +227,7 @@ def run():
     print("============================================================================================\n")
 
     #### DECISIONS AND ACTIONS
-    if (file_name == "undergrad2018-regularv2.docx" or file_name == "undergrad2019-regular.docx"):
+    if (is_undergrad):
         table = doc.tables[table_access_list[4]]
         dec_act = []
         for row in table.rows:
@@ -238,11 +238,11 @@ def run():
             dec_act.extend([(slo_num, slo_act)])
 
         
-        print("Decisions & Actions info: printing at line 225")
+        print("Decisions & Actions info: printing at line 248")
         print("============================================================================================")
         for info in dec_act:
             print(info[0] + info[1])
         print("============================================================================================\n")
        # insertData.insertCheckBox(list_of_lists)
        # print(len(slo_list))
-        insertData.insertReportHeader(match_list, list_of_lists,accredited,len(slo_list), dec_act)
+        insertData.insertReportHeader(match_list, list_of_lists,is_accredited,len(slo_list), dec_act)
