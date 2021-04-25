@@ -77,10 +77,6 @@ def run(uploaded_filename):
 
     filename_match = re.search(filename_regex, uploaded_filename)
 
-    print("Regex HERE:")
-    print(filename_match.group(1).lower() == "b")
-    print("===========================================================")
-
     if (filename_match.group(1).lower() == "b"):
         is_undergrad = True
 
