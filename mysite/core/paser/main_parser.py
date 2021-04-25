@@ -92,7 +92,6 @@ def run(uploaded_filename):
 
     for para in doc.paragraphs:
         report_year_match = re.search(report_year_regex, para.text)
-        print(report_year_match)
         if(report_year_match != "None"):
             report_year = 19
             break
@@ -119,9 +118,6 @@ def run(uploaded_filename):
             'Person Preparing the Report:\s(.*)', 'Last Accreditation Review:\s(.*)\s*Accreditation', 'Accreditation Body:\s(.*)\s*']   
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report', 'Person Preparing the Report: ', 'Last Accreditation Review: ', 'Accreditation Body: ']
         table_access_list = (0, 1, 2, 3)
-
-    print("REPORT YEAR IS : " + str(report_year))
-    print(table_access_list)
 
     xml_string = "word/document.xml"
     xml_path = file_dir + zip_dir + xml_string
