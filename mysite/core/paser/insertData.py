@@ -22,7 +22,7 @@ def insertCheckBox(list_of_lists):
 
     conn.close()
     return 1
-def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_act):
+def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_act, assessment_methods, slo_list):
     #insert College Table
     college1 = aac_models.College.objects.create(name=match_list[0], active=True)
     college1.save
@@ -30,10 +30,11 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     depart = aac_models.Department.objects.create(name=match_list[1],college=college1 ,active=True)
     depart.save()
     #insert Report table
+    title = match_list[1] + " " + match_list[2] + " " +match_list[3] + " " +match_list[4]
     report = basic_models.Report.objects.create(year=match_list[4], author= match_list[6], 
         degreeProgram=match_list[2], accredited=accredited1, date_range_of_reported_data=match_list[5],
         section1Comment=None, section2Comment=None,section3Comment=None,section4Comment=None,submitted=True,
-        returned=False,numberOfSLOs= length_slo, uploader= match_list[1])
+        returned=False,numberOfSLOs= length_slo, uploader= match_list[1], title=title)
     report.save()
     #insert SLO table
     slos = []
@@ -41,16 +42,14 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     for x in range(length_slo):
         tempslo = slo_models.SLO.objects.create(blooms=list_of_lists[0][x + 1], numberOfUses=1)
         slos.append(tempslo)
-        #tempslo.save()
         slonum = slonum + 1
     #insert SLO in Report Table
     sloIRs = []
     sloirnum = 1
-    for slo in slos: #TODO: Replace goal placeholder with goal text. Find how to find number of assess
-        sloIR = slo_models.SLOInReport.objects.create(goalText="Placeholder Text", slo=slo, changedFromPrior=False, report=report, number=sloirnum, numberOfAssess=0) #Number of asses unknown
+    for slo in slos: #TODO: Find how to find number of assess
+        sloIR = slo_models.SLOInReport.objects.create(goalText=slo_list[sloirnum - 1], slo=slo, changedFromPrior=False, report=report, number=sloirnum, numberOfAssess=0) #Number of asses unknown
         sloirnum = sloirnum + 1
         sloIRs.append(sloIR)
-        #sloIR.save()
     #Assessment Methods
     #TODO: All fields are currently placeholder because I do not know where the data is and due to a bug I can not run the parsing script
     assessmentVs = []
@@ -67,27 +66,15 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     for assessmentV in assessmentVs:
         assessmentData = data_models.AssessmentData.objects.create(assessmentVersion = assessmentV,dataRange="Placeholder Data Range", numberStudents=1, overallProficient=1)
         assessmentAgg = data_models.AssessmentAggregate.objects.create(assessmentVersion=assessmentV, aggregate_proficiency=1, met=False)
-        #assessmentData.save()
-        #assessmentAgg.save()
     for sloIR in sloIRs:
         sloStatus = data_models.SLOStatus(status="O", sloIR=sloIR, override=False)
-        #sloStatus.save()
-
 
     #insert decision Actions table
+    decActNum = 0
     for info in dec_act:
-        if info[0] == "SLO 1":
-            print(info[1])
-            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[0], text=info[1])
-        elif info[0] == "SLO 2":
-            print(info[1])
-            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[1], text=info[1])
-        elif info[0] == "SLO 3":
-            print(info[1])
-            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[2], text=info[1])
-        elif info[0] == "SLO 4":
-            print(info[1])
-            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[3], text=info[1])
+        if (decActNum < len(sloIRs)):
+            decisionAction = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[decActNum], text=info[1])
+        decActNum = decActNum + 1
     #
     print("Records inserted........")
 

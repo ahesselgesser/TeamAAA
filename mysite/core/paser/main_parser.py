@@ -246,4 +246,4 @@ def run(uploaded_filename):
         print("============================================================================================\n")
        # insertData.insertCheckBox(list_of_lists)
        # print(len(slo_list))
-        insertData.insertReportHeader(match_list, list_of_lists,is_accredited,len(slo_list), dec_act)
+        insertData.insertReportHeader(match_list, list_of_lists,is_accredited,len(slo_list), dec_act, assessment_methods, slo_list)
