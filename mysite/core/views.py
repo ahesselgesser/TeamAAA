@@ -26,6 +26,7 @@ class Home(TemplateView):
 def upload(request):
     context = {}
     if request.method == 'POST':
+        #TODO:Add check so it doesn't error if someone doesn't upload a document
         uploaded_file = request.FILES['document']
         fs = FileSystemStorage()
         name = fs.save(uploaded_file.name, uploaded_file)

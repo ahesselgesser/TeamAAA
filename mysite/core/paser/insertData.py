@@ -22,7 +22,7 @@ def insertCheckBox(list_of_lists):
 
     conn.close()
     return 1
-def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_act, assessment_methods, slo_list):
+def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_act, assessment_methods, slo_list, data_coll_list):
     #insert College Table
     college1 = aac_models.College.objects.create(name=match_list[0], active=True)
     college1.save
@@ -51,22 +51,28 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
         sloirnum = sloirnum + 1
         sloIRs.append(sloIR)
     #Assessment Methods
-    #TODO: All fields are currently placeholder because I do not know where the data is and due to a bug I can not run the parsing script
+
     assessmentVs = []
     today = datetime.datetime.now()
     date = today.strftime("%Y-%m-%d")
-    #TODO: Add loop structure
-    assessment = assessment_models.Assessment.objects.create(title="Placeholder Title", domainExamination=False, domainProduct=False, domainPerformance=False, directMeasure=False, numberOfUses=1)
-    assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=sloIRs[0], number=0, changedFromPrior=False, assessment=assessment, date=date, description="Placeholder Description", finalTerm=False, where="Placeholder Location", allStudents=False, sampleDescription="Placholder sample description", frequencyChoice="O", frequency="Placeholder Frequency", threshold="Placeholder Threshold", target=0)
-    assessmentVs.append(assessmentVersion)
+    for assessmentMeth in assessment_methods:
+        if (assessmentMeth[2] != 'Title of the Measure'):
+            #TODO Where currently includes extraneous information
+            #TODO All True/False flags are placeholders
+            assessment = assessment_models.Assessment.objects.create(title=assessmentMeth[1], domainExamination=False, domainProduct=False, domainPerformance=False, directMeasure=False, numberOfUses=1)
+            assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=sloIRs[0], number=0, changedFromPrior=False, assessment=assessment, date=date, description=assessmentMeth[2], finalTerm=False, where=assessmentMeth[5][1], allStudents=False, sampleDescription="Placholder sample description", frequencyChoice="O", frequency="Placeholder Frequency", threshold="Placeholder Threshold", target=0)
+            assessmentVs.append(assessmentVersion)
     #Data Collection Methods
-    #TODO: All fields are currently placeholder because I do not know where the data is and due to a bug I can not run the parsing script
+    #TODO: All fields are currently placeholder
     dataAdditional = data_models.DataAdditionalInformation.objects.create(report=report, comment="Placeholder Comment")
     dataAdditional = data_models.ResultCommunicate.objects.create(text="Placeholder Communication", report=report)
+    assVNum = 1
     for assessmentV in assessmentVs:
-        assessmentData = data_models.AssessmentData.objects.create(assessmentVersion = assessmentV,dataRange="Placeholder Data Range", numberStudents=1, overallProficient=1)
-        assessmentAgg = data_models.AssessmentAggregate.objects.create(assessmentVersion=assessmentV, aggregate_proficiency=1, met=False)
+        assessmentData = data_models.AssessmentData.objects.create(assessmentVersion = assessmentV,dataRange=data_coll_list[assVNum][1], numberStudents=int(data_coll_list[assVNum][2]), overallProficient=float(data_coll_list[assVNum][3]))
+        assessmentAgg = data_models.AssessmentAggregate.objects.create(assessmentVersion=assessmentV, aggregate_proficiency=float(data_coll_list[assVNum][3]), met=False)
+        assVNum = assVNum + 1
     for sloIR in sloIRs:
+        #TODO: Status is placeholder
         sloStatus = data_models.SLOStatus(status="O", sloIR=sloIR, override=False)
 
     #insert decision Actions table
