@@ -4,7 +4,17 @@ import re
 from mysite.core.paser import read_doc_chx
 import psycopg2
 from mysite.core.paser import insertData
+
 def regex_inc(regex_list, regex_counter, match_list, para):
+    """!  Allows a for loop to loop through a list of regular expressions.
+    
+    @param regex_list - This is the list of regular expressions the loop accesses.
+    @param regex_counter - This counter keeps track of how many times the regular expression list has been accessed.
+    @param match_list - This list keeps track of all the matches that the regular expressions have caught.
+    @param para - This is the text that the regular expression is compared to.
+
+    @return The counter keeping track of regular expressions and the list of matches.
+    """
     if(regex_counter < len(regex_list)):
         regex = re.findall(regex_list[regex_counter], para.text)
         if (regex):
@@ -13,6 +23,18 @@ def regex_inc(regex_list, regex_counter, match_list, para):
     return (regex_counter, match_list)
 
 def table_two_access(is_undergrad, column, table, row_iter, data, one_cols, max_rows):
+    """!  Captures the information in the second table of the document.
+    
+    @param is_undergrad - Boolean value, True if the report is for an undergraduate degree program.
+    @param column - A tuple that refers to the column number we are accessing in the table.
+    @param table - The docx.Table object that we are accessing.
+    @param row_iter - An integer that keeps track of what row we are accessing.
+    @param data - A list that the captured data is appended to.
+    @param one_cols - I honestly forgot how I was using this variable.
+    @param max_rows - The maximum number of rows that should be in the table we are accessing.
+
+    @return The captured data in a list.
+    """    
     if (is_undergrad):
         for row in table.rows:
             if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
@@ -31,6 +53,19 @@ def table_two_access(is_undergrad, column, table, row_iter, data, one_cols, max_
     return data
 
 def table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count):
+    """!  Captures the information in the third table of the document.
+    
+    @param column - A tuple that refers to the column number we are accessing in the table.
+    @param table - The docx.Table object that we are accessing.
+    @param row_iter - An integer that keeps track of what row we are accessing.
+    @param data - A list that the captured data is appended to.
+    @param one_cols - I honestly forgot how I was using this variable.
+    @param max_rows - The maximum number of rows that should be in the table we are accessing.
+    @param slo_count - This integer is the number of SLOs that were counted in the document.
+
+    @return The captured data in a list.
+    """    
+
     ### Original loop from link below
     ### https://www.reddit.com/r/learnpython/comments/dbie6s/help_iterating_over_a_table_in_pythondocx/
     for row in table.rows:
@@ -46,6 +81,19 @@ def table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_co
     return data
 
 def table_four_access(is_undergrad, column, table, row_iter, data_coll_list, slo_count):
+    """!  Captures the information in the fourth table of the document.
+    
+    @param is_undergrad - Boolean value, True if the report is for an undergraduate degree program.
+    @param column - A tuple that refers to the column number we are accessing in the table.
+    @param table - The docx.Table object that we are accessing.
+    @param row_iter - An integer that keeps track of what row we are accessing.
+    @param data_coll_list - A list that the captured data is appended to.
+    @param one_cols - I honestly forgot how I was using this variable.
+    @param slo_count - This integer is the number of SLOs that were counted in the document.
+
+    @return The captured data in a list of tuples.
+    """
+            
     if (is_undergrad):
         for row in table.rows:
             if "SLO " + str(slo_count + 1) in row.cells[column[1]].text:
@@ -68,34 +116,49 @@ def table_four_access(is_undergrad, column, table, row_iter, data_coll_list, slo
     return data_coll_list
 
 def run(uploaded_filename):
+    """! This function captures the information from documents.
 
+    @param uploaded_filename This is the file name of the document we are running the method on.
+    """
+
+    ## Whether the report is undergraduate; False = graduate, True = undergraduate.
     is_undergrad = False
+    ## Whether the report is accredited; False = Non-accredited, True = accredited 
     is_accredited = False
+    ## The year the report was created; 18 = 2018, 19 = 2019, Any other numbers should not be allowed.
     report_year = 0
 
+    ## The regular expression used to capture the "B" or "M" for Bachelors or Masters, in the file name. "B" = undergraduate, anything else = graduate.
     filename_regex = "\.*?\((.{1})\w+\)\.*"
+    ## The regular expression used to capture if the report was from 2019. Returns a regular expression match object.
     report_year_regex = 'Academic Year of Report:\s*(2019)\s*Date'
 
+    ## The match object returned when checking the uploaded file name against the file name regular expression defined above.
     filename_match = re.search(filename_regex, uploaded_filename)
 
     if (filename_match.group(1).lower() == "b"):
         is_undergrad = True
 
-    incorrect_choice = True
-
+    ## The name we use to create the ZIP version of the document. It should be "filename".zip.
     unzip_name = uploaded_filename[:-5] + ".zip"
+    ## The directory that we use to store the documents after unzipping the ZIP file.
     zip_dir = uploaded_filename[:-5] + "/"
+    ## The file directory that we store all the documents.
     file_dir = "./media/"
+    ## A tuple that stores the table numbers where the document information is stored.
     table_access_list = ()
 
+    ## The docx object that we use to access the document information gained from the docx module.
     doc = docx.Document(file_dir + uploaded_filename)
 
+    ## Checking to see if the report year of the document is 2019.
     for para in doc.paragraphs:
         report_year_match = re.search(report_year_regex, para.text)
         if(report_year_match != "None"):
             report_year = 19
             break
 
+    ## Checking to see if the report is for an Accredited degree. Otherwise assigns the report year.
     if("Accredited" in doc.paragraphs[0].text):
         is_accredited = True
     elif(report_year == 0 and "19" in doc.paragraphs[1].text):
