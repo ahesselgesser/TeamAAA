@@ -4,7 +4,7 @@ from mysite.core.models import basic_models
 from mysite.core.models import data_models
 from mysite.core.models import decisionsActions_models
 from mysite.core.models import slo_models
-from datetime import date
+import datetime
 import psycopg2
 def insertCheckBox(list_of_lists):
     conn = psycopg2.connect(database="aaadb", user='teamaaa', password='aaapass', host='localhost', port= '5432')
@@ -15,6 +15,7 @@ def insertCheckBox(list_of_lists):
     #VALUES (1, "i CAN DI", True)''')
     
     #conn.commit()
+    #TODO: Grad Goal stuff
     GradGoal1 = slo_models.GradGoal.objects.create(text="SampleGradGoal",active=True)
     GradGoal1.save()
     print("Records inserted........")
@@ -33,12 +34,12 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
         degreeProgram=match_list[2], accredited=accredited1, date_range_of_reported_data=match_list[5],
         section1Comment=None, section2Comment=None,section3Comment=None,section4Comment=None,submitted=True,
         returned=False,numberOfSLOs= length_slo, uploader= match_list[1])
-    report1.save()
+    report.save()
     #insert SLO table
     slos = []
     slonum = 1
-    for blooms in list_of_lists[0]:
-        tempslo = slo_models.SLO.objects.create(blooms=list_of_lists[0][slonum], numberOfUses=1)
+    for x in range(length_slo):
+        tempslo = slo_models.SLO.objects.create(blooms=list_of_lists[0][x + 1], numberOfUses=1)
         slos.append(tempslo)
         #tempslo.save()
         slonum = slonum + 1
@@ -53,10 +54,11 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     #Assessment Methods
     #TODO: All fields are currently placeholder because I do not know where the data is and due to a bug I can not run the parsing script
     assessmentVs = []
+    today = datetime.datetime.now()
+    date = today.strftime("%Y-%m-%d")
     #TODO: Add loop structure
     assessment = assessment_models.Assessment.objects.create(title="Placeholder Title", domainExamination=False, domainProduct=False, domainPerformance=False, directMeasure=False, numberOfUses=1)
-    date = today.strftime("%d-%m-%Y")
-    assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=slos[0], number=0, changedFromPrior=False, assessment=assessment, date=date, description="Placeholder Description", finalTerm=False, where="Placeholder Location", allStudents=False, sampleDescription="Placholder sample description", frequencyChoice="O", frequency="Placeholder Frequency", threshold="Placeholder Threshold", target=0)
+    assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=sloIRs[0], number=0, changedFromPrior=False, assessment=assessment, date=date, description="Placeholder Description", finalTerm=False, where="Placeholder Location", allStudents=False, sampleDescription="Placholder sample description", frequencyChoice="O", frequency="Placeholder Frequency", threshold="Placeholder Threshold", target=0)
     assessmentVs.append(assessmentVersion)
     #Data Collection Methods
     #TODO: All fields are currently placeholder because I do not know where the data is and due to a bug I can not run the parsing script
@@ -76,16 +78,16 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     for info in dec_act:
         if info[0] == "SLO 1":
             print(info[1])
-            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = slos[0], text=info[1])
+            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[0], text=info[1])
         elif info[0] == "SLO 2":
             print(info[1])
-            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = slos[1], text=info[1])
+            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[1], text=info[1])
         elif info[0] == "SLO 3":
             print(info[1])
-            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = slos[2], text=info[1])
+            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[2], text=info[1])
         elif info[0] == "SLO 4":
             print(info[1])
-            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = slos[3], text=info[1])
+            decisionAction1 = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[3], text=info[1])
     #
     print("Records inserted........")
 
