@@ -180,6 +180,7 @@ def run(uploaded_filename):
 
     read_doc_chx.copy_and_unzip(file_dir, uploaded_filename, unzip_name, zip_dir)
 
+    ## Determines the appropriate regular expression list for the document header and table access based on undergraduate/graduate, accredited/non, and report year.
     if (is_undergrad and not is_accredited ):
         regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Date Range of Reported Data:\s*(.*)',
             'Person Preparing the Report:\s(.*)']
@@ -194,48 +195,58 @@ def run(uploaded_filename):
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report', 'Person Preparing the Report: ', 'Last Accreditation Review: ', 'Accreditation Body: ']
         table_access_list = (0, 1, 2, 3)
 
+    ## The path in the unzipped directory to the document XML file.
     xml_string = "word/document.xml"
+    ## The full path to the unzipped directory.
     xml_path = file_dir + zip_dir + xml_string
 
     #assessment_obj = assessment_models.Assessment()
     
+    ## Store the return values from the find_checkbox_elements function.
     (chkbox_element_list, slo_count, list_of_lists) = read_doc_chx.find_checkbox_elements(xml_path)
-    print("Checkbox elements here: printing at Line 132")
+
+    ## Printing out the checkbox elements, ONLY USED FOR TESTING PURPOSES.
+    print("Checkbox elements here: printing at Line 209")
     print("============================================================================================")
 
     for item in list_of_lists:
         print(item)
     print("============================================================================================\n")
 
-    ## Change this file location to the location of the file you are parsing
-    doc = docx.Document(file_dir + uploaded_filename)
-
-    ### Creating lists to hold all the different regex's and matches, then iterate through them.
+    ## A counter to keep track of what regular expression in a list we are on.
     regex_counter = 0
     
+    ## A list object used to hold the matches found from the regular expressions.
     match_list = []
 
+    ## Stores all the docx Paragraph objects found in the document.
     all_paras = doc.paragraphs
 
+    ## Loop through all of the paragraphs and compare them to the regular expressions.
     for para in all_paras:
         (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list, para)
         (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list, para)
 
-    print("Report Header info: printing at line 155")
+    ## Print out the report header info, ONLY FOR TESTING PURPOSES.
+    print("Report Header info: printing at line 231")
     print("============================================================================================")
     
     for i in range(0, len(match_list)):
         print(report_header_list[i] + ": " + match_list[i])
     print("============================================================================================\n")
 
+    ## List used to store information captured from tables.
     data = []
 
+    ## List used to store SLOs from document.
     slo_list = []
 
     ### Original code from https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ###
-    #### Append the header rows as keys, and the cells beneath them as the corresponding values
     #### This is for the SLO table
+
+    ## Used to store the first docx Table object that we are interested in.
     table = doc.tables[table_access_list[0]]
+    ## Append the header rows as keys, and the cells beneath them as the corresponding values
     for i, row in enumerate(table.rows):
         text = (cell.text for cell in row.cells)
         
@@ -251,6 +262,7 @@ def run(uploaded_filename):
         # keys to values for this row
         row_data = dict(zip(keys, text))
         data.append(row_data)
+        
     ## Append the SLOs to the SLO list
     for slo in range (0, slo_count):
         slo_list.append(data[slo]['Student Learning Outcomes'])
