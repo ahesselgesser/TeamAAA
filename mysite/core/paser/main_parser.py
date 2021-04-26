@@ -301,7 +301,7 @@ def run(uploaded_filename):
     assessment_methods = assessmentMethodProcessor(assessment_methods)
 
     ## Print out the Assessment Methods info, ONLY FOR TESTING PURPOSES.
-    print("Assessment Methods info: printing at line 211")
+    print("Assessment Methods info: printing at line 304")
     print("============================================================================================")
     for method_info in assessment_methods:
         print(method_info)
@@ -316,7 +316,7 @@ def run(uploaded_filename):
 
     ## Print out the Data Collection & Analysis info, ONLY FOR TESTING purposes.
     skip = 0
-    print("Data Collection & Analysis info: printing at line 223")
+    print("Data Collection & Analysis info: printing at line 319")
     print("============================================================================================")
     if (is_accredited):
         for data_coll in data_coll_list:

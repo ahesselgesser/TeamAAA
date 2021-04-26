@@ -71,14 +71,43 @@ def find_checkbox_elements(xml_path):
     ## Stores all values after checked boxes that are within the grad_common_program_list .   
     common_program_list = ["Grad Common Program SLOs List"]
 
-    ## Stores the list of all above lists, minus the chckbox_element_list.
-    list_of_lists = (blooms_list, domain_list, type_list, point_list, population_list, frequency_list, status_list, common_program_list)
 
     ### This is an XML_Tree object that the etree module creates from the XML document.
     xml_tree = etree.parse(xml_path)
 
     ## This is the XML document in string form.
     xml_string = etree.tostring(xml_tree).decode()
+
+    ## This stores the namespaces for Word documents.
+    namespaces = {'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
+
+    ## Find all the textbox tags in the XML Tree and store them here.
+    textboxes = xml_tree.findall('.//w:txbxContent', namespaces)
+
+    ## A list to store the contents of a single text box.
+    one_box = []
+
+    ## A set to contain all unique instances of a text box.
+    all_box_set = set([])
+
+    ## Append this number to the end of the text box text, because sets don't keep order. This allows us to find the order.
+    set_order = 1
+
+    ## Loop through all the textboxes found.
+    for box in textboxes:
+        ## Find all the text tags in the text boxes.
+        text_tags = box.findall('.//w:t', namespaces)
+        ## For all the text tags, append the text to one_box list.
+        for text_element in text_tags:
+            one_box.append(text_element.text)
+        ## Join the elements in one_box and add it to the all_box_set.
+        all_box_set.add(''.join(one_box) + str(set_order))
+        set_order += 1
+        ## Clear the one_box list, so that we can start fresh.
+        one_box.clear()
+
+    ## Stores the list of all above lists, minus the chckbox_element_list.
+    list_of_lists = (blooms_list, domain_list, type_list, point_list, population_list, frequency_list, status_list, common_program_list, all_box_set)
 
     ## Regular expression used to capture all <w:t> tags.
     reg = re.findall('(?:<w:t>|<w:t xml:space="preserve">).*?</w:t>', xml_string)
