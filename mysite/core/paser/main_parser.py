@@ -250,16 +250,14 @@ def run(uploaded_filename):
     for i, row in enumerate(table.rows):
         text = (cell.text for cell in row.cells)
         
-        # Establish the mapping based on the first row
-        # headers; these will become the keys of our dictionary
+        ## Establish the mapping based on the first row headers; these will become the keys of our dictionary.
         if i == 0:
             keys = tuple(text)
             continue
         elif i == 2 * (slo_count - 1):
             break
 
-        # Construct a dictionary for this row, mapping
-        # keys to values for this row
+        ## Construct a dictionary for this row, mapping keys to values for this row.
         row_data = dict(zip(keys, text))
         data.append(row_data)
         
@@ -267,31 +265,42 @@ def run(uploaded_filename):
     for slo in range (0, slo_count):
         slo_list.append(data[slo]['Student Learning Outcomes'])
 
+    ## Clear data so that we can use it again.
     data.clear()
 
-    print("SLO List: printing at line 191")
+    ## Print out the list of SLOs, ONLY FOR TESTING PURPOSES.
+    print("SLO List: printing at line 272")
     print("============================================================================================")
     for slo in slo_list:
         print(slo)
     print("============================================================================================\n")
 
+    ## Tuple to hold the 0-based number for each column in a table.
     column = (0, 0, 1, 2, 3)
+    ## Integer used to keep track of what row we are accessing on a table.
     row_iter = 0
+    ## I still don't remember how I created the logic for this, sorry.
     one_cols = 2
+    ## The max rows that should be in the tables we are accessing. The XML for these tables is shot to hell, so we had to create a variable to tell the loop to end.
     max_rows = 10
+    ## Set the table variable to the next table we need to access, via the table_access_list.
     table = doc.tables[table_access_list[1]]
+    ## Reset the previous text. Maybe obsolete.
     prev_text = ""
     data = table_two_access(is_undergrad, column, table, row_iter, data, one_cols, max_rows)
 
-
+    ## Reset row_iter, this might not be needed if the row_iter variable is not changed after calling table_two_access(...).
     row_iter = 0
+    ## Maybe obsolete.
     prev_text = ""
+    ## Set the table to the next table in the table_access_list.
     table = doc.tables[table_access_list[2]]
     assessment_methods = table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count)
 
     #added in splitting assessment_methods into one list per SLO
     assessment_methods = assessmentMethodProcessor(assessment_methods)
 
+    ## Print out the Assessment Methods info, ONLY FOR TESTING PURPOSES.
     print("Assessment Methods info: printing at line 211")
     print("============================================================================================")
     for method_info in assessment_methods:
@@ -299,10 +308,13 @@ def run(uploaded_filename):
     print("============================================================================================\n")
 
     #### DATA COLLECTION AND ANALYSIS
+    ## The list that holds the information from the Data Collection & Analysis table.
     data_coll_list = []
+    ## Set the table variable to the next table.
     table = doc.tables[table_access_list[3]]
     data_coll_list = table_four_access(is_undergrad, column, table, row_iter, data_coll_list, slo_count)
 
+    ## Print out the Data Collection & Analysis info, ONLY FOR TESTING purposes.
     skip = 0
     print("Data Collection & Analysis info: printing at line 223")
     print("============================================================================================")
@@ -318,6 +330,7 @@ def run(uploaded_filename):
     print("============================================================================================\n")
 
     #### DECISIONS AND ACTIONS
+    ## This is only for undergraduate reports. 
     if (is_undergrad):
         table = doc.tables[table_access_list[4]]
         dec_act = []
@@ -328,7 +341,7 @@ def run(uploaded_filename):
                 continue
             dec_act.extend([(slo_num, slo_act)])
 
-        
+        ## Print out Decisions & Actions info, ONLY FOR TESTING PURPOSES.
         print("Decisions & Actions info: printing at line 248")
         print("============================================================================================")
         for info in dec_act:
