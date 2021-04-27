@@ -12,6 +12,7 @@ from .models.slo_models import GradGoal
 from .models.slo_models import SLO
 from .models.assessment_models import Assessment
 from .models.assessment_models import AssessmentVersion
+from .models.decisionsActions_models import DecisionsActions
 from .models.data_models import AssessmentData
 from .forms import FileFieldForm
 from django.http import HttpResponse
@@ -113,9 +114,23 @@ def view_report(request):
         dummy = 0
         reportId= request.GET.get('id')
         results = Report.objects.filter(id=reportId)
-        slos = SLOInReport.objects.filter(report=reportId).select_related('slo')
-        assessmentDatas = AssessmentData.objects.filter(assessmentVersion__report__id=reportId)
-        context={'results': results, 'slos': slos, 'assessmentDatas': assessmentDatas}
+        slos = SLOInReport.objects.filter(report=reportId)
+        sloIRs = []
+        for slo in slos:
+            temp = SLO.objects.filter(id=slo.slo.id)
+            if (len(temp) != 0):
+                sloIRs.append((list(temp)[0].blooms, slo))
+        assessmentDatas = []
+        for slo in slos:
+            temp = AssessmentData.objects.filter(assessmentVersion__slo__id=slo.id)
+            if (len(temp) != 0):
+                assessmentDatas.append((slo.number, list(temp)[0]))
+        decisionActions = []
+        for slo in slos:
+            temp = DecisionsActions.objects.filter(sloIR=slo.id)
+            if (len(temp) != 0):
+                decisionActions.append((slo.number,list(temp)[0]))
+        context={'results': results, 'slos': sloIRs, 'assessmentDatas': assessmentDatas, 'decisionActions': decisionActions}
         return render(request, 'report.html', context)
     return render(request, 'report.html')
 
