@@ -76,11 +76,9 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     dataAdditional = data_models.ResultCommunicate.objects.create(text="Placeholder Communication", report=report)
     assVNum = 1
     for assessmentV in assessmentVs:
-        assessmentData = data_models.AssessmentData.objects.create(assessmentVersion = assessmentV,dataRange=data_coll_list[assVNum][1], numberStudents=int(data_coll_list[assVNum][2]), overallProficient=float(data_coll_list[assVNum][3][:-1]))
+        assessmentData = data_models.AssessmentData.objects.create(assessmentVersion= assessmentV,dataRange=data_coll_list[assVNum][1], numberStudents=int(data_coll_list[assVNum][2]), overallProficient=float(data_coll_list[assVNum][3][:-1]))
         assessmentAgg = data_models.AssessmentAggregate.objects.create(assessmentVersion=assessmentV, aggregate_proficiency=float(data_coll_list[assVNum][3][:-1]), met=False)
         assVNum = assVNum + 1
-
-        
 
     #insert decision Actions table
     decActNum = 0

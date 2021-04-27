@@ -10,6 +10,9 @@ from .models.basic_models import Report
 from .models.slo_models import SLOInReport
 from .models.slo_models import GradGoal
 from .models.slo_models import SLO
+from .models.assessment_models import Assessment
+from .models.assessment_models import AssessmentVersion
+from .models.data_models import AssessmentData
 from .forms import FileFieldForm
 from django.http import HttpResponse
 import os
@@ -107,11 +110,12 @@ def search(request):
 
 def view_report(request):
     if request.method == 'GET':
+        dummy = 0
         reportId= request.GET.get('id')
         results = Report.objects.filter(id=reportId)
-        temp = SLOInReport.objects.filter(report=reportId)
-        slos = temp.select_related('slo')
-        context={'results': results, 'slos': slos}
+        slos = SLOInReport.objects.filter(report=reportId).select_related('slo')
+        assessmentDatas = AssessmentData.objects.filter(assessmentVersion__report__id=reportId)
+        context={'results': results, 'slos': slos, 'assessmentDatas': assessmentDatas}
         return render(request, 'report.html', context)
     return render(request, 'report.html')
 

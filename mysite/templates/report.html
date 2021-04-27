@@ -3,22 +3,49 @@
 
 {% if results %}
     {% for report in results %}
-        <p>Title: {{report.title}}</p>
+        <h1>{{report.title}}</h1>
         <p>Year: {{report.year}}</p>
         <p>Author: {{report.author}}</p>
         <p>Degree Program: {{report.degreeProgram}}</p>
         <p>Date Range of Reported Data: {{report.date_range_of_reported_data}}</p>
     {% endfor %}
-    <p>Section 1</p>
+    <h2>Student Learning Outcomes</h2>
     {% for slo in slos %}
         <b><p>SLO Number: {{slo.number}}</p></b>
-        <p>Bloom's Taxonomy level: {{slo.blooms}}</p>
-        <p>Date: {{slo.date}}</p>
+        <!--<p>Bloom's Taxonomy level: {{slo.blooms}}</p>-->
         <p>Goal Text: {{slo.goalText}}</p>
     {% endfor %}
+        <!--
     <p>Section 2</p>
-    <p>Section 3</p>
-    <p>Section 4</p>
+        {% for ass in assessments %}
+    {% endfor %} 
+        -->
+
+    <h2>Data Collection and Analysis</h2>
+    <table class="table mb-0">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Data Collection Date Range</th>
+            <th>Number of Students Assessed</th>
+            <th>Percentage of Students who met/Eceeded Threshold Proficiency</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for assessmentD in assessmentDatas %}
+    <tr>
+        <td>SLO {{assessmentD.number}} - Measure</td>
+        <td>{{assessmentD.dataRange}}</td>
+        <td>{{assessmentD.numberStudents}}</td>
+        <td>{{assessmentD.overallProficient}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+    </table>
+
+    <h2>Section 4</h2>
 {% else %}
     No Report found with that ID
 {% endif %}
