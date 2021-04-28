@@ -44,26 +44,27 @@
     </tr>
     <tr>
         <td>Domains:</td>
-        <td> Examination {{assessmentM.2.domainExamination}} Product {{assessmentM.2.domainProduct}} Performance {{assessmentM.2.domainPerformance}}</td>
+        <td> {%if assessmentM.2.domainExamination %}Examination{%endif%}
+            {%if assessmentM.2.domainProduct %}Product{%endif%}
+            {%if assessmentM.2.domainPerformance %}Performance{%endif%}</td>
     </tr>
     <tr>
         <td>Type</td>
-        <td>Direct Measure {{assessmentM.2.directMeasure}}</td>
-        <td>Indirect Measure {{assessmentM.2.directMeasure}}</td>
+        <td>{%if assessmentM.2.directMeasure %}Direct Measure {%else%} Indirect Measure {%endif%}</td>
     </tr>
     <tr>
         <td>Point in Program Assessment is Administered</td>
-        <td>{{assessmentM.1.finalTerm}}</td>
-        <td>Where does the assessment occur: {{assessmentM.1.where}}</td>
+        <td>{%if assessmentM.1.finalTerm %}Final Term {%else%} Not Final Term {%endif%}
+            <br>Where does the assessment occur: {{assessmentM.1.where}}</td>
     </tr>
     <tr>
         <td>Population Measured</td>
-        <td>All students {{assessmentM.1.allStudents}}</td>
-        <td>Sample of students - {{assessmentM.1.samleDescription}}</td>
+        <td>{%if assessmentM.1.allStudents %}All Students{%else%} Sample of students - {%endif%}
+        <br>{{assessmentM.1.samleDescription}}</td>
     </tr>
     <tr>
         <td>Frequency of Data Collection</td>
-        <td>{{assessmentM.1.frequencyChoice}} {{assessmentM.1.frequency}}</td>
+        <td>{{assessmentM.1.frequencyChoice}} <br> {{assessmentM.1.frequency}}</td>
     </tr>
     <tr>
         <td>Proficiency Threshold</td>
