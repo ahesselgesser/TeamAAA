@@ -103,7 +103,7 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             # Type
             directMeasure = False
             directText = assessmentMeth[4][1]
-            temp = re.findall("☒\s+(\w+)", directText)
+            temp = re.findall("☒\s+\w+", directText)
             for result in temp:
                 temp = re.search("☒\s+(\w+)", result)
                 result = temp.group(1)
@@ -115,7 +115,7 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             # Point in Program
             finalTerm = False
             termText = assessmentMeth[5][1]
-            temp = re.findall("☒\s+(\w+)", termText)
+            temp = re.findall("☒\s+\w+", termText)
             for result in temp:
                 temp = re.search("☒\s+(\w+)", result)
                 result = temp.group(1)
