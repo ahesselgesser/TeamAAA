@@ -44,37 +44,36 @@
     </tr>
     <tr>
         <td>Domain</td>
-        <td>Examination</td>
-        <td>Product</td>
-        <td>Performance</td>
-        <td>{{assessmentM.2.domainExamination}}</td>
+        <td>Examination {{assessmentM.2.domainExamination}}</td>
+        <td>Product {{assessmentM.2.domainProduct}}</td>
+        <td>Performance {{assessmentM.2.domainPerformance}}</td>
     </tr>
     <tr>
         <td>Type</td>
-        <td>Direct Measure</td>
-        <td>Indirect Measure</td>
+        <td>Direct Measure {{assessmentM.2.directMeasure}}</td>
+        <td>Indirect Measure {{assessmentM.2.directMeasure}}</td>
     </tr>
     <tr>
         <td>Point in Program Assessment is Administered</td>
-        <td></td>
+        <td>{{assessmentM.1.finalTerm}}</td>
         <td>Where does the assessment occur: {{assessmentM.1.where}}</td>
     </tr>
     <tr>
         <td>Population Measured</td>
-        <td>All students</td>
-        <td>Sample of students - </td>
+        <td>All students {{assessmentM.1.allStudents}}</td>
+        <td>Sample of students - {{assessmentM.1.samleDescription}}</td>
     </tr>
     <tr>
         <td>Frequency of Data Collection</td>
-        <td></td>
+        <td>{{assessmentM.1.frequencyChoice}} {{assessmentM.1.frequency}}</td>
     </tr>
     <tr>
         <td>Proficiency Threshold</td>
-        <td></td>
+        <td>{{assessmentM.1.threshold}}</td>
     </tr>
     <tr>
         <td>Program Proficiency Target</td>
-        <td></td>
+        <td>{{assessmentM.1.target}}</td>
     </tr>
 </table>
 {% endfor %}

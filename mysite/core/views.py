@@ -146,8 +146,9 @@ def view_report(request):
             temp = DecisionsActions.objects.filter(sloIR=slo.id)
             if (len(temp) != 0):
                 decisionActions.append((slo.number, list(temp)[0]))
-        resultCommunicate = ResultCommunicate.objects.filter(report=reportId)[0]
-        print(resultCommunicate)
+        resultCommunicate = []
+        if (len(ResultCommunicate.objects.filter(report=reportId)) != 0):
+            resultCommunicate = ResultCommunicate.objects.filter(report=reportId)[0]
         context = {'results': results, 'slos': sloIRs,
                    'assessmentDatas': assessmentDatas, 'decisionActions': decisionActions, 'assessmentMethods':assessmentMethods, 'resultCommunicate':resultCommunicate}
         return render(request, 'report.html', context)
