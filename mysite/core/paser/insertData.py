@@ -107,21 +107,21 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             for result in temp:
                 temp = re.search("☒\s+(\w+)", result)
                 result = temp.group(1)
-                if (result == "Direct Measure"):
+                if (result == "Direct"):
                     directMeasure = True
-                if (result == "Indirect Measure"):
+                if (result == "Indirect"):
                     directMeasure = False
 
             # Point in Program
             finalTerm = False
             termText = assessmentMeth[5][1]
-            temp = re.findall("☒\s+\w+", termText)
+            temp = re.findall("☒\s+(?:\w+\s)+", termText)
             for result in temp:
-                temp = re.search("☒\s+(\w+)", result)
+                temp = re.search("☒\s+((?:\w+\s)+)", result)
                 result = temp.group(1)
-                if (result == "In final year of program"):
+                if (result == "In final year of "):
                     finalTerm = True
-                if (result == "In final term of program"):
+                if (result == "In final term of program "):
                     finalTerm = True
 
 
@@ -135,22 +135,44 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             for result in temp:
                 temp = re.search("☒\s+(\w+)", result)
                 result = temp.group(1)
-                if (result == "All students"):
+                if (result == "All"):
                     finalTerm = True
-                if (result == "Sample of students"):
+                if (result == "Sample"):
                     finalTerm = False
-                    sampleDescription = ""
+                    temp = re.search("\n(.*)", studentText)
+                    sampleDescription = temp.group(1)
 
 
             # Frequency of Data Collection
-            frequencyChoice = "Onion"
-            frequency = "Placeholder frequency"
+            frequencyChoice = "Once"
+            frequency = ""
+            frequencyText = assessmentMeth[7][1]
+            temp = re.findall("☒\s+\w+", frequencyText)
+            for result in temp:
+                temp = re.search("☒\s+(\w+)", result)
+                result = temp.group(1)
+                if (result == "Once/semester"):
+                    frequencyChoice = "Once/Semester"
+                if (result == "Once/year"):
+                    frequencyChoice = "Once/Year"
+                if (result == "Other"):
+                    frequencyChoice = "Other"
+                    temp = re.search("\n(.*)", frequencyText)
+                    frequency = temp.group(1)
 
             # Proficiency Threshold
             threshold = "Placeholder threshold"
+            thresholdText = assessmentMeth[8][1]
+            temp = re.search("((?:\w+\s)+.*)\n", thresholdText)
+            if (temp):
+                threshold = temp.group(1)
 
             # Program Proficiency Target
             target = 0
+            targetText = assessmentMeth[9][1]
+            temp = re.search("([0123456789]+)%", targetText)
+            if (temp):
+                target = int(temp.group(1))
 
             # Where
             assessmentWhere = ""
