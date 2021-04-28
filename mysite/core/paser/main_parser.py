@@ -213,10 +213,10 @@ def run(uploaded_filename):
 
     ## Determines the appropriate regular expression list for the document header and table access based on undergraduate/graduate, accredited/non, and report year.
     if (not is_accredited):
-        header_regex = 'College:\s*(.*)\s*Department\/School:\s*(.*)\s*Program:\s*(.*)\s*Degree Level:\s*(.*)\s*Academic Year of Report:\s*(.*)\s*Date Range of Reported Data:\s*(.*)\s*Person Preparing the Report:\s*(.*)\s*(Degree|Program)'
+        header_regex = 'College:\s*(.*)\s*Department\/School:\s*(.*)\s*Program:\s*(.*)\s*Degree Level:\s*(.*)\s*Academic Year of Report:\s*(.*)\s*Date Range of Reported Data:\s*(.*)\s*Person Preparing the Report:\s*(.*)'
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report: ', 'Date: ', 'Person Preparing the Report: ']
     else:
-        header_regex = 'College:\s*(.*)\s*Department/School:\s*(.*)\s*Program:\s*(.*)\s*Degree Level:\s*(.*)\s*Academic Year of Report:\s*(.*)\s*Person Preparing the Report:\s(.*)\s*Last Accreditation Review:\s(.*)\s*Accreditation Body:\s(.*)\s*(Degree|Program)'
+        header_regex = 'College:\s*(.*)\s*Department/School:\s*(.*)\s*Program:\s*(.*)\s*Degree Level:\s*(.*)\s*Academic Year of Report:\s*(.*)\s*Person Preparing the Report:\s(.*)\s*Last Accreditation Review:\s(.*)\s*Accreditation Body:\s(.*)\s{2}'
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report', 'Person Preparing the Report: ', 'Last Accreditation Review: ', 'Accreditation Body: ']
         table_access_list = (0, 1, 2, 3)
 
@@ -251,7 +251,7 @@ def run(uploaded_filename):
     header_text = ""
     ## Loop through all of the paragraphs and compare them to the regular expressions.
     for para in all_paras:
-        header_text += " " + para.text
+        header_text += "\n " + para.text
         if (para_iter < 12):
             para_iter += 1
         else:
