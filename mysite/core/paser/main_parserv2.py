@@ -162,14 +162,6 @@ def run(uploaded_filename):
     ## The docx object that we use to access the document information gained from the docx module.
     doc = docx.Document(file_dir + uploaded_filename)
 
-    ## Loop through all paragraphs until we find whether it is Non-Accredited or Accredited
-    for para in doc.paragraphs:
-        if ("Non".lower() in para.text.lower()):
-            break
-        elif ("Accredited".lower() in para.text.lower()):
-            is_accredited = True
-            break
-
     ## Checking to see if the report is for an Accredited degree. Otherwise assigns the report year.
     if("Accredited" in doc.paragraphs[0].text):
         is_accredited = True
@@ -227,13 +219,10 @@ def run(uploaded_filename):
         print(report_header_list[i] + ": " + match_list[i])
     print("============================================================================================\n")
 
-    print(str(is_accredited) + ": - " + str(len(match_list)))
     if (not is_accredited and "18" in match_list[4]):
         table_access_list = (0, 1, 2, 3, 5)
     elif (not is_accredited and is_undergrad):
         table_access_list = (0, 1, 2, 4, 6)
-    elif (is_accredited):
-        table_access_list = (0, 1, 2, 3)
     else:
         report_year = 19
         table_access_list = (0, 1, 4, 5, 6)
@@ -298,7 +287,6 @@ def run(uploaded_filename):
     ## Maybe obsolete.
     prev_text = ""
     ## Set the table to the next table in the table_access_list.
-    print(table_access_list)
     table = doc.tables[table_access_list[2]]
     assessment_methods = table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count)
 
