@@ -119,7 +119,7 @@ def find_checkbox_elements(xml_path):
     for index, match in enumerate(reg):
         ## Some of the matches return empty strings, this is used to increment through the matches to find an appropriate non-empty string.
         empty_counter = 1
-        while (match == '<w:t xml:space="preserve"> </w:t>'):
+        while (match == '<w:t xml:space="preserve"> </w:t>' or match == '<w:t> </w:t>'):
             match = reg[index + empty_counter]
             empty_counter += 1
         ## If the previous match was a checked box, append the current match to the appropriate list.
