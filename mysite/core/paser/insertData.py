@@ -87,18 +87,60 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             domainExamination = False
             domainProduct = False
             domainPerformance = False
+            domainText = assessmentMeth[3][1]
+            temp = re.findall("☒\s+\w+", domainText)
+            for result in temp:
+                temp = re.search("☒\s+(\w+)", result)
+                result = temp.group(1)
+                print(result)
+                if (result == "Product"):
+                    domainProduct = True
+                if (result == "Examination"):
+                    domainExamination = True
+                if (result == "Performance"):
+                    domainPerformance = True
 
             # Type
             directMeasure = False
+            directText = assessmentMeth[4][1]
+            temp = re.findall("☒\s+(\w+)", directText)
+            for result in temp:
+                temp = re.search("☒\s+(\w+)", result)
+                result = temp.group(1)
+                if (result == "Direct Measure"):
+                    directMeasure = True
+                if (result == "Indirect Measure"):
+                    directMeasure = False
 
             # Point in Program
             finalTerm = False
+            termText = assessmentMeth[5][1]
+            temp = re.findall("☒\s+(\w+)", termText)
+            for result in temp:
+                temp = re.search("☒\s+(\w+)", result)
+                result = temp.group(1)
+                if (result == "In final year of program"):
+                    finalTerm = True
+                if (result == "In final term of program"):
+                    finalTerm = True
 
-            # Population Measured
-            allStudents = False
 
             # Sample Description
             sampleDescription = "Placeholder sample description"
+
+            # Population Measured
+            allStudents = False
+            studentText = assessmentMeth[6][1]
+            temp = re.findall("☒\s+\w+", studentText)
+            for result in temp:
+                temp = re.search("☒\s+(\w+)", result)
+                result = temp.group(1)
+                if (result == "All students"):
+                    finalTerm = True
+                if (result == "Sample of students"):
+                    finalTerm = False
+                    sampleDescription = ""
+
 
             # Frequency of Data Collection
             frequencyChoice = "Onion"
@@ -117,7 +159,7 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
                 assessmentWhere = temp.group(1)
 
             assessment = assessment_models.Assessment.objects.create(
-                title=title, domainExamination=domainExamination, domainProduct=False, domainPerformance=domainPerformance, directMeasure=directMeasure, numberOfUses=1)
+                title=title, domainExamination=domainExamination, domainProduct=domainProduct, domainPerformance=domainPerformance, directMeasure=directMeasure, numberOfUses=1)
             assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=sloIRs[assNum], number=1, changedFromPrior=False, assessment=assessment, date=date, description=description, finalTerm=finalTerm,
                                                                                    where=assessmentWhere, allStudents=allStudents, sampleDescription=sampleDescription, frequencyChoice=frequencyChoice, frequency=frequency, threshold=threshold, target=target)
 
