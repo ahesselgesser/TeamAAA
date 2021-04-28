@@ -7,7 +7,9 @@
 <p>Year: {{report.year}}</p>
 <p>Author: {{report.author}}</p>
 <p>Degree Program: {{report.degreeProgram}}</p>
-<!--<p>Date Range of Reported Data: {{report.date_range_of_reported_data}}</p>-->
+{%if report.date_range_of_reported_data%}
+<p>Date Range of Reported Data: {{report.date_range_of_reported_data}}</p>
+{%endif%}
 {% endfor %}
 <h2>Student Learning Outcomes</h2>
 <table class="table mb-0">
@@ -19,18 +21,55 @@
     <tbody>
         {% for slo in slos %}
         <tr>
-                <td>SLO {{slo.1.number}}</td>
-                <td>{{slo.1.goalText}}</td>
-                <td>{{slo.0}}</td>
+            <td>SLO {{slo.1.number}}</td>
+            <td>{{slo.1.goalText}}</td>
+            <td>{{slo.0}}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<!--
-    <p>Section 2</p>
-        {% for ass in assessments %}
-    {% endfor %} 
-        -->
+{% if resultCommunicate %}
+<p>{{resultCommunicate.text}}</p>
+{% endif %}
+<h2>Assessment Methods</h2>
+{% for ass in assessments %}
+<table class="table mb-0">
+    <tr>
+        <th>SLO </th>
+    </tr>
+    <tr>
+        <td>Describe How the Measure aligns to the SLO</td>
+    </tr>
+    <tr>
+        <td>Domain</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Type</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Point in Program Assessment is Administered</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Population Measured</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Frequency of Data Collection</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Proficiency Threshold</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Program Proficiency Target</td>
+        <td></td>
+    </tr>
+</table>
+{% endfor %}
 
 <h2>Data Collection and Analysis</h2>
 <table class="table mb-0">
@@ -65,7 +104,7 @@
     <tbody>
         {% for decisionAction in decisionActions%}
         <tr>
-            <td>SLO: {{decisionAction.0}}</td>
+            <td>SLO {{decisionAction.0}}</td>
             <td>{{decisionAction.1.text}}</td>
         </tr>
         {% endfor %}

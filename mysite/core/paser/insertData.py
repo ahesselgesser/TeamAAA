@@ -46,8 +46,8 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
     #insert SLO in Report Table
     sloIRs = []
     sloirnum = 1
-    for slo in slos: #TODO: Find how to find number of assess
-        sloIR = slo_models.SLOInReport.objects.create(goalText=slo_list[sloirnum - 1], slo=slo, changedFromPrior=False, report=report, number=sloirnum, numberOfAssess=0) #Number of asses unknown
+    for slo in slos: 
+        sloIR = slo_models.SLOInReport.objects.create(goalText=slo_list[sloirnum - 1][7:], slo=slo, changedFromPrior=False, report=report, number=sloirnum, numberOfAssess=0) #Number of asses unknown
         sloirnum = sloirnum + 1
         sloIRs.append(sloIR)
     #Assessment Methods
@@ -72,8 +72,12 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             assessmentVs.append(assessmentVersion)
         assNum = assNum + 1
     #Data Collection Methods
-    #TODO: I don't know where the information on how results are communicated to stakeholders are because the file I was using doesn't have text there
-    dataAdditional = data_models.ResultCommunicate.objects.create(text="Placeholder Communication", report=report)
+    additionaInfo = ""
+    for item in list_of_lists[-1]:
+        if (item[-1] == "1"):
+            additionaInfo = item
+    if (additionaInfo):
+        dataAdditional = data_models.ResultCommunicate.objects.create(text=additionaInfo, report=report)
     assVNum = 1
     for assessmentV in assessmentVs:
         assessmentData = data_models.AssessmentData.objects.create(assessmentVersion= assessmentV,dataRange=data_coll_list[assVNum][1], numberStudents=int(data_coll_list[assVNum][2]), overallProficient=float(data_coll_list[assVNum][3][:-1]))
