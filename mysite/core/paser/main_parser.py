@@ -17,22 +17,19 @@ def assessmentMethodProcessor(assessment_methods):
     output.append(temp)
     return output
 
-def regex_inc(regex_list, regex_counter, match_list, para):
-    """!  Allows a for loop to loop through a list of regular expressions.
+def regex_inc(regex, match_list, header_text):
+    """!  Applies a regular expression to a block of text.
     
-    @param regex_list - This is the list of regular expressions the loop accesses.
-    @param regex_counter - This counter keeps track of how many times the regular expression list has been accessed.
+    @param regex - This is the regular expressions to apply.
     @param match_list - This list keeps track of all the matches that the regular expressions have caught.
-    @param para - This is the text that the regular expression is compared to.
+    @param header_text - This is the text that the regular expression is compared to.
 
-    @return The counter keeping track of regular expressions and the list of matches.
+    @return The list of matches.
     """
-    if(regex_counter < len(regex_list)):
-        regex = re.findall(regex_list[regex_counter], para.text)
-        if (regex):
-            match_list.append(regex[0])
-            regex_counter += 1
-    return (regex_counter, match_list)
+    rex = re.findall(regex, header_text)
+    for match in rex[0]:
+        match_list.append(match)
+    return (match_list)
 
 def table_two_access(is_accredited, column, table, row_iter, data, one_cols, max_rows):
     """!  Captures the information in the Assessment Methods table(s) of the document.
@@ -216,12 +213,10 @@ def run(uploaded_filename):
 
     ## Determines the appropriate regular expression list for the document header and table access based on undergraduate/graduate, accredited/non, and report year.
     if (not is_accredited):
-        regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Date', 'Date Range of Reported Data:\s*(.*)',
-            'Person Preparing the Report:\s(.*)']
+        header_regex = 'College:\s*(.*)\s*Department\/School:\s*(.*)\s*Program:\s*(.*)\s*Degree Level:\s*(.*)\s*Academic Year of Report:\s*(.*)\s*Date Range of Reported Data:\s*(.*)\s*Person Preparing the Report:\s*(.*)\s*(Degree|Program)'
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report: ', 'Date: ', 'Person Preparing the Report: ']
     else:
-        regex_header_list = ['College:\s*(.*)\s*Department/School:', 'Department/School:\s*(.*)', 'Program:\s*(.*)\s*Degree Level:', 'Degree Level:\s*(.*)', 'Academic Year of Report:\s*(.*)\s*Person', 
-            'Person Preparing the Report:\s(.*)', 'Last Accreditation Review:\s(.*)\s*Accreditation', 'Accreditation Body:\s(.*)\s*']   
+        header_regex = 'College:\s*(.*)\s*Department/School:\s*(.*)\s*Program:\s*(.*)\s*Degree Level:\s*(.*)\s*Academic Year of Report:\s*(.*)\s*Person Preparing the Report:\s(.*)\s*Last Accreditation Review:\s(.*)\s*Accreditation Body:\s(.*)\s*(Degree|Program)'
         report_header_list = ['College: ', 'Department/School: ', 'Program: ', 'Degree Level: ', 'Academic Year of Report', 'Person Preparing the Report: ', 'Last Accreditation Review: ', 'Accreditation Body: ']
         table_access_list = (0, 1, 2, 3)
 
@@ -252,28 +247,36 @@ def run(uploaded_filename):
     ## Stores all the docx Paragraph objects found in the document.
     all_paras = doc.paragraphs
 
+    para_iter = 0
+    header_text = ""
     ## Loop through all of the paragraphs and compare them to the regular expressions.
     for para in all_paras:
-        (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list, para)
-        (regex_counter, match_list) = regex_inc(regex_header_list, regex_counter, match_list, para)
+        header_text += " " + para.text
+        if (para_iter < 12):
+            para_iter += 1
+        else:
+            break
 
+    print(header_text)
+    
+    match_list = regex_inc(header_regex, match_list, header_text)
+    print(match_list)
     ## Print out the report header info, ONLY FOR TESTING PURPOSES.
     print("Report Header info: printing at line 231")
     print("============================================================================================")
     
-    for i in range(0, len(match_list)):
+    for i in range(0, len(report_header_list)):
         print(report_header_list[i] + ": " + match_list[i])
     print("============================================================================================\n")
 
     master_table = (0, 1, 2)
-
     if (not is_accredited and "18" in match_list[4]):
         report_year = 18
         table_access_list = master_table + (3, 5)
     elif (not is_accredited and is_undergrad):
         table_access_list = master_table + (4, 6)
     elif (is_accredited):
-        table_access_list = master_table + (3)
+        table_access_list = master_table + (3,)
     else:
         report_year = 19
 
