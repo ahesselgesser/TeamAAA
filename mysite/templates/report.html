@@ -32,12 +32,13 @@
 <p>{{resultCommunicate.text}}</p>
 {% endif %}
 <h2>Assessment Methods</h2>
-{% for ass in assessments %}
+{% for assessmentM in assessmentMethods %}
 <table class="table mb-0">
     <tr>
-        <th>SLO </th>
+        <th>SLO {{assessmentM.0}}</th>
     </tr>
     <tr>
+        <td>Describe How the Measure aligns to the SLO</td>
         <td>Describe How the Measure aligns to the SLO</td>
     </tr>
     <tr>

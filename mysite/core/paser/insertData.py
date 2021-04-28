@@ -6,6 +6,7 @@ from mysite.core.models import decisionsActions_models
 from mysite.core.models import slo_models
 import datetime
 import psycopg2
+import re
 def insertCheckBox(list_of_lists):
     conn = psycopg2.connect(database="aaadb", user='teamaaa', password='aaapass', host='localhost', port= '5432')
     conn.autocommit = True
@@ -62,8 +63,14 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             #TODO Where currently includes extraneous information
             #TODO All True/False flags are placeholders
             #TODO: Most of Assessment Version is placeholders
+
+            #Where
+            temp = re.search(":(.*)", assessmentMeth[5][1])
+            assessmentWhere = temp.group(1)
+
+
             assessment = assessment_models.Assessment.objects.create(title=assessmentMeth[1], domainExamination=False, domainProduct=False, domainPerformance=False, directMeasure=False, numberOfUses=1)
-            assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=sloIRs[assNum], number=0, changedFromPrior=False, assessment=assessment, date=date, description=assessmentMeth[2], finalTerm=False, where=assessmentMeth[5][1], allStudents=False, sampleDescription="Placholder sample description", frequencyChoice="O", frequency="Placeholder Frequency", threshold="Placeholder Threshold", target=0)
+            assessmentVersion = assessment_models.AssessmentVersion.objects.create(report=report, slo=sloIRs[assNum], number=0, changedFromPrior=False, assessment=assessment, date=date, description=assessmentMeth[2], finalTerm=False, where=assessmentWhere, allStudents=False, sampleDescription="Placholder sample description", frequencyChoice="O", frequency="Placeholder Frequency", threshold="Placeholder Threshold", target=0)
 
             #SLO Status information
             sloStatus = data_models.SLOStatus(status=list_of_lists[6][statusCount], sloIR=sloIRs[assNum], override=False)

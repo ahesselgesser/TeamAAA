@@ -22,23 +22,24 @@ import datetime
 from mysite.core.paser import main_parser
 #from pip._internal.cli import main_parser
 
+
 class Home(TemplateView):
     template_name = 'home.html'
-
 
 
 def upload(request):
     context = {}
     if request.method == 'POST':
-        #TODO:Add check so it doesn't error if someone doesn't upload a document
+        # TODO:Add check so it doesn't error if someone doesn't upload a document
         uploaded_file = request.FILES['document']
         fs = FileSystemStorage()
         name = fs.save(uploaded_file.name, uploaded_file)
         context['url'] = fs.url(name)
 
         main_parser.run(uploaded_file.name)
-       
+
     return render(request, 'upload.html', context)
+
 
 def report_list(request):
     reports = Report.objects.all()
@@ -51,19 +52,25 @@ def upload_report(request):
     if request.method == 'POST':
         form = ReportForm(request.POST, request.FILES)
         if form.is_valid():
-            dbform = Report.objects.create(year="2019", author="Arts and Sciences", degreeProgram="Mathematcis",accredited=False,date_range_of_reported_data="F2018",section1Comment="",section2Comment="",section3Comment="",section4Comment="",submitted=True,returned=True,numberOfSLOs=0,title="Undergrad2018-regular",uploader="Alex",)
-            GradGoal1 = GradGoal.objects.create(text="SampleGradGoal",active=True)
+            dbform = Report.objects.create(year="2019", author="Arts and Sciences", degreeProgram="Mathematcis", accredited=False, date_range_of_reported_data="F2018", section1Comment="",
+                                           section2Comment="", section3Comment="", section4Comment="", submitted=True, returned=True, numberOfSLOs=0, title="Undergrad2018-regular", uploader="Alex",)
+            GradGoal1 = GradGoal.objects.create(
+                text="SampleGradGoal", active=True)
             GradGoal1.save()
-            SLO1 = SLO.objects.create(blooms=dict(BLOOMS_CHOICES).get('CO'), numberOfUses=1)
-            SLOReport1 = SLOInReport.objects.create(date="1980-01-01",goalText="Students will be  be able to make and write correct,clear and concise arguments",slo=SLO1,changedFromPrior=False,report=dbform,number=1,numberOfAssess=1)
+            SLO1 = SLO.objects.create(blooms=dict(
+                BLOOMS_CHOICES).get('CO'), numberOfUses=1)
+            SLOReport1 = SLOInReport.objects.create(date="1980-01-01", goalText="Students will be  be able to make and write correct,clear and concise arguments",
+                                                    slo=SLO1, changedFromPrior=False, report=dbform, number=1, numberOfAssess=1)
             SLO1.save()
             SLOReport1.save()
             SLO2 = SLO.objects.create(blooms=BLOOMS_CHOICES[3], numberOfUses=1)
-            SLOReport2 = SLOInReport.objects.create(date="1980-01-01",goalText="Be able to communicate mathematics effectively in oral form.",slo=SLO2,changedFromPrior=False,report=dbform,number=1,numberOfAssess=1)
+            SLOReport2 = SLOInReport.objects.create(date="1980-01-01", goalText="Be able to communicate mathematics effectively in oral form.",
+                                                    slo=SLO2, changedFromPrior=False, report=dbform, number=1, numberOfAssess=1)
             SLO2.save()
             SLOReport2.save()
             SLO3 = SLO.objects.create(blooms=BLOOMS_CHOICES[2], numberOfUses=1)
-            SLOReport3 = SLOInReport.objects.create(date="1980-01-01",goalText="Demonstrate substantive  comprehension of the major ideas in the core areas of their fields of study.",slo=SLO3,changedFromPrior=False,report=dbform,number=1,numberOfAssess=1)
+            SLOReport3 = SLOInReport.objects.create(date="1980-01-01", goalText="Demonstrate substantive  comprehension of the major ideas in the core areas of their fields of study.",
+                                                    slo=SLO3, changedFromPrior=False, report=dbform, number=1, numberOfAssess=1)
             SLO3.save()
             SLOReport3.save()
 
@@ -83,10 +90,11 @@ def delete_report(request, pk):
         report.delete()
     return redirect('report_list')
 
+
 def search(request):
     if request.method == 'GET':
-        titleText= request.GET.get('titleText')
-        authorText= request.GET.get('authorText')
+        titleText = request.GET.get('titleText')
+        authorText = request.GET.get('authorText')
         degreeProgram = request.GET.get('degreeProgram')
 
         results = Report.objects.all()
@@ -100,19 +108,20 @@ def search(request):
         if (degreeProgram and (degreeProgram != "None")):
             results = results.filter(degreeProgram=degreeProgram)
 
-        context={'results': results}
+        context = {'results': results}
 
         return render(request, 'search.html', context)
 
     else:
         results = Report.objects.all()
-        context={'results': results}
+        context = {'results': results}
         return render(request, 'search.html')
+
 
 def view_report(request):
     if request.method == 'GET':
         dummy = 0
-        reportId= request.GET.get('id')
+        reportId = request.GET.get('id')
         results = Report.objects.filter(id=reportId)
         slos = SLOInReport.objects.filter(report=reportId)
         sloIRs = []
@@ -120,19 +129,27 @@ def view_report(request):
             temp = SLO.objects.filter(id=slo.slo.id)
             if (len(temp) != 0):
                 sloIRs.append((list(temp)[0].blooms, slo))
+        assessmentMethods = []
+        for slo in slos:
+            temp = AssessmentVersion.objects.filter(slo__id=slo.id)
+            if (len(temp) != 0):
+                assessmentMethods.append((slo.number, list(temp)[0]))
         assessmentDatas = []
         for slo in slos:
-            temp = AssessmentData.objects.filter(assessmentVersion__slo__id=slo.id)
+            temp = AssessmentData.objects.filter(
+                assessmentVersion__slo__id=slo.id)
             if (len(temp) != 0):
                 assessmentDatas.append((slo.number, list(temp)[0]))
         decisionActions = []
         for slo in slos:
             temp = DecisionsActions.objects.filter(sloIR=slo.id)
             if (len(temp) != 0):
-                decisionActions.append((slo.number,list(temp)[0]))
-        context={'results': results, 'slos': sloIRs, 'assessmentDatas': assessmentDatas, 'decisionActions': decisionActions}
+                decisionActions.append((slo.number, list(temp)[0]))
+        context = {'results': results, 'slos': sloIRs,
+                   'assessmentDatas': assessmentDatas, 'decisionActions': decisionActions, 'assessmentMethods':assessmentMethods}
         return render(request, 'report.html', context)
     return render(request, 'report.html')
+
 
 class ReportListView(ListView):
     model = Report
