@@ -148,6 +148,7 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             if (temp):
                 sloNumber = int(temp.group(1))
 
+        
         if (sloNumber != 0):
             # Get the correct assessment
             for assessmentV in assessmentVs:
@@ -157,8 +158,8 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             # Number of students Check
             numberOfStudents = 0
             if (len(data_coll_list[assVNum]) > 1 and data_coll_list[assVNum][2]):
-                temp = re.search("(?:([0123456789]+)\s*)+", data_coll_list[assVNum][2])
-                for value in temp.groups():
+                temp = re.findall("([0123456789]+)", data_coll_list[assVNum][2])
+                for value in temp:
                     numberOfStudents = numberOfStudents + int(value)
 
             # Overall Proficency Chck
