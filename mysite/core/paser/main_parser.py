@@ -64,6 +64,42 @@ def table_two_access(is_accredited, column, table, row_iter, data, one_cols, max
             data.append(("\n\n" + "SLO " + row.cells[column[1]].text, row.cells[column[2]].text, row.cells[column[3]].text, row.cells[column[4]].text))
     return data
 
+def grad_unaccredited_assessment(column, report_year, doc, slo_count, data, one_cols, max_rows):
+    """!  Captures the information in Non-Accredited Graduate reports in the Assessment Methods table(s) of the document.
+    
+    @param column - A tuple that refers to the column number we are accessing in the table.
+    @param report_year - The year the report was created.
+    @param doc - The document object, so that we can iterate through its tables.
+    @param data - A list that the captured data is appended to.
+    @param one_cols - The assessment methods tables have three "columns" that are just rows. This is represented as 2 for 0-based arrays.
+    @param max_rows - The maximum number of rows that should be in the table we are accessing.
+
+    @return The captured data in a list.
+    """ 
+    row_iter = 0
+    slo_iter = 0
+    table = doc.tables[1]   
+    if (report_year == 18):
+        for row in table.rows:
+            ## If we are still on one of the first three columns of the table, or we have gone through the first table and onto the second.
+            ## Only append the first column, because there is only one column.
+            if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
+                data.append(row.cells[column[1]].text)
+            ## If we are past the first three columns and have not moved on to another table, append the first and second column data.
+            if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
+                data.append((row.cells[0].text, row.cells[column[2]].text))
+        table = doc.tables[3]
+        for row in table.rows:
+            ## If we are still on one of the first three columns of the table, or we have gone through the first table and onto the second.
+            ## Only append the first column, because there is only one column.
+            if row_iter <= one_cols or (row_iter > max_rows and row_iter <= one_cols + max_rows):
+                data.append(row.cells[column[1]].text)
+            ## If we are past the first three columns and have not moved on to another table, append the first and second column data.
+            if (row_iter > one_cols and row_iter < max_rows + 1) or (row_iter > max_rows + one_cols):
+                data.append((row.cells[0].text, row.cells[column[2]].text))
+    return data
+
+
 def table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count):
     """!  Captures the information in the Data (Collection &) Analysis table of the document.
     
@@ -162,17 +198,19 @@ def run(uploaded_filename):
     ## The docx object that we use to access the document information gained from the docx module.
     doc = docx.Document(file_dir + uploaded_filename)
 
+    ## Counter to keep track of how many iterations through the paragraphs we have gone.
+    para_iter = 0
+
     ## Loop through all paragraphs until we find whether it is Non-Accredited or Accredited
     for para in doc.paragraphs:
+        if (para_iter > 10):
+            break
         if ("Non".lower() in para.text.lower()):
             break
         elif ("Accredited".lower() in para.text.lower()):
             is_accredited = True
             break
-
-    ## Checking to see if the report is for an Accredited degree. Otherwise assigns the report year.
-    if("Accredited" in doc.paragraphs[0].text):
-        is_accredited = True
+        para_iter += 1
 
     read_doc_chx.copy_and_unzip(file_dir, uploaded_filename, unzip_name, zip_dir)
 
@@ -227,16 +265,17 @@ def run(uploaded_filename):
         print(report_header_list[i] + ": " + match_list[i])
     print("============================================================================================\n")
 
-    print(str(is_accredited) + ": - " + str(len(match_list)))
+    master_table = (0, 1, 2)
+
     if (not is_accredited and "18" in match_list[4]):
-        table_access_list = (0, 1, 2, 3, 5)
+        report_year = 18
+        table_access_list = master_table + (3, 5)
     elif (not is_accredited and is_undergrad):
-        table_access_list = (0, 1, 2, 4, 6)
+        table_access_list = master_table + (4, 6)
     elif (is_accredited):
-        table_access_list = (0, 1, 2, 3)
+        table_access_list = master_table + (3)
     else:
         report_year = 19
-        table_access_list = (0, 1, 4, 5, 6)
 
     ## List used to store information captured from tables.
     data = []
@@ -291,14 +330,16 @@ def run(uploaded_filename):
     table = doc.tables[table_access_list[1]]
     ## Reset the previous text. Maybe obsolete.
     prev_text = ""
-    data = table_two_access(is_accredited, column, table, row_iter, data, one_cols, max_rows)
+    if (not is_undergrad and not is_accredited):
+        data = grad_unaccredited_assessment(column, report_year, doc, slo_count, data, one_cols, max_rows)
+    else:
+        data = table_two_access(is_accredited, column, table, row_iter, data, one_cols, max_rows)
 
     ## Reset row_iter, this might not be needed if the row_iter variable is not changed after calling table_two_access(...).
     row_iter = 0
     ## Maybe obsolete.
     prev_text = ""
     ## Set the table to the next table in the table_access_list.
-    print(table_access_list)
     table = doc.tables[table_access_list[2]]
     assessment_methods = table_three_access(column, table, row_iter, data, one_cols, max_rows, slo_count)
 
@@ -316,7 +357,10 @@ def run(uploaded_filename):
     ## The list that holds the information from the Data Collection & Analysis table.
     data_coll_list = []
     ## Set the table variable to the next table.
-    table = doc.tables[table_access_list[3]]
+    if (not is_undergrad and not is_accredited):
+        table = doc.tables[table_access_list[3] + 1]
+    else:
+        table = doc.tables[table_access_list[3]]
     data_coll_list = table_four_access(is_accredited, column, table, row_iter, data_coll_list, slo_count)
 
     ## Print out the Data Collection & Analysis info, ONLY FOR TESTING purposes.
@@ -335,7 +379,7 @@ def run(uploaded_filename):
     print("============================================================================================\n")
 
     #### DECISIONS AND ACTIONS
-    ## This is only for undergraduate reports. 
+    ## This is only for Non-Accredited reports. 
     if (not is_accredited):
         table = doc.tables[table_access_list[4]]
         dec_act = []
