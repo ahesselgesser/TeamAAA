@@ -29,6 +29,7 @@
     </tbody>
 </table>
 {% if resultCommunicate %}
+<h4>How are results communicated to stakeholders:</h4>
 <p>{{resultCommunicate.text}}</p>
 {% endif %}
 <h2>Assessment Methods</h2>
@@ -39,23 +40,29 @@
     </tr>
     <tr>
         <td>Describe How the Measure aligns to the SLO</td>
-        <td>Describe How the Measure aligns to the SLO</td>
+        <td>{{assessmentM.1.description}}</td>
     </tr>
     <tr>
         <td>Domain</td>
-        <td></td>
+        <td>Examination</td>
+        <td>Product</td>
+        <td>Performance</td>
+        <td>{{assessmentM.2.domainExamination}}</td>
     </tr>
     <tr>
         <td>Type</td>
-        <td></td>
+        <td>Direct Measure</td>
+        <td>Indirect Measure</td>
     </tr>
     <tr>
         <td>Point in Program Assessment is Administered</td>
         <td></td>
+        <td>Where does the assessment occur: {{assessmentM.1.where}}</td>
     </tr>
     <tr>
         <td>Population Measured</td>
-        <td></td>
+        <td>All students</td>
+        <td>Sample of students - </td>
     </tr>
     <tr>
         <td>Frequency of Data Collection</td>

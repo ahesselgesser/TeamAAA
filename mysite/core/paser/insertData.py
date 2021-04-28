@@ -79,12 +79,12 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             assessmentVs.append(assessmentVersion)
         assNum = assNum + 1
     #Data Collection Methods
-    additionaInfo = ""
+    additionalInfo = ""
     for item in list_of_lists[-1]:
         if (item[-1] == "1"):
-            additionaInfo = item
-    if (additionaInfo):
-        dataAdditional = data_models.ResultCommunicate.objects.create(text=additionaInfo, report=report)
+            additionalInfo = item[:-2]
+    if (additionalInfo):
+        dataAdditional = data_models.ResultCommunicate.objects.create(text=additionalInfo, report=report)
     assVNum = 1
     for assessmentV in assessmentVs:
         assessmentData = data_models.AssessmentData.objects.create(assessmentVersion= assessmentV,dataRange=data_coll_list[assVNum][1], numberStudents=int(data_coll_list[assVNum][2]), overallProficient=float(data_coll_list[assVNum][3][:-1]))
@@ -97,6 +97,5 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
         if (decActNum < len(sloIRs)):
             decisionAction = decisionsActions_models.DecisionsActions.objects.create(sloIR = sloIRs[decActNum], text=info[1])
         decActNum = decActNum + 1
-    #
     print("Records inserted........")
 

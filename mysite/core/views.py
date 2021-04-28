@@ -14,6 +14,7 @@ from .models.assessment_models import Assessment
 from .models.assessment_models import AssessmentVersion
 from .models.decisionsActions_models import DecisionsActions
 from .models.data_models import AssessmentData
+from .models.data_models import ResultCommunicate
 from .forms import FileFieldForm
 from django.http import HttpResponse
 import os
@@ -133,7 +134,7 @@ def view_report(request):
         for slo in slos:
             temp = AssessmentVersion.objects.filter(slo__id=slo.id)
             if (len(temp) != 0):
-                assessmentMethods.append((slo.number, list(temp)[0]))
+                assessmentMethods.append((slo.number, list(temp)[0], temp[0].assessment))
         assessmentDatas = []
         for slo in slos:
             temp = AssessmentData.objects.filter(
@@ -145,8 +146,10 @@ def view_report(request):
             temp = DecisionsActions.objects.filter(sloIR=slo.id)
             if (len(temp) != 0):
                 decisionActions.append((slo.number, list(temp)[0]))
+        resultCommunicate = ResultCommunicate.objects.filter(report=reportId)[0]
+        print(resultCommunicate)
         context = {'results': results, 'slos': sloIRs,
-                   'assessmentDatas': assessmentDatas, 'decisionActions': decisionActions, 'assessmentMethods':assessmentMethods}
+                   'assessmentDatas': assessmentDatas, 'decisionActions': decisionActions, 'assessmentMethods':assessmentMethods, 'resultCommunicate':resultCommunicate}
         return render(request, 'report.html', context)
     return render(request, 'report.html')
 
