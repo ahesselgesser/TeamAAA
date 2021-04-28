@@ -111,8 +111,10 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
             target = 0
 
             # Where
+            assessmentWhere = ""
             temp = re.search(":(.*)", assessmentMeth[5][1])
-            assessmentWhere = temp.group(1)
+            if (temp):
+                assessmentWhere = temp.group(1)
 
             assessment = assessment_models.Assessment.objects.create(
                 title=title, domainExamination=domainExamination, domainProduct=False, domainPerformance=domainPerformance, directMeasure=directMeasure, numberOfUses=1)
@@ -120,8 +122,11 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
                                                                                    where=assessmentWhere, allStudents=allStudents, sampleDescription=sampleDescription, frequencyChoice=frequencyChoice, frequency=frequency, threshold=threshold, target=target)
 
             # SLO Status information
+            statusDesc = "Unkown"
+            if (len(list_of_lists[6]) > statusCount):
+                statusDesc = list_of_lists[6][statusCount]
             sloStatus = data_models.SLOStatus(
-                status=list_of_lists[6][statusCount], sloIR=sloIRs[assNum], override=False)
+                status=statusDesc, sloIR=sloIRs[assNum], override=False)
             statusCount = statusCount + 1
 
             assessmentVs.append(assessmentVersion)
@@ -140,28 +145,32 @@ def insertReportHeader(match_list, list_of_lists, accredited1, length_slo, dec_a
         sloNumber = 0
         if (len(data_coll_list[assVNum]) > 0 and data_coll_list[assVNum][0]):
             temp = re.search("([123456789])", data_coll_list[assVNum][0])
-            sloNumber = int(temp.group(1))
+            if (temp):
+                sloNumber = int(temp.group(1))
 
-        # Get the correct assessment
-        for assessmentV in assessmentVs:
-            if (assessmentV.slo.number == sloNumber):
-                assessmentVersion = assessmentV
+        if (sloNumber != 0):
+            # Get the correct assessment
+            for assessmentV in assessmentVs:
+                if (assessmentV.slo.number == sloNumber):
+                    assessmentVersion = assessmentV
 
-        # Number of students Check
-        numberOfStudents = 0
-        if (len(data_coll_list[assVNum]) > 1 and data_coll_list[assVNum][2]):
-            numberOfStudents = int(data_coll_list[assVNum][2])
+            # Number of students Check
+            numberOfStudents = 0
+            if (len(data_coll_list[assVNum]) > 1 and data_coll_list[assVNum][2]):
+                temp = re.search("(?:([0123456789]+)\s*)+", data_coll_list[assVNum][2])
+                for value in temp.groups():
+                    numberOfStudents = numberOfStudents + int(value)
 
-        # Overall Proficency Chck
-        overallProficient = 0
-        if (len(data_coll_list[assVNum]) > 2 and data_coll_list[assVNum][3]):
-            temp = re.search("(.*?)%", data_coll_list[assVNum][3])
-            overallProficient = float(temp.group(1))
+            # Overall Proficency Chck
+            overallProficient = 0
+            if (len(data_coll_list[assVNum]) > 2 and data_coll_list[assVNum][3]):
+                temp = re.search("(.*?)%", data_coll_list[assVNum][3])
+                overallProficient = float(temp.group(1))
 
-        assessmentData = data_models.AssessmentData.objects.create(
-            assessmentVersion=assessmentVersion, dataRange=data_coll_list[assVNum][1], numberStudents=numberOfStudents, overallProficient=overallProficient)
-        #assessmentAgg = data_models.AssessmentAggregate.objects.create(assessmentVersion=assessmentVersion, aggregate_proficiency=overallProficient, met=False)
-        assVNum = assVNum + 1
+            assessmentData = data_models.AssessmentData.objects.create(
+                assessmentVersion=assessmentVersion, dataRange=data_coll_list[assVNum][1], numberStudents=numberOfStudents, overallProficient=overallProficient)
+            #assessmentAgg = data_models.AssessmentAggregate.objects.create(assessmentVersion=assessmentVersion, aggregate_proficiency=overallProficient, met=False)
+            assVNum = assVNum + 1
 
     # insert decision Actions table
     for info in dec_act:
