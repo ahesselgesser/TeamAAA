@@ -38,13 +38,13 @@ class Report(models.Model):
     """
     Report model which collects attributes specific to a report and completion status
     """
-    year = models.CharField(max_length=100, blank=True)
+    year = models.CharField(max_length=1000, blank=True)
     
-    author = models.CharField(max_length=100, blank=True)
+    author = models.CharField(max_length=1000, blank=True)
     #degreeProgram = models.ForeignKey('DegreeProgram', on_delete=models.CASCADE, verbose_name="degree program")
     #Editied:
     
-    degreeProgram = models.CharField(max_length=100, blank=True)
+    degreeProgram = models.CharField(max_length=1000, blank=True)
     #End of Edits
     accredited = models.BooleanField(default=False)
     date_range_of_reported_data = models.CharField(max_length=500,blank=True, null=True)
