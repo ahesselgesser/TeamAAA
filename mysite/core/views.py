@@ -107,7 +107,7 @@ def search(request):
             results = results.filter(author__contains=authorText)
 
         if (degreeProgram and (degreeProgram != "None")):
-            results = results.filter(degreeProgram=degreeProgram)
+            results = results.filter(degreeProgram__contains=degreeProgram)
 
         context = {'results': results}
 
