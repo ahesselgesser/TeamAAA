@@ -76,6 +76,14 @@ class Program_test_case(unittest.TestCase):
         id_test = str(self.driver.find_element_by_id("upload_success").text)
         self.assertEqual("Successfully Uploaded!",id_test)
 
+        element4 = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "Delete_reports")))
+        element4.click()
+        time.sleep(1)
+
+        element5 = self.driver.find_element_by_name("delete_file")
+        element5.click()
+
     def test_file_upload_submit_with_files2(self):
         element = WebDriverWait(self.driver, 10).until(
         EC.presence_of_element_located((By.ID, "Simple_Upload")))
@@ -93,6 +101,14 @@ class Program_test_case(unittest.TestCase):
 
         id_test = str(self.driver.find_element_by_id("upload_success").text)
         self.assertEqual("Successfully Uploaded!",id_test)
+
+        element4 = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "Delete_reports")))
+        element4.click()
+        time.sleep(1)
+
+        element5 = self.driver.find_element_by_name("delete_file")
+        element5.click()
         
     
     def test_delete_reports_page(self):
