@@ -103,8 +103,8 @@ class Program_test_case(unittest.TestCase):
         EC.presence_of_element_located((By.ID, "Delete_reports")))
         element4.click()
         time.sleep(3)
-        
-        element5 = self.driver.find_element_by_type("submit")
+
+        element5 = self.driver.find_element_by_name("delete_file")
         element5.click()
         time.sleep(2)
 

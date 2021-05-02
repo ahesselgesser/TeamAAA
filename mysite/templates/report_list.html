@@ -31,7 +31,7 @@
           <td>
             <form method="post" action="{% url 'delete_report' report.pk %}">
               {% csrf_token %}
-              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              <button name = "delete_file" type="submit" class="btn btn-danger btn-sm">Delete</button>
             </form>
           </td>
         </tr>
