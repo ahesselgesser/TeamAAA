@@ -83,7 +83,7 @@ class Program_test_case(unittest.TestCase):
         time.sleep(1)
         id_test = str(self.driver.find_element_by_id("delete_page_header").text)
         self.assertEqual("Remove Reports",id_test)
-    """
+    
     def test_delete_reports_page_delete_buttom(self):
         element = WebDriverWait(self.driver, 10).until(
         EC.presence_of_element_located((By.ID, "Simple_Upload")))
@@ -110,9 +110,45 @@ class Program_test_case(unittest.TestCase):
 
         id_test = str(self.driver.find_element_by_tag_name("tbody").text)
         self.assertEqual("",id_test)
+   
+    def test_search_page(self):
+        element = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "search_page")))
+        element.click()
+        time.sleep(1)
+        id_test = str(self.driver.find_element_by_id("header_search").text)
+        self.assertEqual("Search Page",id_test)
+    """
+    def test_report_show_page(self):
+        element = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "Simple_Upload")))
+        element.click()
 
+        element2 = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "choose_file")))
+        element2.send_keys("C://Users/User/Desktop/math (MS) Report 2018.docx")
+        time.sleep(3)
 
+        element3 = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "sub")))
+        element3.click()
+        time.sleep(3)
 
+        element4 = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "search_page")))
+        element4.click()
+        time.sleep(1)
+
+        element5 = self.driver.find_element_by_link_text("Mathematics MS Masters 2018-19")
+        element5.click()
+        time.sleep(2)
+
+        element6 = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "report_title")))
+        time.sleep(2)
+        id_test = str(self.driver.find_element_by_id("report_title").text)
+        self.assertEqual("Mathematics MS Masters 2018-19",id_test)
+        #time.sleep(3)
 
     def tearDown(self):
         #time.sleep(5)
