@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 
 from .forms import ReportForm
+from .forms import UploadFileForm
 from .choices import BLOOMS_CHOICES
 from .models.basic_models import Report
 from .models.slo_models import SLOInReport
@@ -32,13 +33,16 @@ def upload(request):
     context = {}
     if request.method == 'POST':
         # TODO:Add check so it doesn't error if someone doesn't upload a document
-        uploaded_file = request.FILES['document']
-        fs = FileSystemStorage()
-        name = fs.save(uploaded_file.name, uploaded_file)
-        context['url'] = fs.url(name)
-
-        main_parser.run(uploaded_file.name)
-
+        if (request.FILES.get('document') is None):
+            return render(request, 'upload.html')
+        else:
+            uploaded_file = request.FILES['document']
+            fs = FileSystemStorage()
+            name = fs.save(uploaded_file.name, uploaded_file)
+            context['url'] = fs.url(name)
+            main_parser.run(uploaded_file.name)
+            return render(request, 'upload.html', context)
+    
     return render(request, 'upload.html', context)
 
 

@@ -3,7 +3,7 @@
 {% block content %}
 
   {% block content_header %}
-    <h2>Remove Reports</h2>
+    <h2 id = "delete_page_header">Remove Reports</h2>
   {% endblock %}
 
   <table class="table mb-0">
@@ -17,6 +17,7 @@
     </thead>
     <tbody>
       {% for report in reports %}
+      
         <tr>
           <td>
             {% if report.cover %}
@@ -30,7 +31,7 @@
           <td>
             <form method="post" action="{% url 'delete_report' report.pk %}">
               {% csrf_token %}
-              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              <button name = "delete_file" type="submit" class="btn btn-danger btn-sm">Delete</button>
             </form>
           </td>
         </tr>
