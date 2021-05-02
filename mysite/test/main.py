@@ -75,6 +75,25 @@ class Program_test_case(unittest.TestCase):
 
         id_test = str(self.driver.find_element_by_id("upload_success").text)
         self.assertEqual("Successfully Uploaded!",id_test)
+
+    def test_file_upload_submit_with_files2(self):
+        element = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "Simple_Upload")))
+        element.click()
+
+        element2 = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "choose_file")))
+        element2.send_keys("C://Users/User/Desktop/ArtSci(BSCS)Report2019.docx")
+        #time.sleep(3)
+
+        element3 = WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.ID, "sub")))
+        element3.click()
+        #time.sleep(3)
+
+        id_test = str(self.driver.find_element_by_id("upload_success").text)
+        self.assertEqual("Successfully Uploaded!",id_test)
+        
     
     def test_delete_reports_page(self):
         element = WebDriverWait(self.driver, 10).until(
