@@ -24,11 +24,17 @@ import datetime
 from mysite.core.paser import main_parser
 #from pip._internal.cli import main_parser
 
-
+"""
+This the logic for the home page. 
+It returns the home page html which has nothing useful on it.
+"""
 class Home(TemplateView):
     template_name = 'home.html'
 
-
+"""
+This the logic for the page where you can upload a file. 
+If it is visited with a document uploaded (when the user presses upload) then runs the parser on the uploaded file and returns the upload page back to the visitor.
+"""
 def upload(request):
     context = {}
     if request.method == 'POST':
@@ -45,42 +51,20 @@ def upload(request):
     
     return render(request, 'upload.html', context)
 
-
 def report_list(request):
     reports = Report.objects.all()
     return render(request, 'report_list.html', {
         'reports': reports
     })
 
-
+"""
+This the logic for the ould page where you could upload a file. 
+However, this button has been removed and now the only function of the page is to delete reports from the database.
+"""
 def upload_report(request):
     if request.method == 'POST':
         form = ReportForm(request.POST, request.FILES)
         if form.is_valid():
-            dbform = Report.objects.create(year="2019", author="Arts and Sciences", degreeProgram="Mathematcis", accredited=False, date_range_of_reported_data="F2018", section1Comment="",
-                                           section2Comment="", section3Comment="", section4Comment="", submitted=True, returned=True, numberOfSLOs=0, title="Undergrad2018-regular", uploader="Alex",)
-            GradGoal1 = GradGoal.objects.create(
-                text="SampleGradGoal", active=True)
-            GradGoal1.save()
-            SLO1 = SLO.objects.create(blooms=dict(
-                BLOOMS_CHOICES).get('CO'), numberOfUses=1)
-            SLOReport1 = SLOInReport.objects.create(date="1980-01-01", goalText="Students will be  be able to make and write correct,clear and concise arguments",
-                                                    slo=SLO1, changedFromPrior=False, report=dbform, number=1, numberOfAssess=1)
-            SLO1.save()
-            SLOReport1.save()
-            SLO2 = SLO.objects.create(blooms=BLOOMS_CHOICES[3], numberOfUses=1)
-            SLOReport2 = SLOInReport.objects.create(date="1980-01-01", goalText="Be able to communicate mathematics effectively in oral form.",
-                                                    slo=SLO2, changedFromPrior=False, report=dbform, number=1, numberOfAssess=1)
-            SLO2.save()
-            SLOReport2.save()
-            SLO3 = SLO.objects.create(blooms=BLOOMS_CHOICES[2], numberOfUses=1)
-            SLOReport3 = SLOInReport.objects.create(date="1980-01-01", goalText="Demonstrate substantive  comprehension of the major ideas in the core areas of their fields of study.",
-                                                    slo=SLO3, changedFromPrior=False, report=dbform, number=1, numberOfAssess=1)
-            SLO3.save()
-            SLOReport3.save()
-
-            dbform.save()
-            form.save()
             return redirect('report_list')
     else:
         form = ReportForm()
@@ -95,7 +79,10 @@ def delete_report(request, pk):
         report.delete()
     return redirect('report_list')
 
-
+"""
+This the logic for the search page 
+It creates a query set based on the input parameters from the URL and returns a page which will have a table of every report that meets the input parameters
+"""
 def search(request):
     if request.method == 'GET':
         titleText = request.GET.get('titleText')
@@ -122,7 +109,17 @@ def search(request):
         context = {'results': results}
         return render(request, 'search.html')
 
-
+"""
+This the logic for the page where you can view a report. 
+It pulls all of the relevant information about a report from the report id and outputs that to the report.html page which displays it.
+results should be just the report object corresponding to the id from the parameters
+sloIRs should be the list of tuples of the bloom's taxonomy level of each SLO associated with the given report and the corresponding sloIR object associated with that slo
+assessmentDatas should be a list of tuplesof the number of the slo associated with the given DescisionAction object, followed by a given assessmentVersion object that is associated with the slo
+decisionActions should be be a list of tuples of the number of the slo associated with the given DescisionAction object, followed by a given descisionAction object which is associated with the slo
+assessmentMethods should be a list of tuples of the number of the slo associated with the given assessment, a given assessmentVersion object which is associated with the previous slo 
+    (which is associated with the report), and finally the assessment object that corresponds to this assessmentVersion object
+resultCommunicate should be the result communicate object associated with the given report
+"""
 def view_report(request):
     if request.method == 'GET':
         dummy = 0
