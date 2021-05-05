@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['installed_5fapps_49',['INSTALLED_APPS',['../namespacemysite_1_1settings.html#ae0300504ffe212a8082806286d6fe36b',1,'mysite::settings']]]
+  ['expiration_420',['expiration',['../classmysite_1_1core_1_1models_1_1aac__models_1_1_announcement.html#a35d34cd3585011298dcef008b011812a',1,'mysite::core::models::aac_models::Announcement']]]
 ];

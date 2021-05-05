@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['crispy_5ftemplate_5fpack_5',['CRISPY_TEMPLATE_PACK',['../namespacemysite_1_1settings.html#a80548333c53e0ab64cf3696b2c85da24',1,'mysite::settings']]]
+  ['filefieldform_12',['FileFieldForm',['../classmysite_1_1core_1_1forms_1_1_file_field_form.html',1,'mysite::core::forms']]],
+  ['filemodel_13',['FileModel',['../classmysite_1_1core_1_1models_1_1basic__models_1_1_file_model.html',1,'mysite::core::models::basic_models']]]
 ];

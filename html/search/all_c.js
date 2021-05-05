@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['wsgi_2epy_31',['wsgi.py',['../wsgi_8py.html',1,'']]],
-  ['wsgi_5fapplication_32',['WSGI_APPLICATION',['../namespacemysite_1_1settings.html#a7e476bde6438ad8065a7d9f5b4a759ba',1,'mysite::settings']]]
+  ['uploadfileform_43',['UploadFileForm',['../classmysite_1_1core_1_1forms_1_1_upload_file_form.html',1,'mysite::core::forms']]],
+  ['uploadreport_44',['UploadReport',['../classmysite_1_1core_1_1models_1_1basic__models_1_1_upload_report.html',1,'mysite::core::models::basic_models']]],
+  ['uploadreportview_45',['UploadReportView',['../classmysite_1_1core_1_1views_1_1_upload_report_view.html',1,'mysite::core::views']]]
 ];

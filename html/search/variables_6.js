@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['media_5froot_51',['MEDIA_ROOT',['../namespacemysite_1_1settings.html#ad1d3b6b9d5d9d2667c13cd072e4415bd',1,'mysite::settings']]],
-  ['media_5furl_52',['MEDIA_URL',['../namespacemysite_1_1settings.html#a2e12145dd0b032b6b22563f5edf9f920',1,'mysite.settings.MEDIA_URL()'],['../namespacemysite_1_1urls.html#a11a37874ec12b2dcd961825781ba4ebd',1,'mysite.urls.MEDIA_URL()']]],
-  ['middleware_53',['MIDDLEWARE',['../namespacemysite_1_1settings.html#a90df4fc7c17f07da22241f9ceb21f3b9',1,'mysite::settings']]]
+  ['goaltext_429',['goalText',['../classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report.html#ad79b0536d78e4326c8e4d9b768f2cbb8',1,'mysite::core::models::slo_models::SLOInReport']]],
+  ['gradgoals_430',['gradGoals',['../classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o.html#a5828b198e9dfb2adc7270c5119f084b8',1,'mysite::core::models::slo_models::SLO']]]
 ];
