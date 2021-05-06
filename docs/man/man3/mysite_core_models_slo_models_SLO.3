@@ -1,0 +1,41 @@
+.TH "mysite.core.models.slo_models.SLO" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.slo_models.SLO
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBblooms\fP = models\&.CharField(choices=BLOOMS_CHOICES,max_length=50, verbose_name='Bloom's taxonomy level')"
+.br
+.ti -1c
+.RI "\fBgradGoals\fP = models\&.ManyToManyField('\fBGradGoal\fP', verbose_name='graduate\-level goals')"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Model collects SLO in reports which are ostensibly  the same except minor changes, 
+includes only the attributes which should never change and counts how often it is used
+
+.fi
+.PP
+ 
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.slo_models\&.SLO\&.blooms = models\&.CharField(choices=BLOOMS_CHOICES,max_length=50, verbose_name='Bloom's taxonomy level')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.slo_models\&.SLO\&.gradGoals = models\&.ManyToManyField('\fBGradGoal\fP', verbose_name='graduate\-level goals')\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

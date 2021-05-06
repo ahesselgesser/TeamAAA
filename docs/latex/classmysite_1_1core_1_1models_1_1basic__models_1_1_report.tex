@@ -1,0 +1,136 @@
+\hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report}{}\doxysection{mysite.\+core.\+models.\+basic\+\_\+models.\+Report Class Reference}
+\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report}\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+Inheritance diagram for mysite.\+core.\+models.\+basic\+\_\+models.\+Report\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmysite_1_1core_1_1models_1_1basic__models_1_1_report}
+\end{center}
+\end{figure}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a37b6b03fa10c2553899db6320af3e988}{year}} = models.\+Char\+Field(max\+\_\+length=1000, blank=True)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a53259846123da8d5609f3fe7b268d409}{author}} = models.\+Char\+Field(max\+\_\+length=1000, blank=True)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_adf7ac49574122a2e8a8e7585cf075760}{degree\+Program}} = models.\+Char\+Field(max\+\_\+length=1000, blank=True)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a5798918432e5bb536556c9d9e1097917}{accredited}} = models.\+Boolean\+Field(default=False)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_aca5b6ca7c2e72078f1b6cb51747b966b}{date\+\_\+range\+\_\+of\+\_\+reported\+\_\+data}} = models.\+Char\+Field(max\+\_\+length=500,blank=True, null=True)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a19a31528abaa6daa86b1bb9fcf814d91}{section1\+Comment}} = models.\+Char\+Field(max\+\_\+length=2000, blank=True, null=True, verbose\+\_\+name=\char`\"{}section I comment\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a7ae052f7c6d4ea7520980c385d05cf7c}{section2\+Comment}} = models.\+Char\+Field(max\+\_\+length=2000, blank=True, null=True, verbose\+\_\+name=\char`\"{}section II comment\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a149d625619d3fc005e95412fced9569c}{section3\+Comment}} = models.\+Char\+Field(max\+\_\+length=2000, blank=True, null=True, verbose\+\_\+name=\char`\"{}section III comment\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a6be7cd7b7a520b3c83abc11ba61ecb63}{section4\+Comment}} = models.\+Char\+Field(max\+\_\+length=2000, blank=True, null=True, verbose\+\_\+name=\char`\"{}section IV comment\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a12d2c60689537d2062629f3c66c6e378}{submitted}} = models.\+Boolean\+Field()
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a33ab36824bc71e10d1310f16c7783fe3}{returned}} = models.\+Boolean\+Field(default=False)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a5806cb46ea79c559ca89d37cb15e926c}{number\+Of\+SLOs}} = models.\+Positive\+Integer\+Field(default=0, verbose\+\_\+name=\char`\"{}number of SLOs\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a2462639289244e7ac2c05b25701f2192}{title}} = models.\+Char\+Field(max\+\_\+length=100)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a15f04d4c274f78ce5ad5e8dcb3517d99}{uploader}} = models.\+Char\+Field(max\+\_\+length=100)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Report model which collects attributes specific to a report and completion status
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a5798918432e5bb536556c9d9e1097917}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a5798918432e5bb536556c9d9e1097917}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!accredited@{accredited}}
+\index{accredited@{accredited}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{accredited}{accredited}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+accredited = models.\+Boolean\+Field(default=False)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a53259846123da8d5609f3fe7b268d409}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a53259846123da8d5609f3fe7b268d409}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!author@{author}}
+\index{author@{author}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{author}{author}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+author = models.\+Char\+Field(max\+\_\+length=1000, blank=True)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_aca5b6ca7c2e72078f1b6cb51747b966b}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_aca5b6ca7c2e72078f1b6cb51747b966b}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!date\_range\_of\_reported\_data@{date\_range\_of\_reported\_data}}
+\index{date\_range\_of\_reported\_data@{date\_range\_of\_reported\_data}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{date\_range\_of\_reported\_data}{date\_range\_of\_reported\_data}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+date\+\_\+range\+\_\+of\+\_\+reported\+\_\+data = models.\+Char\+Field(max\+\_\+length=500,blank=True, null=True)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_adf7ac49574122a2e8a8e7585cf075760}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_adf7ac49574122a2e8a8e7585cf075760}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!degreeProgram@{degreeProgram}}
+\index{degreeProgram@{degreeProgram}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{degreeProgram}{degreeProgram}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+degree\+Program = models.\+Char\+Field(max\+\_\+length=1000, blank=True)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a5806cb46ea79c559ca89d37cb15e926c}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a5806cb46ea79c559ca89d37cb15e926c}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!numberOfSLOs@{numberOfSLOs}}
+\index{numberOfSLOs@{numberOfSLOs}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{numberOfSLOs}{numberOfSLOs}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+number\+Of\+SLOs = models.\+Positive\+Integer\+Field(default=0, verbose\+\_\+name=\char`\"{}number of SLOs\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a33ab36824bc71e10d1310f16c7783fe3}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a33ab36824bc71e10d1310f16c7783fe3}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!returned@{returned}}
+\index{returned@{returned}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{returned}{returned}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+returned = models.\+Boolean\+Field(default=False)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a19a31528abaa6daa86b1bb9fcf814d91}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a19a31528abaa6daa86b1bb9fcf814d91}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!section1Comment@{section1Comment}}
+\index{section1Comment@{section1Comment}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{section1Comment}{section1Comment}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+section1\+Comment = models.\+Char\+Field(max\+\_\+length=2000, blank=True, null=True, verbose\+\_\+name=\char`\"{}section I comment\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a7ae052f7c6d4ea7520980c385d05cf7c}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a7ae052f7c6d4ea7520980c385d05cf7c}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!section2Comment@{section2Comment}}
+\index{section2Comment@{section2Comment}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{section2Comment}{section2Comment}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+section2\+Comment = models.\+Char\+Field(max\+\_\+length=2000, blank=True, null=True, verbose\+\_\+name=\char`\"{}section II comment\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a149d625619d3fc005e95412fced9569c}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a149d625619d3fc005e95412fced9569c}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!section3Comment@{section3Comment}}
+\index{section3Comment@{section3Comment}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{section3Comment}{section3Comment}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+section3\+Comment = models.\+Char\+Field(max\+\_\+length=2000, blank=True, null=True, verbose\+\_\+name=\char`\"{}section III comment\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a6be7cd7b7a520b3c83abc11ba61ecb63}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a6be7cd7b7a520b3c83abc11ba61ecb63}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!section4Comment@{section4Comment}}
+\index{section4Comment@{section4Comment}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{section4Comment}{section4Comment}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+section4\+Comment = models.\+Char\+Field(max\+\_\+length=2000, blank=True, null=True, verbose\+\_\+name=\char`\"{}section IV comment\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a12d2c60689537d2062629f3c66c6e378}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a12d2c60689537d2062629f3c66c6e378}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!submitted@{submitted}}
+\index{submitted@{submitted}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{submitted}{submitted}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+submitted = models.\+Boolean\+Field()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a2462639289244e7ac2c05b25701f2192}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a2462639289244e7ac2c05b25701f2192}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!title@{title}}
+\index{title@{title}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{title}{title}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+title = models.\+Char\+Field(max\+\_\+length=100)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a15f04d4c274f78ce5ad5e8dcb3517d99}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a15f04d4c274f78ce5ad5e8dcb3517d99}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!uploader@{uploader}}
+\index{uploader@{uploader}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{uploader}{uploader}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+uploader = models.\+Char\+Field(max\+\_\+length=100)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a37b6b03fa10c2553899db6320af3e988}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_report_a37b6b03fa10c2553899db6320af3e988}} 
+\index{mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}!year@{year}}
+\index{year@{year}!mysite.core.models.basic\_models.Report@{mysite.core.models.basic\_models.Report}}
+\doxysubsubsection{\texorpdfstring{year}{year}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Report.\+year = models.\+Char\+Field(max\+\_\+length=1000, blank=True)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+mysite/core/models/\mbox{\hyperlink{basic__models_8py}{basic\+\_\+models.\+py}}\end{DoxyCompactItemize}

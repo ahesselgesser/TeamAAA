@@ -1,0 +1,166 @@
+\hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version}{}\doxysection{mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version Class Reference}
+\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version}\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+Inheritance diagram for mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a4d42f2d3a3b978bd69aea1688f129d21}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a55d5d130c14cf450b1d4bf30a5f3d253}{report}} = models.\+Foreign\+Key(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report}{Report}}\textquotesingle{}, on\+\_\+delete=models.\+CASCADE)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a79c277f52bdb3be554d0aaefeb8bff90}{slo}} = models.\+Foreign\+Key(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report}{SLOIn\+Report}}\textquotesingle{}, on\+\_\+delete=models.\+CASCADE, verbose\+\_\+name=\char`\"{}SLO in \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a55d5d130c14cf450b1d4bf30a5f3d253}{report}}\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a0effef7ecaa0dc9ddf6d07ebbe451a78}{number}} = models.\+Positive\+Integer\+Field(default=0)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ae4a69f82835f7056d060e5bc314447f2}{changed\+From\+Prior}} = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}changed from prior version\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a5e96c8a692045530b0febd2210cdc2af}{assessment}} = models.\+Foreign\+Key(\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment}{Assessment}}, on\+\_\+delete=models.\+CASCADE)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ad897e4099dd7cec1723225aad844ba64}{date}} = models.\+Date\+Field()
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a288b85fe6d3face85998fa1630ed22fe}{description}} = models.\+Char\+Field(max\+\_\+length=1000)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a9cce645c81e81d086cc89ce4f3c04042}{final\+Term}} = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}final term\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_aad348cf82cee77f7a74aab7c2f7c9f2c}{where}} = models.\+Char\+Field(max\+\_\+length=500, verbose\+\_\+name=\char`\"{}location of \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a5e96c8a692045530b0febd2210cdc2af}{assessment}}\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_aebd07eb5d5729e66598d51758c83c086}{all\+Students}} = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}all students assessed\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_af32dfe6bf573854ba9b7ecc915e4f9be}{sample\+Description}} = models.\+Char\+Field(max\+\_\+length=500,blank=True,null=True, verbose\+\_\+name=\char`\"{}description of sample\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a9102df7d43f4b3586ff8e6ffe2ea55b4}{frequency\+Choice}} = models.\+Char\+Field(max\+\_\+length=100,choices=FREQUENCY\+\_\+\+CHOICES,default=\char`\"{}O\char`\"{}, verbose\+\_\+name=\char`\"{}frequency choice\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_abc54237f52798f0828783aff1d2d42a5}{frequency}} = models.\+Char\+Field(max\+\_\+length=500)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ad5ab9fe2c8d12a0dd80662fb16d894d7}{threshold}} = models.\+Char\+Field(max\+\_\+length=500)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a6c3364ebe5967cca4a673f4db643dda9}{target}} = models.\+Positive\+Integer\+Field()
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a7d314084c496674fb9a29df3233069f0}{supplements}} = models.\+Many\+To\+Many\+Field(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_supplement}{Assessment\+Supplement}}\textquotesingle{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Specific versions of Assessments that occur within a report
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a4d42f2d3a3b978bd69aea1688f129d21}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a4d42f2d3a3b978bd69aea1688f129d21}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_aebd07eb5d5729e66598d51758c83c086}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_aebd07eb5d5729e66598d51758c83c086}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!allStudents@{allStudents}}
+\index{allStudents@{allStudents}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{allStudents}{allStudents}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+all\+Students = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}all students assessed\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a5e96c8a692045530b0febd2210cdc2af}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a5e96c8a692045530b0febd2210cdc2af}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!assessment@{assessment}}
+\index{assessment@{assessment}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{assessment}{assessment}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+assessment = models.\+Foreign\+Key(\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment}{Assessment}}, on\+\_\+delete=models.\+CASCADE)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ae4a69f82835f7056d060e5bc314447f2}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ae4a69f82835f7056d060e5bc314447f2}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!changedFromPrior@{changedFromPrior}}
+\index{changedFromPrior@{changedFromPrior}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{changedFromPrior}{changedFromPrior}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+changed\+From\+Prior = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}changed from prior version\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ad897e4099dd7cec1723225aad844ba64}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ad897e4099dd7cec1723225aad844ba64}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!date@{date}}
+\index{date@{date}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{date}{date}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+date = models.\+Date\+Field()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a288b85fe6d3face85998fa1630ed22fe}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a288b85fe6d3face85998fa1630ed22fe}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!description@{description}}
+\index{description@{description}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+description = models.\+Char\+Field(max\+\_\+length=1000)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a9cce645c81e81d086cc89ce4f3c04042}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a9cce645c81e81d086cc89ce4f3c04042}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!finalTerm@{finalTerm}}
+\index{finalTerm@{finalTerm}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{finalTerm}{finalTerm}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+final\+Term = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}final term\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_abc54237f52798f0828783aff1d2d42a5}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_abc54237f52798f0828783aff1d2d42a5}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!frequency@{frequency}}
+\index{frequency@{frequency}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{frequency}{frequency}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+frequency = models.\+Char\+Field(max\+\_\+length=500)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a9102df7d43f4b3586ff8e6ffe2ea55b4}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a9102df7d43f4b3586ff8e6ffe2ea55b4}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!frequencyChoice@{frequencyChoice}}
+\index{frequencyChoice@{frequencyChoice}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{frequencyChoice}{frequencyChoice}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+frequency\+Choice = models.\+Char\+Field(max\+\_\+length=100,choices=FREQUENCY\+\_\+\+CHOICES,default=\char`\"{}O\char`\"{}, verbose\+\_\+name=\char`\"{}frequency choice\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a0effef7ecaa0dc9ddf6d07ebbe451a78}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a0effef7ecaa0dc9ddf6d07ebbe451a78}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!number@{number}}
+\index{number@{number}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{number}{number}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+number = models.\+Positive\+Integer\+Field(default=0)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a55d5d130c14cf450b1d4bf30a5f3d253}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a55d5d130c14cf450b1d4bf30a5f3d253}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!report@{report}}
+\index{report@{report}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{report}{report}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+report = models.\+Foreign\+Key(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report}{Report}}\textquotesingle{}, on\+\_\+delete=models.\+CASCADE)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_af32dfe6bf573854ba9b7ecc915e4f9be}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_af32dfe6bf573854ba9b7ecc915e4f9be}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!sampleDescription@{sampleDescription}}
+\index{sampleDescription@{sampleDescription}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{sampleDescription}{sampleDescription}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+sample\+Description = models.\+Char\+Field(max\+\_\+length=500,blank=True,null=True, verbose\+\_\+name=\char`\"{}description of sample\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a79c277f52bdb3be554d0aaefeb8bff90}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a79c277f52bdb3be554d0aaefeb8bff90}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!slo@{slo}}
+\index{slo@{slo}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{slo}{slo}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+slo = models.\+Foreign\+Key(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report}{SLOIn\+Report}}\textquotesingle{}, on\+\_\+delete=models.\+CASCADE, verbose\+\_\+name=\char`\"{}SLO in \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a55d5d130c14cf450b1d4bf30a5f3d253}{report}}\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a7d314084c496674fb9a29df3233069f0}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a7d314084c496674fb9a29df3233069f0}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!supplements@{supplements}}
+\index{supplements@{supplements}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{supplements}{supplements}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+supplements = models.\+Many\+To\+Many\+Field(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_supplement}{Assessment\+Supplement}}\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a6c3364ebe5967cca4a673f4db643dda9}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a6c3364ebe5967cca4a673f4db643dda9}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!target@{target}}
+\index{target@{target}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+target = models.\+Positive\+Integer\+Field()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ad5ab9fe2c8d12a0dd80662fb16d894d7}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_ad5ab9fe2c8d12a0dd80662fb16d894d7}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!threshold@{threshold}}
+\index{threshold@{threshold}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{threshold}{threshold}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+threshold = models.\+Char\+Field(max\+\_\+length=500)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_aad348cf82cee77f7a74aab7c2f7c9f2c}\label{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_aad348cf82cee77f7a74aab7c2f7c9f2c}} 
+\index{mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}!where@{where}}
+\index{where@{where}!mysite.core.models.assessment\_models.AssessmentVersion@{mysite.core.models.assessment\_models.AssessmentVersion}}
+\doxysubsubsection{\texorpdfstring{where}{where}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+assessment\+\_\+models.\+Assessment\+Version.\+where = models.\+Char\+Field(max\+\_\+length=500, verbose\+\_\+name=\char`\"{}location of \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version_a5e96c8a692045530b0febd2210cdc2af}{assessment}}\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+mysite/core/models/\mbox{\hyperlink{assessment__models_8py}{assessment\+\_\+models.\+py}}\end{DoxyCompactItemize}

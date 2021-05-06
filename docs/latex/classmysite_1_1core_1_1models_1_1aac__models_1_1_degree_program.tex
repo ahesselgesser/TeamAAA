@@ -1,0 +1,110 @@
+\hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program}{}\doxysection{mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program Class Reference}
+\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program}\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+Inheritance diagram for mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a4ae367089b8d139c6b9189131b408ba1}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a837b8df347b0fab065f1d3cf3722f16a}{name}} = models.\+Char\+Field(max\+\_\+length=100)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_ad634f210bc37bfd1b9e1fc5398c96d3a}{level}} = models.\+Char\+Field(max\+\_\+length=75, choices= LEVELS)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a4962600f452438326155759ca263fa10}{department}} = models.\+Foreign\+Key(\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_department}{Department}}, on\+\_\+delete=models.\+CASCADE)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_adc12772be7f0adc5e03f29b558bf7253}{cycle}} = models.\+Integer\+Field(blank=True, null=True)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a5b1d53c88366086c3dc940310659c6ab}{starting\+Year}} = models.\+Positive\+Integer\+Field(blank=True, null=True, verbose\+\_\+name=\char`\"{}starting year of \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_adc12772be7f0adc5e03f29b558bf7253}{cycle}}\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a08a2b5055ecffd9044f955cb2908a82f}{active}} = models.\+Boolean\+Field(default=True)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_ad5c1aa0e296efe8e7b56b40657fd02df}{accredited}} = models.\+Boolean\+Field(default=False)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_af8aecfe0e04e454d7ceae3535086f758}{objects}} = models.\+Manager()
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a63bf4b3d299c94f645553b768e926567}{active\+\_\+objects}} = \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_non_archived_manager}{Non\+Archived\+Manager}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Degree program model for degree programs within departments
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a4ae367089b8d139c6b9189131b408ba1}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a4ae367089b8d139c6b9189131b408ba1}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_ad5c1aa0e296efe8e7b56b40657fd02df}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_ad5c1aa0e296efe8e7b56b40657fd02df}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!accredited@{accredited}}
+\index{accredited@{accredited}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{accredited}{accredited}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+accredited = models.\+Boolean\+Field(default=False)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a08a2b5055ecffd9044f955cb2908a82f}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a08a2b5055ecffd9044f955cb2908a82f}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!active@{active}}
+\index{active@{active}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+active = models.\+Boolean\+Field(default=True)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a63bf4b3d299c94f645553b768e926567}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a63bf4b3d299c94f645553b768e926567}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!active\_objects@{active\_objects}}
+\index{active\_objects@{active\_objects}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{active\_objects}{active\_objects}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+active\+\_\+objects = \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_non_archived_manager}{Non\+Archived\+Manager}}()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_adc12772be7f0adc5e03f29b558bf7253}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_adc12772be7f0adc5e03f29b558bf7253}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!cycle@{cycle}}
+\index{cycle@{cycle}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{cycle}{cycle}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+cycle = models.\+Integer\+Field(blank=True, null=True)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a4962600f452438326155759ca263fa10}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a4962600f452438326155759ca263fa10}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!department@{department}}
+\index{department@{department}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{department}{department}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+department = models.\+Foreign\+Key(\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_department}{Department}}, on\+\_\+delete=models.\+CASCADE)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_ad634f210bc37bfd1b9e1fc5398c96d3a}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_ad634f210bc37bfd1b9e1fc5398c96d3a}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!level@{level}}
+\index{level@{level}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+level = models.\+Char\+Field(max\+\_\+length=75, choices= LEVELS)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a837b8df347b0fab065f1d3cf3722f16a}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a837b8df347b0fab065f1d3cf3722f16a}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!name@{name}}
+\index{name@{name}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+name = models.\+Char\+Field(max\+\_\+length=100)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_af8aecfe0e04e454d7ceae3535086f758}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_af8aecfe0e04e454d7ceae3535086f758}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!objects@{objects}}
+\index{objects@{objects}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{objects}{objects}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+objects = models.\+Manager()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a5b1d53c88366086c3dc940310659c6ab}\label{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_a5b1d53c88366086c3dc940310659c6ab}} 
+\index{mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}!startingYear@{startingYear}}
+\index{startingYear@{startingYear}!mysite.core.models.aac\_models.DegreeProgram@{mysite.core.models.aac\_models.DegreeProgram}}
+\doxysubsubsection{\texorpdfstring{startingYear}{startingYear}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+aac\+\_\+models.\+Degree\+Program.\+starting\+Year = models.\+Positive\+Integer\+Field(blank=True, null=True, verbose\+\_\+name=\char`\"{}starting year of \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program_adc12772be7f0adc5e03f29b558bf7253}{cycle}}\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+mysite/core/models/\mbox{\hyperlink{aac__models_8py}{aac\+\_\+models.\+py}}\end{DoxyCompactItemize}

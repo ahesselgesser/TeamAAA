@@ -1,0 +1,78 @@
+.TH "read_doc_chx" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+read_doc_chx
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBremove_tags\fP (text)"
+.br
+.RI "Remove < > tags from a string\&. "
+.ti -1c
+.RI "def \fBcopy_and_unzip\fP (source_dir, source_fn, destination_fn, zip_dir)"
+.br
+.RI "Copies a file, renames it as a ZIP document, and unzips it\&. "
+.ti -1c
+.RI "def \fBfind_checkbox_elements\fP (xml_path)"
+.br
+.RI "Finds all the words directly after the marked checkboxes in the document\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "def read_doc_chx\&.copy_and_unzip ( source_dir,  source_fn,  destination_fn,  zip_dir)"
+
+.PP
+Copies a file, renames it as a ZIP document, and unzips it\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsource_dir\fP - The directory that the original file resides in\&. 
+.br
+\fIsource_fn\fP - The source file name\&. 
+.br
+\fIdestination_fn\fP - The name of the copied file\&. 
+.br
+\fIzip_dir\fP - The directory that you store the unzipped documents in\&. 
+.RE
+.PP
+
+.SS "def read_doc_chx\&.find_checkbox_elements ( xml_path)"
+
+.PP
+Finds all the words directly after the marked checkboxes in the document\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIxml_path\fP - The path to the XML document that we are finding marked checkboxes in\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The list of check box elements, the number of SLOs in the document, and a list of lists\&. 
+.RE
+.PP
+
+.SS "def read_doc_chx\&.remove_tags ( text)"
+
+.PP
+Remove < > tags from a string\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext\fP - The text that we are removing the tags from\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The text after the tags have been removed\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

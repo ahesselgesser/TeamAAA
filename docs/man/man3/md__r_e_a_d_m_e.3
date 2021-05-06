@@ -1,0 +1,113 @@
+.TH "md__r_e_a_d_m_e" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_e \- Team AAA 
+
+.SH "Team member"
+.PP
+'**Zijun Mei**' and '**Trent Wisecup**' and '**Alex Hesselgesser**'
+.br
+.SH "Abstract"
+.PP
+We will be creating a web application that users can upload Student Learning Outcome reports in pdf or word formats to\&. The website will process the documents and convert them into a format consistent with the database created for SLOs during a previous capstone project\&. The website will also perform data analysis on the data uploaded, and natural language analysis\&.
+.SH "Milestone 3"
+.PP
+For milestone 3, we integrated a Postgresql databse into the project\&.
+.SH "How to use the Application"
+.PP
+First, clone the repository to your local machine:
+.PP
+.PP
+.nf
+git clone https://github\&.com/ahesselgesser/TeamAAA\&.git
+.fi
+.PP
+ Before running, you need to install several tools\&.
+.PP
+.PP
+.nf
+pip install django
+
+pip install django-crispy-forms
+
+python -m pip install --upgrade pip
+python -m pip install --upgrade Pillow
+
+pip install pytz
+pip install psycopg2
+pip install python-docx
+.fi
+.PP
+.PP
+Then install postgreSQL:
+.PP
+On Windows:
+.PP
+https://www.postgresql.org/download/
+.PP
+During installation it should ask you to set the username and password for the super user\&. Remember that for later\&.
+.PP
+Add your PosgreSQL bin folder to the system PATH
+.PP
+Open PostgreSQL with: 
+.PP
+.nf
+in the command line terminal 
+and enter the password you set earlier\&.
+If you have changed the PostgreSQL superuser name from the default, use that in place of 'postgres'\&.
+
+Now that you're in PostgreSQL the steps are the same for both linux and Windows\&. Please skip ahead\&.
+
+On Linux:
+
+.fi
+.PP
+ sudo apt-get install postgresql postgresql-contrib sudo apt-get install libpq-dev python3-dev 
+.PP
+.nf
+open PosgreSQL with:
+```sudo -u postgres psql
+
+.fi
+.PP
+.PP
+From here the steps are the same for both: Run the following PSQL commands in order:
+.PP
+.PP
+.nf
+CREATE DATABASE aaadb;
+CREATE USER teamaaa WITH ENCRYPTED PASSWORD 'aaapass';
+ALTER ROLE teamaaa SET client_encoding TO 'utf8';
+ALTER ROLE teamaaa SET default_transaction_isolation TO 'read committed';
+ALTER ROLE teamaaa SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE aaadb TO teamaaa;
+.fi
+.PP
+.PP
+You can now exit the SQL prompt with \\q
+.PP
+Apply the migrations:
+.PP
+.PP
+.nf
+python manage\&.py migrate
+.fi
+.PP
+.PP
+Finally, run the development server:
+.PP
+.PP
+.nf
+python manage\&.py runserver
+.fi
+.PP
+ The application will be available at \fB127\&.0\&.0\&.1:8000\fP\&.
+.PP
+Here is the video instruction of the milestone1: https://use.vg/JkjmjV 
+.SH "Release Notes for Milestone 3"
+.PP
+What we are doing in this milestone is creating an application that allows users to upload files by using the Django framework\&. Our current progress is in line with our expectations\&. Our next step is to work on integrating the parser script and database into the Django framework\&.
+.SH "Release Notes for Milestone 4"
+.PP
+What we are doing in this milestone is allowing the user to view the uploaded data on the web page so they can analyze the data\&. Our current progress is in line with our expectations\&. Our next step is to work on integrating the parser script and database into the Django framework and to begin adding natural language analysis of the SLOs\&. 

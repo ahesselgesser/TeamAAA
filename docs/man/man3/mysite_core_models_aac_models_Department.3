@@ -1,0 +1,66 @@
+.TH "mysite.core.models.aac_models.Department" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.aac_models.Department
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBname\fP = models\&.CharField(max_length=100)"
+.br
+.ti -1c
+.RI "\fBcollege\fP = models\&.ForeignKey(\fBCollege\fP, on_delete=models\&.CASCADE)"
+.br
+.ti -1c
+.RI "\fBactive\fP = models\&.BooleanField(default=True)"
+.br
+.ti -1c
+.RI "\fBobjects\fP = models\&.Manager()"
+.br
+.ti -1c
+.RI "\fBactive_objects\fP = \fBNonArchivedManager\fP()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Department model for departments within colleges 
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "def mysite\&.core\&.models\&.aac_models\&.Department\&.__str__ ( self)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.aac_models\&.Department\&.active = models\&.BooleanField(default=True)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.aac_models\&.Department\&.active_objects = \fBNonArchivedManager\fP()\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.aac_models\&.Department\&.college = models\&.ForeignKey(\fBCollege\fP, on_delete=models\&.CASCADE)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.aac_models\&.Department\&.name = models\&.CharField(max_length=100)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.aac_models\&.Department\&.objects = models\&.Manager()\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

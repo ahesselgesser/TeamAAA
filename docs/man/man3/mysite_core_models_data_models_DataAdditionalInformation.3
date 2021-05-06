@@ -1,0 +1,51 @@
+.TH "mysite.core.models.data_models.DataAdditionalInformation" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.data_models.DataAdditionalInformation
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBreport\fP = models\&.ForeignKey('\fBReport\fP', on_delete=models\&.CASCADE)"
+.br
+.ti -1c
+.RI "\fBcomment\fP = models\&.CharField(max_length=3000, blank=True, default='')"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Model to hold additional information about the data, possibly with a PDF supplement
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "def mysite\&.core\&.models\&.data_models\&.DataAdditionalInformation\&.__str__ ( self)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.data_models\&.DataAdditionalInformation\&.comment = models\&.CharField(max_length=3000, blank=True, default='')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.data_models\&.DataAdditionalInformation\&.report = models\&.ForeignKey('\fBReport\fP', on_delete=models\&.CASCADE)\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

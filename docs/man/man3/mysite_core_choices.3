@@ -1,0 +1,118 @@
+.TH "mysite.core.choices" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.choices
+.SH SYNOPSIS
+.br
+.PP
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "tuple \fBBLOOMS_CHOICES\fP"
+.br
+.ti -1c
+.RI "tuple \fBRUBRIC_GRADES_CHOICES\fP"
+.br
+.ti -1c
+.RI "tuple \fBLEVELS\fP"
+.br
+.ti -1c
+.RI "tuple \fBSECTIONS\fP"
+.br
+.ti -1c
+.RI "tuple \fBDOMAIN_CHOICES\fP"
+.br
+.ti -1c
+.RI "tuple \fBSLO_STATUS_CHOICES\fP"
+.br
+.ti -1c
+.RI "tuple \fBFREQUENCY_CHOICES\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Holds static choice tuples that should not change
+Imported from previous project
+
+.fi
+.PP
+ 
+.SH "Variable Documentation"
+.PP 
+.SS "tuple mysite\&.core\&.choices\&.BLOOMS_CHOICES"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  (
+2     ('', '------'),
+3     ("KN","Knowledge"),
+4     ("CO","Comprehension"),
+5     ("AP", "Application"),
+6     ("AN", "Analysis"),
+7     ("SN","Synthesis"),
+8     ("EV", "Evaluation"))
+.fi
+.SS "tuple mysite\&.core\&.choices\&.DOMAIN_CHOICES"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  (
+2     ("E", "Examination"),
+3     ("P","Product"),
+4     ("F","Performance"))
+.fi
+.SS "tuple mysite\&.core\&.choices\&.FREQUENCY_CHOICES"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  (
+2     ("S","Once/semester"),
+3     ("Y","Once/year"),
+4     ("O","Other")    
+5 )
+.fi
+.SS "tuple mysite\&.core\&.choices\&.LEVELS"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  (
+2     ("UG", "Undergraduate"),
+3     ("GR", "Graduate"))
+.fi
+.SS "tuple mysite\&.core\&.choices\&.RUBRIC_GRADES_CHOICES"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  (
+2     ("DNM","Does Not Meet/Did Not Include"),
+3     ("MC", "Meets with Concerns"),
+4     ("ME", "Meets Established"))
+.fi
+.SS "tuple mysite\&.core\&.choices\&.SECTIONS"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  (
+2     (1,"I\&. Student Learning Outcomes"),
+3     (2,"II\&. Assessment Methods"),
+4     (3,"III\&. Data Collection and Analysis"),
+5     (4,"IV\&. Decisions and Actions"))
+.fi
+.SS "tuple mysite\&.core\&.choices\&.SLO_STATUS_CHOICES"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  (
+2     ("Met", "Met"), 
+3     ("Partially Met", "Partially Met"), 
+4     ("Not Met", "Not Met"), 
+5     ("Unknown", "Unknown"))
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

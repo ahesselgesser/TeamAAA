@@ -1,0 +1,86 @@
+\hypertarget{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report}{}\doxysection{mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report Class Reference}
+\label{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report}\index{mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}}
+Inheritance diagram for mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ad477c134d4b53285f6557a61f6bfe8e1}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ad79b0536d78e4326c8e4d9b768f2cbb8}{goal\+Text}} = models.\+Char\+Field(max\+\_\+length=1000, verbose\+\_\+name=\char`\"{}goal text\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ace7b3fac233e8156bd254c580e2b7b00}{slo}} = models.\+Foreign\+Key(\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o}{SLO}}, on\+\_\+delete=models.\+CASCADE, verbose\+\_\+name=\char`\"{}SLO\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a5db8bba3def4a95f867f8c587be1f518}{changed\+From\+Prior}} = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}changed from prior version\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a7cedc564f65a9c21addabf49d0752226}{report}} = models.\+Foreign\+Key(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report}{Report}}\textquotesingle{}, on\+\_\+delete=models.\+CASCADE)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a84d23c905cd2d84cff31bf71438ec4eb}{number}} = models.\+Positive\+Integer\+Field(default=1)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a53dca6419005a745e269b7061457d77a}{number\+Of\+Assess}} = models.\+Positive\+Integer\+Field(default=0, verbose\+\_\+name=\char`\"{}number of assessments\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}A specific version of an SLO which occurs within a report
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ad477c134d4b53285f6557a61f6bfe8e1}\label{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ad477c134d4b53285f6557a61f6bfe8e1}} 
+\index{mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a5db8bba3def4a95f867f8c587be1f518}\label{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a5db8bba3def4a95f867f8c587be1f518}} 
+\index{mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}!changedFromPrior@{changedFromPrior}}
+\index{changedFromPrior@{changedFromPrior}!mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}}
+\doxysubsubsection{\texorpdfstring{changedFromPrior}{changedFromPrior}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report.\+changed\+From\+Prior = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}changed from prior version\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ad79b0536d78e4326c8e4d9b768f2cbb8}\label{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ad79b0536d78e4326c8e4d9b768f2cbb8}} 
+\index{mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}!goalText@{goalText}}
+\index{goalText@{goalText}!mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}}
+\doxysubsubsection{\texorpdfstring{goalText}{goalText}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report.\+goal\+Text = models.\+Char\+Field(max\+\_\+length=1000, verbose\+\_\+name=\char`\"{}goal text\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a84d23c905cd2d84cff31bf71438ec4eb}\label{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a84d23c905cd2d84cff31bf71438ec4eb}} 
+\index{mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}!number@{number}}
+\index{number@{number}!mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}}
+\doxysubsubsection{\texorpdfstring{number}{number}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report.\+number = models.\+Positive\+Integer\+Field(default=1)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a53dca6419005a745e269b7061457d77a}\label{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a53dca6419005a745e269b7061457d77a}} 
+\index{mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}!numberOfAssess@{numberOfAssess}}
+\index{numberOfAssess@{numberOfAssess}!mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}}
+\doxysubsubsection{\texorpdfstring{numberOfAssess}{numberOfAssess}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report.\+number\+Of\+Assess = models.\+Positive\+Integer\+Field(default=0, verbose\+\_\+name=\char`\"{}number of assessments\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a7cedc564f65a9c21addabf49d0752226}\label{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_a7cedc564f65a9c21addabf49d0752226}} 
+\index{mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}!report@{report}}
+\index{report@{report}!mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}}
+\doxysubsubsection{\texorpdfstring{report}{report}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report.\+report = models.\+Foreign\+Key(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_report}{Report}}\textquotesingle{}, on\+\_\+delete=models.\+CASCADE)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ace7b3fac233e8156bd254c580e2b7b00}\label{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o_in_report_ace7b3fac233e8156bd254c580e2b7b00}} 
+\index{mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}!slo@{slo}}
+\index{slo@{slo}!mysite.core.models.slo\_models.SLOInReport@{mysite.core.models.slo\_models.SLOInReport}}
+\doxysubsubsection{\texorpdfstring{slo}{slo}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+slo\+\_\+models.\+SLOIn\+Report.\+slo = models.\+Foreign\+Key(\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1slo__models_1_1_s_l_o}{SLO}}, on\+\_\+delete=models.\+CASCADE, verbose\+\_\+name=\char`\"{}SLO\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+mysite/core/models/\mbox{\hyperlink{slo__models_8py}{slo\+\_\+models.\+py}}\end{DoxyCompactItemize}

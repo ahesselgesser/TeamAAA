@@ -1,0 +1,71 @@
+\hypertarget{namespaceread__doc__chx}{}\doxysection{read\+\_\+doc\+\_\+chx Namespace Reference}
+\label{namespaceread__doc__chx}\index{read\_doc\_chx@{read\_doc\_chx}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceread__doc__chx_ac1b032e7d3576901caa82be40a91a729}{remove\+\_\+tags}} (text)
+\begin{DoxyCompactList}\small\item\em Remove $<$ $>$ tags from a string. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceread__doc__chx_a2906c33b7e88ae272858c322be699e61}{copy\+\_\+and\+\_\+unzip}} (source\+\_\+dir, source\+\_\+fn, destination\+\_\+fn, zip\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em Copies a file, renames it as a ZIP document, and unzips it. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceread__doc__chx_aca8e163fbfbe389fff1f3a34dcf68df7}{find\+\_\+checkbox\+\_\+elements}} (xml\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Finds all the words directly after the marked checkboxes in the document. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceread__doc__chx_a2906c33b7e88ae272858c322be699e61}\label{namespaceread__doc__chx_a2906c33b7e88ae272858c322be699e61}} 
+\index{read\_doc\_chx@{read\_doc\_chx}!copy\_and\_unzip@{copy\_and\_unzip}}
+\index{copy\_and\_unzip@{copy\_and\_unzip}!read\_doc\_chx@{read\_doc\_chx}}
+\doxysubsubsection{\texorpdfstring{copy\_and\_unzip()}{copy\_and\_unzip()}}
+{\footnotesize\ttfamily def read\+\_\+doc\+\_\+chx.\+copy\+\_\+and\+\_\+unzip (\begin{DoxyParamCaption}\item[{}]{source\+\_\+dir,  }\item[{}]{source\+\_\+fn,  }\item[{}]{destination\+\_\+fn,  }\item[{}]{zip\+\_\+dir }\end{DoxyParamCaption})}
+
+
+
+Copies a file, renames it as a ZIP document, and unzips it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+dir} & -\/ The directory that the original file resides in. \\
+\hline
+{\em source\+\_\+fn} & -\/ The source file name. \\
+\hline
+{\em destination\+\_\+fn} & -\/ The name of the copied file. \\
+\hline
+{\em zip\+\_\+dir} & -\/ The directory that you store the unzipped documents in. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceread__doc__chx_aca8e163fbfbe389fff1f3a34dcf68df7}\label{namespaceread__doc__chx_aca8e163fbfbe389fff1f3a34dcf68df7}} 
+\index{read\_doc\_chx@{read\_doc\_chx}!find\_checkbox\_elements@{find\_checkbox\_elements}}
+\index{find\_checkbox\_elements@{find\_checkbox\_elements}!read\_doc\_chx@{read\_doc\_chx}}
+\doxysubsubsection{\texorpdfstring{find\_checkbox\_elements()}{find\_checkbox\_elements()}}
+{\footnotesize\ttfamily def read\+\_\+doc\+\_\+chx.\+find\+\_\+checkbox\+\_\+elements (\begin{DoxyParamCaption}\item[{}]{xml\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Finds all the words directly after the marked checkboxes in the document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xml\+\_\+path} & -\/ The path to the XML document that we are finding marked checkboxes in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The list of check box elements, the number of SLOs in the document, and a list of lists. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceread__doc__chx_ac1b032e7d3576901caa82be40a91a729}\label{namespaceread__doc__chx_ac1b032e7d3576901caa82be40a91a729}} 
+\index{read\_doc\_chx@{read\_doc\_chx}!remove\_tags@{remove\_tags}}
+\index{remove\_tags@{remove\_tags}!read\_doc\_chx@{read\_doc\_chx}}
+\doxysubsubsection{\texorpdfstring{remove\_tags()}{remove\_tags()}}
+{\footnotesize\ttfamily def read\+\_\+doc\+\_\+chx.\+remove\+\_\+tags (\begin{DoxyParamCaption}\item[{}]{text }\end{DoxyParamCaption})}
+
+
+
+Remove $<$ $>$ tags from a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & -\/ The text that we are removing the tags from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The text after the tags have been removed. 
+\end{DoxyReturn}

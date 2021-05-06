@@ -1,0 +1,121 @@
+.TH "mysite.core.models.assessment_models.AssessmentVersion" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.assessment_models.AssessmentVersion
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBreport\fP = models\&.ForeignKey('\fBReport\fP', on_delete=models\&.CASCADE)"
+.br
+.ti -1c
+.RI "\fBslo\fP = models\&.ForeignKey('\fBSLOInReport\fP', on_delete=models\&.CASCADE, verbose_name='SLO in \fBreport\fP')"
+.br
+.ti -1c
+.RI "\fBnumber\fP = models\&.PositiveIntegerField(default=0)"
+.br
+.ti -1c
+.RI "\fBchangedFromPrior\fP = models\&.BooleanField(verbose_name='changed from prior version')"
+.br
+.ti -1c
+.RI "\fBassessment\fP = models\&.ForeignKey(\fBAssessment\fP, on_delete=models\&.CASCADE)"
+.br
+.ti -1c
+.RI "\fBdate\fP = models\&.DateField()"
+.br
+.ti -1c
+.RI "\fBdescription\fP = models\&.CharField(max_length=1000)"
+.br
+.ti -1c
+.RI "\fBfinalTerm\fP = models\&.BooleanField(verbose_name='final term')"
+.br
+.ti -1c
+.RI "\fBwhere\fP = models\&.CharField(max_length=500, verbose_name='location of \fBassessment\fP')"
+.br
+.ti -1c
+.RI "\fBallStudents\fP = models\&.BooleanField(verbose_name='all students assessed')"
+.br
+.ti -1c
+.RI "\fBsampleDescription\fP = models\&.CharField(max_length=500,blank=True,null=True, verbose_name='description of sample')"
+.br
+.ti -1c
+.RI "\fBfrequencyChoice\fP = models\&.CharField(max_length=100,choices=FREQUENCY_CHOICES,default='O', verbose_name='frequency choice')"
+.br
+.ti -1c
+.RI "\fBfrequency\fP = models\&.CharField(max_length=500)"
+.br
+.ti -1c
+.RI "\fBthreshold\fP = models\&.CharField(max_length=500)"
+.br
+.ti -1c
+.RI "\fBtarget\fP = models\&.PositiveIntegerField()"
+.br
+.ti -1c
+.RI "\fBsupplements\fP = models\&.ManyToManyField('\fBAssessmentSupplement\fP')"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Specific versions of Assessments that occur within a report
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "def mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.__str__ ( self)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.allStudents = models\&.BooleanField(verbose_name='all students assessed')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.assessment = models\&.ForeignKey(\fBAssessment\fP, on_delete=models\&.CASCADE)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.changedFromPrior = models\&.BooleanField(verbose_name='changed from prior version')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.date = models\&.DateField()\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.description = models\&.CharField(max_length=1000)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.finalTerm = models\&.BooleanField(verbose_name='final term')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.frequency = models\&.CharField(max_length=500)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.frequencyChoice = models\&.CharField(max_length=100,choices=FREQUENCY_CHOICES,default='O', verbose_name='frequency choice')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.number = models\&.PositiveIntegerField(default=0)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.report = models\&.ForeignKey('\fBReport\fP', on_delete=models\&.CASCADE)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.sampleDescription = models\&.CharField(max_length=500,blank=True,null=True, verbose_name='description of sample')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.slo = models\&.ForeignKey('\fBSLOInReport\fP', on_delete=models\&.CASCADE, verbose_name='SLO in \fBreport\fP')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.supplements = models\&.ManyToManyField('\fBAssessmentSupplement\fP')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.target = models\&.PositiveIntegerField()\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.threshold = models\&.CharField(max_length=500)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.assessment_models\&.AssessmentVersion\&.where = models\&.CharField(max_length=500, verbose_name='location of \fBassessment\fP')\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

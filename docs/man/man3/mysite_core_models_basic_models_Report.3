@@ -1,0 +1,100 @@
+.TH "mysite.core.models.basic_models.Report" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.basic_models.Report
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fByear\fP = models\&.CharField(max_length=1000, blank=True)"
+.br
+.ti -1c
+.RI "\fBauthor\fP = models\&.CharField(max_length=1000, blank=True)"
+.br
+.ti -1c
+.RI "\fBdegreeProgram\fP = models\&.CharField(max_length=1000, blank=True)"
+.br
+.ti -1c
+.RI "\fBaccredited\fP = models\&.BooleanField(default=False)"
+.br
+.ti -1c
+.RI "\fBdate_range_of_reported_data\fP = models\&.CharField(max_length=500,blank=True, null=True)"
+.br
+.ti -1c
+.RI "\fBsection1Comment\fP = models\&.CharField(max_length=2000, blank=True, null=True, verbose_name='section I comment')"
+.br
+.ti -1c
+.RI "\fBsection2Comment\fP = models\&.CharField(max_length=2000, blank=True, null=True, verbose_name='section II comment')"
+.br
+.ti -1c
+.RI "\fBsection3Comment\fP = models\&.CharField(max_length=2000, blank=True, null=True, verbose_name='section III comment')"
+.br
+.ti -1c
+.RI "\fBsection4Comment\fP = models\&.CharField(max_length=2000, blank=True, null=True, verbose_name='section IV comment')"
+.br
+.ti -1c
+.RI "\fBsubmitted\fP = models\&.BooleanField()"
+.br
+.ti -1c
+.RI "\fBreturned\fP = models\&.BooleanField(default=False)"
+.br
+.ti -1c
+.RI "\fBnumberOfSLOs\fP = models\&.PositiveIntegerField(default=0, verbose_name='number of SLOs')"
+.br
+.ti -1c
+.RI "\fBtitle\fP = models\&.CharField(max_length=100)"
+.br
+.ti -1c
+.RI "\fBuploader\fP = models\&.CharField(max_length=100)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Report model which collects attributes specific to a report and completion status
+
+.fi
+.PP
+ 
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.accredited = models\&.BooleanField(default=False)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.author = models\&.CharField(max_length=1000, blank=True)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.date_range_of_reported_data = models\&.CharField(max_length=500,blank=True, null=True)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.degreeProgram = models\&.CharField(max_length=1000, blank=True)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.numberOfSLOs = models\&.PositiveIntegerField(default=0, verbose_name='number of SLOs')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.returned = models\&.BooleanField(default=False)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.section1Comment = models\&.CharField(max_length=2000, blank=True, null=True, verbose_name='section I comment')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.section2Comment = models\&.CharField(max_length=2000, blank=True, null=True, verbose_name='section II comment')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.section3Comment = models\&.CharField(max_length=2000, blank=True, null=True, verbose_name='section III comment')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.section4Comment = models\&.CharField(max_length=2000, blank=True, null=True, verbose_name='section IV comment')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.submitted = models\&.BooleanField()\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.title = models\&.CharField(max_length=100)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.uploader = models\&.CharField(max_length=100)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Report\&.year = models\&.CharField(max_length=1000, blank=True)\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

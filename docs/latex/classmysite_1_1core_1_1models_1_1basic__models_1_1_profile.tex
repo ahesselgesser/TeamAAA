@@ -1,0 +1,49 @@
+\hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile}{}\doxysection{mysite.\+core.\+models.\+basic\+\_\+models.\+Profile Class Reference}
+\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile}\index{mysite.core.models.basic\_models.Profile@{mysite.core.models.basic\_models.Profile}}
+Inheritance diagram for mysite.\+core.\+models.\+basic\+\_\+models.\+Profile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile}
+\end{center}
+\end{figure}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ac46163ab14b59b00db983639c861a5f9}{aac}} = models.\+Boolean\+Field(null=True)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ab9f91dfe435835e7a1a1184e961e364d}{department}} = models.\+Foreign\+Key(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_department}{Department}}\textquotesingle{}, on\+\_\+delete=models.\+SET\+\_\+\+NULL, blank=True, null=True)
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ad3279d42e69d12ea4c04530990dcdab2}{user}} = models.\+One\+To\+One\+Field(User, on\+\_\+delete=models.\+CASCADE)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Model to hold extra information in addition to Django's User class, including whether they are 
+AAC members and the department
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ac46163ab14b59b00db983639c861a5f9}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ac46163ab14b59b00db983639c861a5f9}} 
+\index{mysite.core.models.basic\_models.Profile@{mysite.core.models.basic\_models.Profile}!aac@{aac}}
+\index{aac@{aac}!mysite.core.models.basic\_models.Profile@{mysite.core.models.basic\_models.Profile}}
+\doxysubsubsection{\texorpdfstring{aac}{aac}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Profile.\+aac = models.\+Boolean\+Field(null=True)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ab9f91dfe435835e7a1a1184e961e364d}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ab9f91dfe435835e7a1a1184e961e364d}} 
+\index{mysite.core.models.basic\_models.Profile@{mysite.core.models.basic\_models.Profile}!department@{department}}
+\index{department@{department}!mysite.core.models.basic\_models.Profile@{mysite.core.models.basic\_models.Profile}}
+\doxysubsubsection{\texorpdfstring{department}{department}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Profile.\+department = models.\+Foreign\+Key(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1aac__models_1_1_department}{Department}}\textquotesingle{}, on\+\_\+delete=models.\+SET\+\_\+\+NULL, blank=True, null=True)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ad3279d42e69d12ea4c04530990dcdab2}\label{classmysite_1_1core_1_1models_1_1basic__models_1_1_profile_ad3279d42e69d12ea4c04530990dcdab2}} 
+\index{mysite.core.models.basic\_models.Profile@{mysite.core.models.basic\_models.Profile}!user@{user}}
+\index{user@{user}!mysite.core.models.basic\_models.Profile@{mysite.core.models.basic\_models.Profile}}
+\doxysubsubsection{\texorpdfstring{user}{user}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+basic\+\_\+models.\+Profile.\+user = models.\+One\+To\+One\+Field(User, on\+\_\+delete=models.\+CASCADE)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+mysite/core/models/\mbox{\hyperlink{basic__models_8py}{basic\+\_\+models.\+py}}\end{DoxyCompactItemize}

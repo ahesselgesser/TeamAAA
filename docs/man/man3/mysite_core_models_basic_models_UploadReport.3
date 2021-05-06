@@ -1,0 +1,56 @@
+.TH "mysite.core.models.basic_models.UploadReport" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.basic_models.UploadReport
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.ti -1c
+.RI "def \fBdelete\fP (self, *args, **kwargs)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBtitle\fP = models\&.CharField(max_length=100)"
+.br
+.ti -1c
+.RI "\fBuploader\fP = models\&.CharField(max_length=100)"
+.br
+.ti -1c
+.RI "\fBpdf\fP = models\&.FileField(upload_to='reports/pdfs/')"
+.br
+.ti -1c
+.RI "\fBcover\fP = models\&.ImageField(upload_to='reports/covers/', null=True, blank=True)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "def mysite\&.core\&.models\&.basic_models\&.UploadReport\&.__str__ ( self)"
+
+.SS "def mysite\&.core\&.models\&.basic_models\&.UploadReport\&.delete ( self, * args, ** kwargs)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.basic_models\&.UploadReport\&.cover = models\&.ImageField(upload_to='reports/covers/', null=True, blank=True)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.UploadReport\&.pdf = models\&.FileField(upload_to='reports/pdfs/')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.UploadReport\&.title = models\&.CharField(max_length=100)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.UploadReport\&.uploader = models\&.CharField(max_length=100)\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.
