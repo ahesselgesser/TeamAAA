@@ -1,0 +1,96 @@
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Team member}\label{md__r_e_a_d_m_e_autotoc_md1}
+\char`\"{}$\ast$$\ast$\+Zijun Mei$\ast$$\ast$\char`\"{} and \char`\"{}$\ast$$\ast$\+Trent Wisecup$\ast$$\ast$\char`\"{} and \char`\"{}$\ast$$\ast$\+Alex Hesselgesser$\ast$$\ast$\char`\"{}~\newline
+\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{Abstract}\label{md__r_e_a_d_m_e_autotoc_md2}
+We will be creating a web application that users can upload Student Learning Outcome reports in pdf or word formats to. The website will process the documents and convert them into a format consistent with the database created for SLOs during a previous capstone project. The website will also perform data analysis on the data uploaded, and natural language analysis.\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{Milestone 3}\label{md__r_e_a_d_m_e_autotoc_md3}
+For milestone 3, we integrated a Postgresql databse into the project.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{How to use the Application}\label{md__r_e_a_d_m_e_autotoc_md4}
+First, clone the repository to your local machine\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/ahesselgesser/TeamAAA.git}
+
+\end{DoxyCode}
+ Before running, you need to install several tools.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pip install django}
+\DoxyCodeLine{}
+\DoxyCodeLine{pip install django-\/crispy-\/forms}
+\DoxyCodeLine{}
+\DoxyCodeLine{python -\/m pip install -\/-\/upgrade pip}
+\DoxyCodeLine{python -\/m pip install -\/-\/upgrade Pillow}
+\DoxyCodeLine{}
+\DoxyCodeLine{pip install pytz}
+\DoxyCodeLine{pip install psycopg2}
+\DoxyCodeLine{pip install python-\/docx}
+
+\end{DoxyCode}
+
+
+Then install postgre\+SQL\+:
+
+On Windows\+:
+
+\href{https://www.postgresql.org/download/}{\texttt{ https\+://www.\+postgresql.\+org/download/}}
+
+During installation it should ask you to set the username and password for the super user. Remember that for later.
+
+Add your Posgre\+SQL bin folder to the system PATH
+
+Open Postgre\+SQL with\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{in the command line terminal }
+\DoxyCodeLine{and enter the password you set earlier.}
+\DoxyCodeLine{If you have changed the PostgreSQL superuser name from the default, use that in place of 'postgres'.}
+\DoxyCodeLine{}
+\DoxyCodeLine{Now that you're in PostgreSQL the steps are the same for both linux and Windows. Please skip ahead.}
+\DoxyCodeLine{}
+\DoxyCodeLine{On Linux:}
+
+\end{DoxyCode}
+ sudo apt-\/get install postgresql postgresql-\/contrib sudo apt-\/get install libpq-\/dev python3-\/dev 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{open PosgreSQL with:}
+\DoxyCodeLine{```sudo -\/u postgres psql}
+
+\end{DoxyCode}
+
+
+From here the steps are the same for both\+: Run the following PSQL commands in order\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CREATE DATABASE aaadb;}
+\DoxyCodeLine{CREATE USER teamaaa WITH ENCRYPTED PASSWORD 'aaapass';}
+\DoxyCodeLine{ALTER ROLE teamaaa SET client\_encoding TO 'utf8';}
+\DoxyCodeLine{ALTER ROLE teamaaa SET default\_transaction\_isolation TO 'read committed';}
+\DoxyCodeLine{ALTER ROLE teamaaa SET timezone TO 'UTC';}
+\DoxyCodeLine{GRANT ALL PRIVILEGES ON DATABASE aaadb TO teamaaa;}
+
+\end{DoxyCode}
+
+
+You can now exit the SQL prompt with \textbackslash{}q
+
+Apply the migrations\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{python manage.py migrate}
+
+\end{DoxyCode}
+
+
+Finally, run the development server\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{python manage.py runserver}
+
+\end{DoxyCode}
+ The application will be available at {\bfseries{127.\+0.\+0.\+1\+:8000}}.
+
+Here is the video instruction of the milestone1\+: \href{https://use.vg/JkjmjV}{\texttt{ https\+://use.\+vg/\+JkjmjV}} \hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{Release Notes for Milestone 3}\label{md__r_e_a_d_m_e_autotoc_md5}
+What we are doing in this milestone is creating an application that allows users to upload files by using the Django framework. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework.\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{Release Notes for Milestone 4}\label{md__r_e_a_d_m_e_autotoc_md6}
+What we are doing in this milestone is allowing the user to view the uploaded data on the web page so they can analyze the data. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework and to begin adding natural language analysis of the SLOs. 

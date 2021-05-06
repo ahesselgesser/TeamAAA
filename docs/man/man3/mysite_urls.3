@@ -1,0 +1,49 @@
+.TH "mysite.urls" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.urls
+.SH SYNOPSIS
+.br
+.PP
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "list \fBurlpatterns\fP"
+.br
+.ti -1c
+.RI "\fBMEDIA_URL\fP"
+.br
+.ti -1c
+.RI "\fBdocument_root\fP"
+.br
+.in -1c
+.SH "Variable Documentation"
+.PP 
+.SS "mysite\&.urls\&.document_root"
+
+.SS "mysite\&.urls\&.MEDIA_URL"
+
+.SS "list mysite\&.urls\&.urlpatterns"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  [
+2     path('', views\&.Home\&.as_view(), name='home'),
+3     path('upload/', views\&.upload, name='upload'),
+4     path('reports/', views\&.report_list, name='report_list'),
+5     path('reports/upload/', views\&.upload_report, name='upload_report'),
+6     path('reports/<int:pk>/', views\&.delete_report, name='delete_report'),
+7     path('reports/search/', views\&.search, name='search'),
+8     path('reports/view', views\&.view_report, name='report'),
+9 
+10     path('class/reports/', views\&.ReportListView\&.as_view(), name='class_report_list'),
+11     path('class/reports/upload/', views\&.UploadReportView\&.as_view(), name='class_upload_report'),
+12 
+13     path('admin/', admin\&.site\&.urls),
+14 ]
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

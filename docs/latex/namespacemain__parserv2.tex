@@ -1,0 +1,155 @@
+\hypertarget{namespacemain__parserv2}{}\doxysection{main\+\_\+parserv2 Namespace Reference}
+\label{namespacemain__parserv2}\index{main\_parserv2@{main\_parserv2}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemain__parserv2_a0735c6e91eef99c4015f9aa8774c84e1}{assessment\+Method\+Processor}} (assessment\+\_\+methods)
+\item 
+def \mbox{\hyperlink{namespacemain__parserv2_a49b2bd40251d24148f6282e153d7435b}{regex\+\_\+inc}} (regex\+\_\+list, regex\+\_\+counter, match\+\_\+list, para)
+\begin{DoxyCompactList}\small\item\em Allows a for loop to loop through a list of regular expressions. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacemain__parserv2_ad1f2241098bf3179be0750b95e318c7f}{table\+\_\+two\+\_\+access}} (is\+\_\+accredited, column, table, row\+\_\+iter, data, one\+\_\+cols, max\+\_\+rows)
+\begin{DoxyCompactList}\small\item\em Captures the information in the Assessment Methods table(s) of the document. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacemain__parserv2_a57d4c199f17bbaaee5206b34341b50a1}{table\+\_\+three\+\_\+access}} (column, table, row\+\_\+iter, data, one\+\_\+cols, max\+\_\+rows, slo\+\_\+count)
+\begin{DoxyCompactList}\small\item\em Captures the information in the Data (Collection \&) Analysis table of the document. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacemain__parserv2_a4ebe18deae7c5b100ea1970b711d1be7}{table\+\_\+four\+\_\+access}} (is\+\_\+accredited, column, table, row\+\_\+iter, data\+\_\+coll\+\_\+list, slo\+\_\+count)
+\begin{DoxyCompactList}\small\item\em Captures the information in the Decisions \& Actions table of the document. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacemain__parserv2_a82d795827dea3102fc9bf13316b36364}{run}} (uploaded\+\_\+filename)
+\begin{DoxyCompactList}\small\item\em This function captures the information from documents. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemain__parserv2_a0735c6e91eef99c4015f9aa8774c84e1}\label{namespacemain__parserv2_a0735c6e91eef99c4015f9aa8774c84e1}} 
+\index{main\_parserv2@{main\_parserv2}!assessmentMethodProcessor@{assessmentMethodProcessor}}
+\index{assessmentMethodProcessor@{assessmentMethodProcessor}!main\_parserv2@{main\_parserv2}}
+\doxysubsubsection{\texorpdfstring{assessmentMethodProcessor()}{assessmentMethodProcessor()}}
+{\footnotesize\ttfamily def main\+\_\+parserv2.\+assessment\+Method\+Processor (\begin{DoxyParamCaption}\item[{}]{assessment\+\_\+methods }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacemain__parserv2_a49b2bd40251d24148f6282e153d7435b}\label{namespacemain__parserv2_a49b2bd40251d24148f6282e153d7435b}} 
+\index{main\_parserv2@{main\_parserv2}!regex\_inc@{regex\_inc}}
+\index{regex\_inc@{regex\_inc}!main\_parserv2@{main\_parserv2}}
+\doxysubsubsection{\texorpdfstring{regex\_inc()}{regex\_inc()}}
+{\footnotesize\ttfamily def main\+\_\+parserv2.\+regex\+\_\+inc (\begin{DoxyParamCaption}\item[{}]{regex\+\_\+list,  }\item[{}]{regex\+\_\+counter,  }\item[{}]{match\+\_\+list,  }\item[{}]{para }\end{DoxyParamCaption})}
+
+
+
+Allows a for loop to loop through a list of regular expressions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regex\+\_\+list} & -\/ This is the list of regular expressions the loop accesses. \\
+\hline
+{\em regex\+\_\+counter} & -\/ This counter keeps track of how many times the regular expression list has been accessed. \\
+\hline
+{\em match\+\_\+list} & -\/ This list keeps track of all the matches that the regular expressions have caught. \\
+\hline
+{\em para} & -\/ This is the text that the regular expression is compared to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The counter keeping track of regular expressions and the list of matches. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacemain__parserv2_a82d795827dea3102fc9bf13316b36364}\label{namespacemain__parserv2_a82d795827dea3102fc9bf13316b36364}} 
+\index{main\_parserv2@{main\_parserv2}!run@{run}}
+\index{run@{run}!main\_parserv2@{main\_parserv2}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily def main\+\_\+parserv2.\+run (\begin{DoxyParamCaption}\item[{}]{uploaded\+\_\+filename }\end{DoxyParamCaption})}
+
+
+
+This function captures the information from documents. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uploaded\+\_\+filename} & This is the file name of the document we are running the method on. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacemain__parserv2_a4ebe18deae7c5b100ea1970b711d1be7}\label{namespacemain__parserv2_a4ebe18deae7c5b100ea1970b711d1be7}} 
+\index{main\_parserv2@{main\_parserv2}!table\_four\_access@{table\_four\_access}}
+\index{table\_four\_access@{table\_four\_access}!main\_parserv2@{main\_parserv2}}
+\doxysubsubsection{\texorpdfstring{table\_four\_access()}{table\_four\_access()}}
+{\footnotesize\ttfamily def main\+\_\+parserv2.\+table\+\_\+four\+\_\+access (\begin{DoxyParamCaption}\item[{}]{is\+\_\+accredited,  }\item[{}]{column,  }\item[{}]{table,  }\item[{}]{row\+\_\+iter,  }\item[{}]{data\+\_\+coll\+\_\+list,  }\item[{}]{slo\+\_\+count }\end{DoxyParamCaption})}
+
+
+
+Captures the information in the Decisions \& Actions table of the document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+\_\+accredited} & -\/ Boolean value, True if the report is for an accredited degree program. \\
+\hline
+{\em column} & -\/ A tuple that refers to the column number we are accessing in the table. \\
+\hline
+{\em table} & -\/ The docx.\+Table object that we are accessing. \\
+\hline
+{\em row\+\_\+iter} & -\/ An integer that keeps track of what row we are accessing. \\
+\hline
+{\em data\+\_\+coll\+\_\+list} & -\/ A list that the captured data is appended to. \\
+\hline
+{\em one\+\_\+cols} & -\/ I honestly forgot how I was using this variable. \\
+\hline
+{\em slo\+\_\+count} & -\/ This integer is the number of SLOs that were counted in the document.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The captured data in a list of tuples. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacemain__parserv2_a57d4c199f17bbaaee5206b34341b50a1}\label{namespacemain__parserv2_a57d4c199f17bbaaee5206b34341b50a1}} 
+\index{main\_parserv2@{main\_parserv2}!table\_three\_access@{table\_three\_access}}
+\index{table\_three\_access@{table\_three\_access}!main\_parserv2@{main\_parserv2}}
+\doxysubsubsection{\texorpdfstring{table\_three\_access()}{table\_three\_access()}}
+{\footnotesize\ttfamily def main\+\_\+parserv2.\+table\+\_\+three\+\_\+access (\begin{DoxyParamCaption}\item[{}]{column,  }\item[{}]{table,  }\item[{}]{row\+\_\+iter,  }\item[{}]{data,  }\item[{}]{one\+\_\+cols,  }\item[{}]{max\+\_\+rows,  }\item[{}]{slo\+\_\+count }\end{DoxyParamCaption})}
+
+
+
+Captures the information in the Data (Collection \&) Analysis table of the document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em column} & -\/ A tuple that refers to the column number we are accessing in the table. \\
+\hline
+{\em table} & -\/ The docx.\+Table object that we are accessing. \\
+\hline
+{\em row\+\_\+iter} & -\/ An integer that keeps track of what row we are accessing. \\
+\hline
+{\em data} & -\/ A list that the captured data is appended to. \\
+\hline
+{\em one\+\_\+cols} & -\/ I honestly forgot how I was using this variable. \\
+\hline
+{\em max\+\_\+rows} & -\/ The maximum number of rows that should be in the table we are accessing. \\
+\hline
+{\em slo\+\_\+count} & -\/ This integer is the number of SLOs that were counted in the document.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The captured data in a list. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacemain__parserv2_ad1f2241098bf3179be0750b95e318c7f}\label{namespacemain__parserv2_ad1f2241098bf3179be0750b95e318c7f}} 
+\index{main\_parserv2@{main\_parserv2}!table\_two\_access@{table\_two\_access}}
+\index{table\_two\_access@{table\_two\_access}!main\_parserv2@{main\_parserv2}}
+\doxysubsubsection{\texorpdfstring{table\_two\_access()}{table\_two\_access()}}
+{\footnotesize\ttfamily def main\+\_\+parserv2.\+table\+\_\+two\+\_\+access (\begin{DoxyParamCaption}\item[{}]{is\+\_\+accredited,  }\item[{}]{column,  }\item[{}]{table,  }\item[{}]{row\+\_\+iter,  }\item[{}]{data,  }\item[{}]{one\+\_\+cols,  }\item[{}]{max\+\_\+rows }\end{DoxyParamCaption})}
+
+
+
+Captures the information in the Assessment Methods table(s) of the document. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+\_\+accredited} & -\/ Boolean value, True if the report is for an accredited degree program. \\
+\hline
+{\em column} & -\/ A tuple that refers to the column number we are accessing in the table. \\
+\hline
+{\em table} & -\/ The docx.\+Table object that we are accessing. \\
+\hline
+{\em row\+\_\+iter} & -\/ An integer that keeps track of what row we are accessing. \\
+\hline
+{\em data} & -\/ A list that the captured data is appended to. \\
+\hline
+{\em one\+\_\+cols} & -\/ The assessment methods tables have three \char`\"{}columns\char`\"{} that are just rows. This is represented as 2 for 0-\/based arrays. \\
+\hline
+{\em max\+\_\+rows} & -\/ The maximum number of rows that should be in the table we are accessing.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The captured data in a list. 
+\end{DoxyReturn}

@@ -1,0 +1,64 @@
+.TH "mysite/core/paser/read_doc_test.py" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite/core/paser/read_doc_test.py
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBread_doc_test\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBread_doc_test\&.regex_inc\fP (regex_list, regex_counter, match_list)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBread_doc_test\&.doc\fP = docx\&.Document('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 \- Capstone/Python tests/undergrad2018\-regular\&.docx')"
+.br
+.RI "Change this file location to the location of the file you are parsing\&. "
+.ti -1c
+.RI "int \fBread_doc_test\&.regex_counter\fP = 0"
+.br
+.RI "Variables to capture College, Department/School ?, Program, Degree Level, Academic Year of Report, Date Range of Reported Data, Person Preparing the Report, SLOs (maybe in an array, or tuple, or something) Bloom's Taxonomy (checkboxes) "
+.ti -1c
+.RI "list \fBread_doc_test\&.ug18_regex_header_list\fP"
+.br
+.ti -1c
+.RI "list \fBread_doc_test\&.match_list\fP = []"
+.br
+.RI "Match 1 is Colleges Match 2 is Department/School\&. "
+.ti -1c
+.RI "\fBread_doc_test\&.all_paras\fP = doc\&.paragraphs"
+.br
+.ti -1c
+.RI "list \fBread_doc_test\&.data\fP = []"
+.br
+.RI "https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ### "
+.ti -1c
+.RI "\fBread_doc_test\&.table\fP = doc\&.tables[1]"
+.br
+.RI "UG 2018 Regular Tables SLO Table Checkboxes SLO communication to stakeholders Assessment Methods Separate table for EACH SLO Will have to devise a method to determine when these tables end and the next category begins Checkboxes in these tables Data Collection And Analysis Table Two tables\&. "
+.ti -1c
+.RI "tuple \fBread_doc_test\&.text\fP = (cell\&.text for cell in row\&.cells)"
+.br
+.ti -1c
+.RI "\fBread_doc_test\&.keys\fP = tuple(text)"
+.br
+.ti -1c
+.RI "\fBread_doc_test\&.row_data\fP = dict(zip(keys, text))"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

@@ -1,0 +1,70 @@
+\hypertarget{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate}{}\doxysection{mysite.\+core.\+models.\+data\+\_\+models.\+Assessment\+Aggregate Class Reference}
+\label{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate}\index{mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}}
+Inheritance diagram for mysite.\+core.\+models.\+data\+\_\+models.\+Assessment\+Aggregate\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a4c476e9fe8f373d18bbbcd0af8b35efa}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a0f0fc41481582c744469bc06e73a5be8}{assessment\+Version}} = models.\+One\+To\+One\+Field(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version}{Assessment\+Version}}\textquotesingle{}, on\+\_\+delete=models.\+CASCADE, verbose\+\_\+name=\char`\"{}assessment version\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_adf1da3e3e4843417e1792e9ca00d4d3f}{aggregate\+\_\+proficiency}} = models.\+Positive\+Integer\+Field(verbose\+\_\+name=\char`\"{}aggregate proficiency percentage\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a43f1c6d64c7653f965b4f6ff3c44d96c}{met}} = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}target met\char`\"{})
+\item 
+\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_abba11ce2135c17ae327e347c64d16416}{override}} = models.\+Boolean\+Field(default=False)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Aggregates the various assessments on different ranges for an aggregate success rate
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a4c476e9fe8f373d18bbbcd0af8b35efa}\label{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a4c476e9fe8f373d18bbbcd0af8b35efa}} 
+\index{mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def mysite.\+core.\+models.\+data\+\_\+models.\+Assessment\+Aggregate.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_adf1da3e3e4843417e1792e9ca00d4d3f}\label{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_adf1da3e3e4843417e1792e9ca00d4d3f}} 
+\index{mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}!aggregate\_proficiency@{aggregate\_proficiency}}
+\index{aggregate\_proficiency@{aggregate\_proficiency}!mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}}
+\doxysubsubsection{\texorpdfstring{aggregate\_proficiency}{aggregate\_proficiency}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+data\+\_\+models.\+Assessment\+Aggregate.\+aggregate\+\_\+proficiency = models.\+Positive\+Integer\+Field(verbose\+\_\+name=\char`\"{}aggregate proficiency percentage\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a0f0fc41481582c744469bc06e73a5be8}\label{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a0f0fc41481582c744469bc06e73a5be8}} 
+\index{mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}!assessmentVersion@{assessmentVersion}}
+\index{assessmentVersion@{assessmentVersion}!mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}}
+\doxysubsubsection{\texorpdfstring{assessmentVersion}{assessmentVersion}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+data\+\_\+models.\+Assessment\+Aggregate.\+assessment\+Version = models.\+One\+To\+One\+Field(\textquotesingle{}\mbox{\hyperlink{classmysite_1_1core_1_1models_1_1assessment__models_1_1_assessment_version}{Assessment\+Version}}\textquotesingle{}, on\+\_\+delete=models.\+CASCADE, verbose\+\_\+name=\char`\"{}assessment version\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a43f1c6d64c7653f965b4f6ff3c44d96c}\label{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_a43f1c6d64c7653f965b4f6ff3c44d96c}} 
+\index{mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}!met@{met}}
+\index{met@{met}!mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}}
+\doxysubsubsection{\texorpdfstring{met}{met}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+data\+\_\+models.\+Assessment\+Aggregate.\+met = models.\+Boolean\+Field(verbose\+\_\+name=\char`\"{}target met\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_abba11ce2135c17ae327e347c64d16416}\label{classmysite_1_1core_1_1models_1_1data__models_1_1_assessment_aggregate_abba11ce2135c17ae327e347c64d16416}} 
+\index{mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}!override@{override}}
+\index{override@{override}!mysite.core.models.data\_models.AssessmentAggregate@{mysite.core.models.data\_models.AssessmentAggregate}}
+\doxysubsubsection{\texorpdfstring{override}{override}}
+{\footnotesize\ttfamily mysite.\+core.\+models.\+data\+\_\+models.\+Assessment\+Aggregate.\+override = models.\+Boolean\+Field(default=False)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+mysite/core/models/\mbox{\hyperlink{data__models_8py}{data\+\_\+models.\+py}}\end{DoxyCompactItemize}

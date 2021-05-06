@@ -1,0 +1,46 @@
+.TH "mysite.core.models.basic_models.Profile" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.basic_models.Profile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBaac\fP = models\&.BooleanField(null=True)"
+.br
+.ti -1c
+.RI "\fBdepartment\fP = models\&.ForeignKey('\fBDepartment\fP', on_delete=models\&.SET_NULL, blank=True, null=True)"
+.br
+.ti -1c
+.RI "\fBuser\fP = models\&.OneToOneField(User, on_delete=models\&.CASCADE)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Model to hold extra information in addition to Django's User class, including whether they are 
+AAC members and the department
+
+.fi
+.PP
+ 
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.basic_models\&.Profile\&.aac = models\&.BooleanField(null=True)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Profile\&.department = models\&.ForeignKey('\fBDepartment\fP', on_delete=models\&.SET_NULL, blank=True, null=True)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.basic_models\&.Profile\&.user = models\&.OneToOneField(User, on_delete=models\&.CASCADE)\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

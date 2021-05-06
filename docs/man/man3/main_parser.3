@@ -1,0 +1,187 @@
+.TH "main_parser" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+main_parser
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBassessmentMethodProcessor\fP (assessment_methods)"
+.br
+.ti -1c
+.RI "def \fBregex_inc\fP (regex, match_list, header_text)"
+.br
+.RI "Applies a regular expression to a block of text\&. "
+.ti -1c
+.RI "def \fBtable_two_access\fP (is_accredited, column, table, row_iter, data, one_cols, max_rows)"
+.br
+.RI "Captures the information in the Assessment Methods table(s) of the document\&. "
+.ti -1c
+.RI "def \fBgrad_unaccredited_assessment\fP (column, report_year, doc, slo_count, data, one_cols, max_rows)"
+.br
+.RI "Captures the information in Non-Accredited Graduate reports in the Assessment Methods table(s) of the document\&. "
+.ti -1c
+.RI "def \fBtable_three_access\fP (column, table, row_iter, data, one_cols, max_rows, slo_count)"
+.br
+.RI "Captures the information in the Data (Collection &) Analysis table of the document\&. "
+.ti -1c
+.RI "def \fBtable_four_access\fP (is_accredited, column, table, row_iter, data_coll_list, slo_count)"
+.br
+.RI "Captures the information in the Decisions & Actions table of the document\&. "
+.ti -1c
+.RI "def \fBrun\fP (uploaded_filename)"
+.br
+.RI "This function captures the information from documents\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "def main_parser\&.assessmentMethodProcessor ( assessment_methods)"
+
+.SS "def main_parser\&.grad_unaccredited_assessment ( column,  report_year,  doc,  slo_count,  data,  one_cols,  max_rows)"
+
+.PP
+Captures the information in Non-Accredited Graduate reports in the Assessment Methods table(s) of the document\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolumn\fP - A tuple that refers to the column number we are accessing in the table\&. 
+.br
+\fIreport_year\fP - The year the report was created\&. 
+.br
+\fIdoc\fP - The document object, so that we can iterate through its tables\&. 
+.br
+\fIdata\fP - A list that the captured data is appended to\&. 
+.br
+\fIone_cols\fP - The assessment methods tables have three 'columns' that are just rows\&. This is represented as 2 for 0-based arrays\&. 
+.br
+\fImax_rows\fP - The maximum number of rows that should be in the table we are accessing\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The captured data in a list\&. 
+.RE
+.PP
+
+.SS "def main_parser\&.regex_inc ( regex,  match_list,  header_text)"
+
+.PP
+Applies a regular expression to a block of text\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIregex\fP - This is the regular expressions to apply\&. 
+.br
+\fImatch_list\fP - This list keeps track of all the matches that the regular expressions have caught\&. 
+.br
+\fIheader_text\fP - This is the text that the regular expression is compared to\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The list of matches\&. 
+.RE
+.PP
+
+.SS "def main_parser\&.run ( uploaded_filename)"
+
+.PP
+This function captures the information from documents\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIuploaded_filename\fP This is the file name of the document we are running the method on\&. 
+.RE
+.PP
+
+.SS "def main_parser\&.table_four_access ( is_accredited,  column,  table,  row_iter,  data_coll_list,  slo_count)"
+
+.PP
+Captures the information in the Decisions & Actions table of the document\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIis_accredited\fP - Boolean value, True if the report is for an accredited degree program\&. 
+.br
+\fIcolumn\fP - A tuple that refers to the column number we are accessing in the table\&. 
+.br
+\fItable\fP - The docx\&.Table object that we are accessing\&. 
+.br
+\fIrow_iter\fP - An integer that keeps track of what row we are accessing\&. 
+.br
+\fIdata_coll_list\fP - A list that the captured data is appended to\&. 
+.br
+\fIone_cols\fP - I honestly forgot how I was using this variable\&. 
+.br
+\fIslo_count\fP - This integer is the number of SLOs that were counted in the document\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The captured data in a list of tuples\&. 
+.RE
+.PP
+
+.SS "def main_parser\&.table_three_access ( column,  table,  row_iter,  data,  one_cols,  max_rows,  slo_count)"
+
+.PP
+Captures the information in the Data (Collection &) Analysis table of the document\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolumn\fP - A tuple that refers to the column number we are accessing in the table\&. 
+.br
+\fItable\fP - The docx\&.Table object that we are accessing\&. 
+.br
+\fIrow_iter\fP - An integer that keeps track of what row we are accessing\&. 
+.br
+\fIdata\fP - A list that the captured data is appended to\&. 
+.br
+\fIone_cols\fP - I honestly forgot how I was using this variable\&. 
+.br
+\fImax_rows\fP - The maximum number of rows that should be in the table we are accessing\&. 
+.br
+\fIslo_count\fP - This integer is the number of SLOs that were counted in the document\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The captured data in a list\&. 
+.RE
+.PP
+
+.SS "def main_parser\&.table_two_access ( is_accredited,  column,  table,  row_iter,  data,  one_cols,  max_rows)"
+
+.PP
+Captures the information in the Assessment Methods table(s) of the document\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIis_accredited\fP - Boolean value, True if the report is for an accredited degree program\&. 
+.br
+\fIcolumn\fP - A tuple that refers to the column number we are accessing in the table\&. 
+.br
+\fItable\fP - The docx\&.Table object that we are accessing\&. 
+.br
+\fIrow_iter\fP - An integer that keeps track of what row we are accessing\&. 
+.br
+\fIdata\fP - A list that the captured data is appended to\&. 
+.br
+\fIone_cols\fP - The assessment methods tables have three 'columns' that are just rows\&. This is represented as 2 for 0-based arrays\&. 
+.br
+\fImax_rows\fP - The maximum number of rows that should be in the table we are accessing\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The captured data in a list\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

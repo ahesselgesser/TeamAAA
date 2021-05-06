@@ -1,0 +1,71 @@
+.TH "mysite.core.models.slo_models.SLOInReport" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.slo_models.SLOInReport
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBgoalText\fP = models\&.CharField(max_length=1000, verbose_name='goal text')"
+.br
+.ti -1c
+.RI "\fBslo\fP = models\&.ForeignKey(\fBSLO\fP, on_delete=models\&.CASCADE, verbose_name='SLO')"
+.br
+.ti -1c
+.RI "\fBchangedFromPrior\fP = models\&.BooleanField(verbose_name='changed from prior version')"
+.br
+.ti -1c
+.RI "\fBreport\fP = models\&.ForeignKey('\fBReport\fP', on_delete=models\&.CASCADE)"
+.br
+.ti -1c
+.RI "\fBnumber\fP = models\&.PositiveIntegerField(default=1)"
+.br
+.ti -1c
+.RI "\fBnumberOfAssess\fP = models\&.PositiveIntegerField(default=0, verbose_name='number of assessments')"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+A specific version of an SLO which occurs within a report
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "def mysite\&.core\&.models\&.slo_models\&.SLOInReport\&.__str__ ( self)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.slo_models\&.SLOInReport\&.changedFromPrior = models\&.BooleanField(verbose_name='changed from prior version')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.slo_models\&.SLOInReport\&.goalText = models\&.CharField(max_length=1000, verbose_name='goal text')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.slo_models\&.SLOInReport\&.number = models\&.PositiveIntegerField(default=1)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.slo_models\&.SLOInReport\&.numberOfAssess = models\&.PositiveIntegerField(default=0, verbose_name='number of assessments')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.slo_models\&.SLOInReport\&.report = models\&.ForeignKey('\fBReport\fP', on_delete=models\&.CASCADE)\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.slo_models\&.SLOInReport\&.slo = models\&.ForeignKey(\fBSLO\fP, on_delete=models\&.CASCADE, verbose_name='SLO')\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

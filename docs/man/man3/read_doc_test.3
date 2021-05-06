@@ -1,0 +1,98 @@
+.TH "read_doc_test" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+read_doc_test
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBregex_inc\fP (regex_list, \fBregex_counter\fP, \fBmatch_list\fP)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBdoc\fP = docx\&.Document('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 \- Capstone/Python tests/undergrad2018\-regular\&.docx')"
+.br
+.RI "Change this file location to the location of the file you are parsing\&. "
+.ti -1c
+.RI "int \fBregex_counter\fP = 0"
+.br
+.RI "Variables to capture College, Department/School ?, Program, Degree Level, Academic Year of Report, Date Range of Reported Data, Person Preparing the Report, SLOs (maybe in an array, or tuple, or something) Bloom's Taxonomy (checkboxes) "
+.ti -1c
+.RI "list \fBug18_regex_header_list\fP"
+.br
+.ti -1c
+.RI "list \fBmatch_list\fP = []"
+.br
+.RI "Match 1 is Colleges Match 2 is Department/School\&. "
+.ti -1c
+.RI "\fBall_paras\fP = doc\&.paragraphs"
+.br
+.ti -1c
+.RI "list \fBdata\fP = []"
+.br
+.RI "https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ### "
+.ti -1c
+.RI "\fBtable\fP = doc\&.tables[1]"
+.br
+.RI "UG 2018 Regular Tables SLO Table Checkboxes SLO communication to stakeholders Assessment Methods Separate table for EACH SLO Will have to devise a method to determine when these tables end and the next category begins Checkboxes in these tables Data Collection And Analysis Table Two tables\&. "
+.ti -1c
+.RI "tuple \fBtext\fP = (cell\&.text for cell in row\&.cells)"
+.br
+.ti -1c
+.RI "\fBkeys\fP = tuple(\fBtext\fP)"
+.br
+.ti -1c
+.RI "\fBrow_data\fP = dict(zip(\fBkeys\fP, \fBtext\fP))"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "def read_doc_test\&.regex_inc ( regex_list,  regex_counter,  match_list)"
+
+.SH "Variable Documentation"
+.PP 
+.SS "read_doc_test\&.all_paras = doc\&.paragraphs"
+
+.SS "list read_doc_test\&.data = []"
+
+.PP
+https://stackoverflow.com/questions/27861732/parsing-of-table-from-docx-file/27862205 ### 
+.SS "read_doc_test\&.doc = docx\&.Document('C:/Users/twins/Desktop/UNO classes/Spring 2021 Semester/CSCI 4970 \- Capstone/Python tests/undergrad2018\-regular\&.docx')"
+
+.PP
+Change this file location to the location of the file you are parsing\&. 
+.SS "read_doc_test\&.keys = tuple(\fBtext\fP)"
+
+.SS "read_doc_test\&.match_list = []"
+
+.PP
+Match 1 is Colleges Match 2 is Department/School\&. 
+.SS "read_doc_test\&.regex_counter = 0"
+
+.PP
+Variables to capture College, Department/School ?, Program, Degree Level, Academic Year of Report, Date Range of Reported Data, Person Preparing the Report, SLOs (maybe in an array, or tuple, or something) Bloom's Taxonomy (checkboxes) Creating lists to hold all the different regex's and matches, then iterate through them\&. 
+.SS "read_doc_test\&.row_data = dict(zip(\fBkeys\fP, \fBtext\fP))"
+
+.SS "read_doc_test\&.table = doc\&.tables[1]"
+
+.PP
+UG 2018 Regular Tables SLO Table Checkboxes SLO communication to stakeholders Assessment Methods Separate table for EACH SLO Will have to devise a method to determine when these tables end and the next category begins Checkboxes in these tables Data Collection And Analysis Table Two tables\&. Resuls communicated within program Table Decisions & Actions Table END 
+.SS "tuple read_doc_test\&.text = (cell\&.text for cell in row\&.cells)"
+
+.SS "list read_doc_test\&.ug18_regex_header_list"
+\fBInitial value:\fP
+.PP
+.nf
+1 =  ['College:\s*(\&.*)\s*Department/School:', 'Department/School:\s*(\&.*)', 'Program:\s*(\&.*)\s*Degree Level:', 'Degree Level:\s*(\&.*)', 'Academic Year of Report:\s*(\&.*)\s*Date', 'Data:\s*(\&.*)',
+2 'Person Preparing the Report:\s(\&.*)']
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

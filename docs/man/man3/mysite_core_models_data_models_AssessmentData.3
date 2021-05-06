@@ -1,0 +1,50 @@
+.TH "mysite.core.models.data_models.AssessmentData" 3 "Thu May 6 2021" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mysite.core.models.data_models.AssessmentData
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits models\&.Model\&.
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBassessmentVersion\fP = models\&.ForeignKey('\fBAssessmentVersion\fP',on_delete=models\&.CASCADE, verbose_name='assessment version')"
+.br
+.ti -1c
+.RI "\fBdataRange\fP = models\&.CharField(max_length=500, verbose_name='data range')"
+.br
+.ti -1c
+.RI "\fBnumberStudents\fP = models\&.PositiveIntegerField(verbose_name='number of students')"
+.br
+.ti -1c
+.RI "\fBoverallProficient\fP = models\&.PositiveIntegerField(blank=True, verbose_name='overall percentage proficient')"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Assessment data point for a particular assessment in a report
+
+.fi
+.PP
+ 
+.SH "Member Data Documentation"
+.PP 
+.SS "mysite\&.core\&.models\&.data_models\&.AssessmentData\&.assessmentVersion = models\&.ForeignKey('\fBAssessmentVersion\fP',on_delete=models\&.CASCADE, verbose_name='assessment version')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.data_models\&.AssessmentData\&.dataRange = models\&.CharField(max_length=500, verbose_name='data range')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.data_models\&.AssessmentData\&.numberStudents = models\&.PositiveIntegerField(verbose_name='number of students')\fC [static]\fP"
+
+.SS "mysite\&.core\&.models\&.data_models\&.AssessmentData\&.overallProficient = models\&.PositiveIntegerField(blank=True, verbose_name='overall percentage proficient')\fC [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.
