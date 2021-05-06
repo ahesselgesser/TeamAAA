@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['templates_59',['TEMPLATES',['../namespacemysite_1_1settings.html#a073a410822eed069da826d807a904fff',1,'mysite::settings']]],
-  ['time_5fzone_60',['TIME_ZONE',['../namespacemysite_1_1settings.html#a8166ffe52ad58ff798949b613c9b5b2c',1,'mysite::settings']]]
+  ['language_5fcode_434',['LANGUAGE_CODE',['../namespacemysite_1_1settings.html#a5aa2d89c65baaf7b41e64a82ed412029',1,'mysite::settings']]],
+  ['level_435',['level',['../classmysite_1_1core_1_1models_1_1aac__models_1_1_degree_program.html#ad634f210bc37bfd1b9e1fc5398c96d3a',1,'mysite::core::models::aac_models::DegreeProgram']]],
+  ['levels_436',['LEVELS',['../namespacemysite_1_1core_1_1choices.html#a1444b49bbcecc65613eeda3d82b414a7',1,'mysite::core::choices']]]
 ];

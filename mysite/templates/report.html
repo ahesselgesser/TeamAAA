@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if results %}
+{% for report in results %}
+<h1 id = "report_title">{{report.title}}</h1>
+<p>Year: {{report.year}}</p>
+<p>Author: {{report.author}}</p>
+<p>Degree Program: {{report.degreeProgram}}</p>
+{%if report.date_range_of_reported_data%}
+<p>Date Range of Reported Data: {{report.date_range_of_reported_data}}</p>
+{%endif%}
+{% endfor %}
+<h2>Student Learning Outcomes</h2>
+<table class="table mb-0">
+    <thead>
+        <th>SLO Number</th>
+        <th>Goal </th>
+        <th>Bloom's Taxonomy Level </th>
+    </thead>
+    <tbody>
+        {% for slo in slos %}
+        <tr>
+            <td>SLO {{slo.1.number}}</td>
+            <td>{{slo.1.goalText}}</td>
+            <td>{{slo.0}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% if resultCommunicate %}
+<h4>How are results communicated to stakeholders:</h4>
+<p>{{resultCommunicate.text}}</p>
+{% endif %}
+<h2>Assessment Methods</h2>
+{% for assessmentM in assessmentMethods %}
+<table class="table mb-0">
+    <tr>
+        <th>SLO {{assessmentM.0}}</th>
+    </tr>
+    <tr>
+        <td>Describe How the Measure aligns to the SLO</td>
+        <td>{{assessmentM.1.description}}</td>
+    </tr>
+    <tr>
+        <td>Domains:</td>
+        <td> {%if assessmentM.2.domainExamination %}Examination{%endif%}
+            {%if assessmentM.2.domainProduct %}Product{%endif%}
+            {%if assessmentM.2.domainPerformance %}Performance{%endif%}</td>
+    </tr>
+    <tr>
+        <td>Type</td>
+        <td>{%if assessmentM.2.directMeasure %}Direct Measure {%else%} Indirect Measure {%endif%}</td>
+    </tr>
+    <tr>
+        <td>Point in Program Assessment is Administered</td>
+        <td>{%if assessmentM.1.finalTerm %}Final Term {%else%} Not Final Term {%endif%}
+            <br>Where does the assessment occur: {{assessmentM.1.where}}</td>
+    </tr>
+    <tr>
+        <td>Population Measured</td>
+        <td>{%if assessmentM.1.allStudents %}All Students{%else%} Sample of students - {%endif%}
+        <br>{{assessmentM.1.sampleDescription}}</td>
+    </tr>
+    <tr>
+        <td>Frequency of Data Collection</td>
+        <td>{{assessmentM.1.frequencyChoice}} <br> {{assessmentM.1.frequency}}</td>
+    </tr>
+    <tr>
+        <td>Proficiency Threshold</td>
+        <td>{{assessmentM.1.threshold}}</td>
+    </tr>
+    <tr>
+        <td>Program Proficiency Target</td>
+        <td>{{assessmentM.1.target}}</td>
+    </tr>
+</table>
+{% endfor %}
+
+<h2>Data Collection and Analysis</h2>
+<table class="table mb-0">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Data Collection Date Range</th>
+            <th>Number of Students Assessed</th>
+            <th>Percentage of Students who met/Eceeded Threshold Proficiency</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for assessmentD in assessmentDatas %}
+        <tr>
+            <td>SLO {{assessmentD.0}} - Measure</td>
+            <td>{{assessmentD.1.dataRange}}</td>
+            <td>{{assessmentD.1.numberStudents}}</td>
+            <td>{{assessmentD.1.overallProficient}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+<h2>Decisions and Actions</h2>
+<table class="table mb-0">
+    <thead>
+        <th>SLO Number</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        {% for decisionAction in decisionActions%}
+        <tr>
+            <td>SLO {{decisionAction.0}}</td>
+            <td>{{decisionAction.1.text}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+No Report found with that ID
+{% endif %}
+{% endblock %}

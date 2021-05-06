@@ -12,6 +12,8 @@ urlpatterns = [
     path('reports/', views.report_list, name='report_list'),
     path('reports/upload/', views.upload_report, name='upload_report'),
     path('reports/<int:pk>/', views.delete_report, name='delete_report'),
+    path('reports/search/', views.search, name='search'),
+    path('reports/view', views.view_report, name='report'),
 
     path('class/reports/', views.ReportListView.as_view(), name='class_report_list'),
     path('class/reports/upload/', views.UploadReportView.as_view(), name='class_upload_report'),

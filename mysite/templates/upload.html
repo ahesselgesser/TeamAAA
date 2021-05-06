@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Upload</h2>
+  <h2 id = "header_upload">Upload</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="document">
-    <button type="submit">Upload file</button>
+    <input id = "choose_file" type="file" name="document">
+    <button id = "sub" type="submit">Upload file</button>
   </form>
   {% if url %}
+    <br>
+    <p id = "upload_success">Successfully Uploaded!</p>
     <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
   {% endif %}
 {% endblock %}

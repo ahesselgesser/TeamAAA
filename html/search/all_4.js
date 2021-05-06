@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['databases_6',['DATABASES',['../namespacemysite_1_1settings.html#a04300628acd12c08ea63ee5f9d3d83d1',1,'mysite::settings']]],
-  ['debug_7',['DEBUG',['../namespacemysite_1_1settings.html#af3cd9446472cd1e91fa265ae8440b2a1',1,'mysite::settings']]],
-  ['document_5froot_8',['document_root',['../namespacemysite_1_1urls.html#af23d20d818d39ff5ef4c301524313e9d',1,'mysite::urls']]]
+  ['get_5fqueryset_14',['get_queryset',['../classmysite_1_1core_1_1models_1_1basic__models_1_1_non_archived_manager.html#a8a7d192f3846366b3774bb8d1b93bef8',1,'mysite::core::models::basic_models::NonArchivedManager']]],
+  ['gradgoal_15',['GradGoal',['../classmysite_1_1core_1_1models_1_1slo__models_1_1_grad_goal.html',1,'mysite::core::models::slo_models']]]
 ];

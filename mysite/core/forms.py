@@ -1,12 +1,11 @@
 from django import forms
-
-from .models import Report
+from .models.basic_models import UploadReport
 
 
 
 class ReportForm(forms.ModelForm):
     class Meta:
-        model = Report
+        model = UploadReport
         fields = ('title', 'uploader', 'pdf', 'cover')
         
 class FileFieldForm(forms.Form):
