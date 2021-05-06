@@ -85,12 +85,8 @@ python manage.py runserver
 The application will be available at **127.0.0.1:8000**.
 
 Here is the video instruction of the milestone1: https://use.vg/JkjmjV
-## Release Notes for Milestone 3
+## Release Notes for Final Milestone
 
-What we are doing in this milestone is creating an application that allows users to upload files by using the Django framework. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework.
-
-## Release Notes for Milestone 4
-
-What we are doing in this milestone is allowing the user to view the uploaded data on the web page so they can analyze the data. Our current progress is in line with our expectations. Our next step is to work on integrating the parser script and database into the Django framework and to begin adding natural language analysis of the SLOs.
+The application is a document parser that you can upload select docx documents to in order to parse out the information into a database for academic assessment reports. You upload files on the upload page and can search for them on the search page. The search page has a number of filters that will help you. When you click on a link to a report you can view all of the information that was uploaded from the report.
 
 
